@@ -1,0 +1,53 @@
+{
+    "language": "Deutsch",
+    "helloWorld": "Hallo Welt!",
+    "hello": "Hallo {username}",
+    "landing": "Mein Auto",
+    "@landing": {
+      "description": "Die Schrift, die Sie auf der Landingpage begrüßt"
+    },
+    "yourFavorites": "nächste Händler",
+    "@yourFavorites": {
+      "description": "nächste Händler"
+    },
+    "settings": "Einstellungen",
+    "@settings": {
+      "description": "Einstellungen"
+    },
+    "notifications": "Benachrichtigung",
+    "@notifications": {
+      "description": "Benachrichtigung"
+    },
+    "appearance": "Aussicht",
+    "@appearance": {
+      "description": "Aussicht"
+    },
+    "settingsLanguage": "Sprache",
+    "@settingsLanguage": {
+      "description": "Sprache"
+    },
+    "theme": "Thema",
+    "@theme": {
+      "description": "Thema"
+    },
+    "darkMode": "Dunkelmodus",
+    "@darkMode": {
+      "description": "Dunkelmodus"
+    },
+    "languageAndCountry": "Sprache & Land",
+    "@languageAndCountry": {
+      "description": "Sprache & Land"
+    },
+    "help": "Hilfe",
+    "@help": {
+      "description": "Hilfe"
+    },
+    "legal": "Legal",
+    "@legal": {
+      "description": "Legal"
+    },
+    "logout": "Ausloggen",
+    "@logout": {
+      "description": "Ausloggen"
+    }
+}

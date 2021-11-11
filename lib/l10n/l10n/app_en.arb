@@ -1,0 +1,68 @@
+{
+    "language": "English",
+    "@language":{
+      "description": "The current Language"
+    },
+    "helloWorld": "Hello World!",
+    "@helloWorld": {
+      "description": "A programmer greeting"
+    },
+    "hello": "Hello {username}",
+    "@hello": {
+      "description": "A welcome message",
+      "placeholders": {
+         "username": {
+           "type": "String"
+         }
+      }
+    },
+    "landing": "My Car",
+    "@landing": {
+      "description": "The writing that greets you in landingPage"
+    },
+    "yourFavorites": "Closest Dealers",
+    "@yourFavorites": {
+      "description": "Dealers"
+    },
+    "settings": "Settings",
+    "@settings": {
+      "description": "Settings"
+    },
+    "notifications": "Notifications",
+    "@notifications": {
+      "description": "notifications"
+    },
+    "appearance": "Appearance",
+    "@appearance": {
+      "description": "Appearance"
+    },
+    
+    "settingsLanguage": "Language",
+    "@settingsLanguage": {
+      "description": "settingsLanguage"
+    },
+    "theme": "Theme",
+    "@theme": {
+      "description": "theme"
+    },
+    "darkMode": "Dark Mode",
+    "@darkMode": {
+      "description": "darkMode"
+    },
+    "languageAndCountry": "Language & Country",
+    "@languageAndCountry": {
+      "description": "Language & Country"
+    },
+    "help": "Help",
+    "@help": {
+      "description": "help"
+    },
+    "legal": "Legal",
+    "@legal": {
+      "description": "Legal"
+    },
+    "logout": "Log Out",
+    "@logout": {
+      "description": "Log Out"
+    }
+}

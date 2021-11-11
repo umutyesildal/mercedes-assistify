@@ -1,0 +1,24 @@
+name: local_storage
+description: Local Storage where entities are stored and with database connected.
+version: 0.0.1
+homepage:
+publish_to: none
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  uuid: ^3.0.2   
+  equatable: ^2.0.0  
+  hive: ^2.0.4
+  hive_flutter: ^1.0.0
+  path_provider: ^2.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  hive_generator: ^1.1.0
+  build_runner: ^2.0.1
+flutter:

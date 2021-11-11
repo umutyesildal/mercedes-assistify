@@ -1,0 +1,53 @@
+{
+    "language": "Türkçe",
+    "helloWorld": "Merhaba Dünya!",
+    "hello": "Merhaba {username}",
+    "landing": "Arabam",
+    "@landing": {
+      "description": "Açılış sayfasında sizi karşılayan yazı"
+    },
+    "yourFavorites": "En Yakın Servis",
+    "@yourFavorites": {
+      "description": "Favorileriniz"
+    }, 
+    "settings": "Ayarlar",
+    "@settings": {
+      "description": "Ayarlar"
+    },
+    "notifications": "Bildirimler",
+    "@notifications": {
+      "description": "Bildirimler"
+    },
+    "appearance": "Görünüm",
+    "@appearance": {
+      "description": "Görünüm"
+    },
+    "settingsLanguage": "Dil",
+    "@settingsLanguage": {
+      "description": "Dil"
+    },
+    "theme": "Tema",
+    "@theme": {
+      "description": "Tema"
+    },
+    "darkMode": "Karanlık Tema",
+    "@darkMode": {
+      "description": "Karanlık Tema"
+    },
+    "languageAndCountry": "Dil & Ülke",
+    "@languageAndCountry": {
+      "description": "Dil & Ülke"
+    },
+    "help": "Yardım",
+    "@help": {
+      "description": "Yardım"
+    },
+    "legal": "Hukuki",
+    "@legal": {
+      "description": "Hukuki"
+    },
+    "logout": "Çıkış",
+    "@logout": {
+      "description": "Çıkış"
+    }
+}

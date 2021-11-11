@@ -1,0 +1,11 @@
+framework module responsive_navigation_bar {
+  umbrella header "responsive_navigation_bar-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module responsive_navigation_bar.Swift {
+    header "responsive_navigation_bar-Swift.h"
+    requires objc
+}
