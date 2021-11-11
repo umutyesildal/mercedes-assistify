@@ -46,6 +46,9 @@ dependencies:
   local_storage:
     path: packages/local_storage
 
+  firebase_client:
+    path: packages/firebase_client
+    
   flutter_localizations:
     sdk: flutter
   intl: ^0.17.0

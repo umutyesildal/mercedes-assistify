@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "451911722534",
+    "project_id": "assistify-d10e2",
+    "storage_bucket": "assistify-d10e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451911722534:android:7184b35c3ad7c287b2a8e7",
+        "android_client_info": {
+          "package_name": "com.asistify.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "451911722534-cg2kb3iobtq9dvf1cr9qt6v645m90bha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHDPA91fljWmFc3RO5epv4S0oeLmjlk0I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "451911722534-cg2kb3iobtq9dvf1cr9qt6v645m90bha.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451911722534:android:a16e0e4a1b8df8ccb2a8e7",
+        "android_client_info": {
+          "package_name": "com.assistify.mercedes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "451911722534-cg2kb3iobtq9dvf1cr9qt6v645m90bha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHDPA91fljWmFc3RO5epv4S0oeLmjlk0I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "451911722534-cg2kb3iobtq9dvf1cr9qt6v645m90bha.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
