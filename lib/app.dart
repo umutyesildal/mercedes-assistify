@@ -1,3 +1,4 @@
+import 'package:car_repository/template_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -24,7 +25,8 @@ class App extends StatelessWidget {
                   AuthBloc(localStorageRepository: sl.get<LocalStorage>()),
               child: BlocProvider(
                 create: (context) =>
-                    MainBloc(localStorageRepository: sl.get<LocalStorage>()),
+                    MainBloc(localStorageRepository: sl.get<LocalStorage>(),
+                    carRepository: sl.get<CarRepository>()),
                 child: BlocProvider(
                   create: (context) => LandingBloc(
                       localStorageRepository: sl.get<LocalStorage>()),
@@ -55,6 +57,7 @@ class _MyAppState extends State<MyApp> {
     BlocProvider.of<MainBloc>(context).add(GetThemeEvent());
     BlocProvider.of<MainBloc>(context).add(GetLocaleEvent());
     BlocProvider.of<MainBloc>(context).add(GetAuthEvent());
+    BlocProvider.of<MainBloc>(context).add(GetCarEvent());
   }
 
   @override
