@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>451911722534-smfi5bl1vc2err4jpj8d0kh63l5755f6.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.451911722534-smfi5bl1vc2err4jpj8d0kh63l5755f6</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAammV4sGDuh8AoXogwbnnjDhXHl-CBc4o</string>
+	<key>GCM_SENDER_ID</key>
+	<string>451911722534</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.assistify.mercedes</string>
+	<key>PROJECT_ID</key>
+	<string>assistify-d10e2</string>
+	<key>STORAGE_BUCKET</key>
+	<string>assistify-d10e2.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:451911722534:ios:a415e4b3ed9754c8b2a8e7</string>
+</dict>
+</plist>
