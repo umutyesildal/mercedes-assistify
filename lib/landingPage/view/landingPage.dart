@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:template/mainBloc/main_bloc.dart';
 import '../landingPage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -12,7 +13,7 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return BlocBuilder<LandingBloc, LandingState>(
+    return BlocBuilder<MainBloc, MainState>(
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
@@ -87,7 +88,7 @@ class _LandingPageState extends State<LandingPage> {
                                 Expanded(
                                   flex: 2,
                                   child: Text(
-                                    'Capacity:    72L',
+                                    'Capacity:    ',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15,
