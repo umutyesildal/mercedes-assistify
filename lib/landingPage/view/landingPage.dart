@@ -10,7 +10,6 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
   @override
-  @override
   Widget build(BuildContext context) {
     return BlocBuilder<LandingBloc, LandingState>(
       builder: (context, state) {

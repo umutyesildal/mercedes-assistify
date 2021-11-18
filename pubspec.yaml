@@ -41,13 +41,15 @@ dependencies:
   url_launcher: ^6.0.9
   change_app_package_name: ^1.0.0
 
+  service_repository:
+    path: packages/service_repository
   car_repository:
     path: packages/car_repository
   local_storage:
     path: packages/local_storage
 
   firebase_client:
-    path: packages/firebase_client
+    path: packages/firebase_client  
     
   flutter_localizations:
     sdk: flutter

@@ -1,5 +1,6 @@
 import 'package:car_repository/src/car_repository.dart';
 import 'package:car_repository/template_repository.dart';
+import 'package:firebase_client/firebase_client.dart';
 
 class CarConcreteRepository extends CarRepository {
   Future init() async {}
@@ -8,11 +9,14 @@ class CarConcreteRepository extends CarRepository {
   Future<CarEntity> getCar() async {
     CarEntity currentCar;
     try {
-      //    currentCar = await firebaseClient.getCar();
+      final Map<String, dynamic> data= await fc.getCar();
+      print(data);
+      currentCar = CarEntity.fromMap(data);
+      print(currentCar);
+      return currentCar;
     } catch (e) {
       throw e;
     }
-    return CarEntity.empty();
   }
 
   @override

@@ -1,17 +1,21 @@
 import 'dart:async';
+import 'package:car_repository/template_repository.dart';
 import 'package:equatable/equatable.dart';
 
 import 'package:bloc/bloc.dart';
 import 'package:local_storage/local_storage.dart';
 import 'package:meta/meta.dart';
+import 'package:service_repository/template_repository.dart';
 
 part 'main_event.dart';
 part 'main_state.dart';
 
 class MainBloc extends Bloc<MainEvent, MainState> {
-  MainBloc({required this.localStorageRepository}) : super(MainInitial());
+  MainBloc({required this.localStorageRepository, required this.carRepository, required this.serviceRepository}) : super(MainInitial());
 
   final LocalStorage localStorageRepository;
+  final CarRepository carRepository;
+  final ServiceRepository serviceRepository;
 
   @override
   Stream<MainState> mapEventToState(
@@ -29,6 +33,10 @@ class MainBloc extends Bloc<MainEvent, MainState> {
       yield* _mapGetAuthState(event, state);
     } else if (event is AuthChangedEvent) {
       yield* _mapAuthChangedState(event, state);
+    } else if (event is GetCarEvent) {
+      yield* _mapGetCarState(event, state);
+    } else if (event is GetServiceEvent) {
+      yield* _mapGetServiceState(event, state);
     }
   }
 
@@ -76,5 +84,19 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     print('Auth Changed');
     await localStorageRepository.changeAuth(auth: event.auth!);
     yield state.copywith(auth: event.auth);
+  }
+
+  Stream<MainState> _mapGetCarState(
+    GetCarEvent event, MainState state) async* {
+    print('Get Car');
+    final CarEntity car = await carRepository.getCar();
+    print(car.toString());
+  }
+
+  Stream<MainState> _mapGetServiceState(
+    GetServiceEvent event, MainState state) async* {
+    print('Get Service');
+    ServiceEntity service = new ServiceEntity(gelis_tarihi: "gelis_tarihi", teslim_tarihi: "teslim_tarihi", ownership: "ownership", maintenance: ["maintenance"]);
+    await serviceRepository.setService(service);  //Buralar nerede
   }
 }

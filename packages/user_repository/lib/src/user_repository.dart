@@ -1,14 +1,14 @@
-import 'package:car_repository/src/entity/car_entity.dart';
+import 'package:user_repository/src/entity/user_entity.dart';
 import 'package:firebase_client/firebase_client.dart';
 
-abstract class CarRepository {
+abstract class UserRepository {
 /*  /// gets all companies
   Future<List<CompanyEntity>> getAllCompanies();
 
 */
   void init();
   FirebaseClient fc = FirebaseClientConcrete();
-  Future<CarEntity> getCar();
+  Future<UserEntity> getUser();
   /// if something needs to be closed. ex: storage compaction and closing.
   void close();
 }
