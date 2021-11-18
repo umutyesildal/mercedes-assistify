@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:template/loginSignup/view/login.dart';
 import 'package:template/loginSignup/view/signup.dart';
 import 'package:template/loginSignup/view/widgets/widgets.dart';
-import 'favoritePage/favoritePage.dart';
+import 'package:template/repairPage/repairPage.dart';
 
+import 'mapPage/mapPage.dart';
 import 'navigator/navigator.dart';
 import 'settingsPage/settingsPage.dart';
 
@@ -12,7 +13,10 @@ class RouteGenerator {
 
   static const landingRoute = '/';
   static const settingsRoute = '/SettingsRoute';
-  static const favoriteRoute = '/FavoriteRoute';
+  static const repairRoute = '/RepairRoute';
+  static const bookServiceRoute = '/BookServiceRoute';
+
+  static const mapRoute = '/MapRoute';
   static const darkModeRoute = '/DarkModeRoute';
   static const languageRoute = '/LanguageRoute';
   static const loginRoute = '/Login';
@@ -27,14 +31,19 @@ class RouteGenerator {
       case loginRoute:
         return MaterialPageRoute(builder: (context) => LoginPage());
 
+      case repairRoute:
+        return MaterialPageRoute(builder: (context) => RepairPage());
+
+      case bookServiceRoute:
+        return MaterialPageRoute(builder: (context) => BookService());
       case forgotPasswordRoute:
         return MaterialPageRoute(builder: (context) => ForgotPassword());
 
       case settingsRoute:
         return MaterialPageRoute(builder: (context) => SettingsMain());
 
-      case favoriteRoute:
-        return MaterialPageRoute(builder: (context) => FavoritePage());
+      case mapRoute:
+        return MaterialPageRoute(builder: (context) => MapPage());
 
       case darkModeRoute:
         return MaterialPageRoute(builder: (context) => ChangeTheme());

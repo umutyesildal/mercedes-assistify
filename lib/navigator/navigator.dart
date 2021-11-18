@@ -1,7 +1,8 @@
 import 'package:responsive_navigation_bar/responsive_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:template/favoritePage/favoritePage.dart';
 import 'package:template/landingPage/landingPage.dart';
+import 'package:template/mapPage/mapPage.dart';
+import 'package:template/repairPage/repairPage.dart';
 import 'package:template/settingsPage/settingsPage.dart';
 
 class MainNavigator extends StatefulWidget {
@@ -14,7 +15,8 @@ class _MainNavigatorState extends State<MainNavigator> {
 
   static List<Widget> _widgetOptions = <Widget>[
     LandingPage(),
-    FavoritePage(),
+    RepairPage(),
+    MapPage(),
     SettingsMain(),
   ];
 
@@ -43,11 +45,15 @@ class _MainNavigatorState extends State<MainNavigator> {
         // showActiveButtonText: false,
         navigationBarButtons: const <NavigationBarButton>[
           NavigationBarButton(
-            icon: Icons.home,
+            icon: Icons.car_rental,
             backgroundColor: Colors.transparent,
           ),
           NavigationBarButton(
-            icon: Icons.favorite,
+            icon: Icons.car_repair,
+            backgroundColor: Colors.transparent,
+          ),
+          NavigationBarButton(
+            icon: Icons.map,
             backgroundColor: Colors.transparent,
           ),
           NavigationBarButton(
