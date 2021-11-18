@@ -63,3 +63,10 @@ class GetCarEvent extends MainEvent {
   @override
   List<Object> get props => [];
 }
+
+class GetServiceEvent extends MainEvent {
+  GetServiceEvent();
+
+  @override
+  List<Object> get props => [];
+}
