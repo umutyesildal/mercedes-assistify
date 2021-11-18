@@ -4,12 +4,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:template/landingPage/landingPage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class FavoritePage extends StatefulWidget {
+class MapPage extends StatefulWidget {
   @override
   _LandingPageState createState() => _LandingPageState();
 }
 
-class _LandingPageState extends State<FavoritePage> {
+class _LandingPageState extends State<MapPage> {
   @override
   void initState() {
     super.initState();
