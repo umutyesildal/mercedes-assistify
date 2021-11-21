@@ -26,12 +26,16 @@ class _LandingPageState extends State<LandingPage> {
           ),
           body: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.asset('assets/car.png'),
+              Container(
+                width: size.width,
+                height: size.height * 0.3,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset('assets/offroad.png'),
+                    ),
                   ),
                 ),
               ),

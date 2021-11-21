@@ -32,27 +32,27 @@ class _LandingPageState extends State<RepairPage> {
           ),
           body: Column(
             children: [
-              Container(
-                  width: size.width,
-                  height: size.height * 0.15,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: SizedBox(),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.of(context)
-                                    .pushNamed(RouteGenerator.bookServiceRoute);
-                              },
-                              child: Row(
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context)
+                      .pushNamed(RouteGenerator.bookServiceRoute);
+                },
+                child: Container(
+                    width: size.width,
+                    height: size.height * 0.15,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                flex: 1,
+                                child: SizedBox(),
+                              ),
+                              Row(
                                 children: [
                                   Expanded(
                                       flex: 2,
@@ -86,16 +86,16 @@ class _LandingPageState extends State<RepairPage> {
                                   )
                                 ],
                               ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: SizedBox(),
-                            ),
-                          ],
+                              Expanded(
+                                flex: 1,
+                                child: SizedBox(),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  )),
+                    )),
+              ),
               GestureDetector(
                 onTap: () {
                   Navigator.of(context)
@@ -161,58 +161,65 @@ class _LandingPageState extends State<RepairPage> {
                   ),
                 ),
               ),
-              Container(
-                width: size.width,
-                height: size.height * 0.15,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: SizedBox(),
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                  flex: 2,
-                                  child: Icon(Icons.history, size: 32)),
-                              Expanded(
-                                flex: 8,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Check Previous Service',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 22,
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context)
+                      .pushNamed(RouteGenerator.allPreviousServices);
+                },
+                child: Container(
+                  width: size.width,
+                  height: size.height * 0.15,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: SizedBox(),
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                    flex: 2,
+                                    child: Icon(Icons.history, size: 32)),
+                                Expanded(
+                                  flex: 8,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Check Previous Service',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 22,
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      'Look at your history.',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14,
+                                      SizedBox(
+                                        height: 5,
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: SizedBox(),
-                          ),
-                        ],
+                                      Text(
+                                        'Look at your history.',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: SizedBox(),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

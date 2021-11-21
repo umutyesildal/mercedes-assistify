@@ -83,16 +83,39 @@ class _OngoingServiceState extends State<OngoingService> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: ListView.builder(
+              child: ListView(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
-                itemCount: 5,
-                itemBuilder: (context, index) {
-                  return CustomSignalTile(
+                children: [
+                  CustomSignalTile(
+                    isLast: false,
+                    isFirst: true,
+                    title: 'Title',
+                    description: 'Description',
+                    order: 1,
+                  ),
+                  CustomSignalTile(
                     isLast: false,
                     isFirst: false,
-                  );
-                },
+                    title: 'Title',
+                    description: 'Description',
+                    order: 2,
+                  ),
+                  CustomSignalTile(
+                    isLast: false,
+                    isFirst: false,
+                    title: 'Title',
+                    description: 'Description',
+                    order: 3,
+                  ),
+                  CustomSignalTile(
+                    isLast: true,
+                    isFirst: false,
+                    title: 'Title',
+                    description: 'Description',
+                    order: 4,
+                  ),
+                ],
               ),
             ),
           ],
@@ -103,13 +126,13 @@ class _OngoingServiceState extends State<OngoingService> {
 }
 
 class CustomSignalTile extends StatelessWidget {
-  const CustomSignalTile({
-    this.isFirst,
-    this.isLast,
-  });
+  const CustomSignalTile(
+      {this.isFirst, this.isLast, this.description, this.title, this.order});
   final bool? isFirst;
   final bool? isLast;
-
+  final String? title;
+  final String? description;
+  final int? order;
   @override
   Widget build(BuildContext context) {
     return TimelineTile(
@@ -117,13 +140,21 @@ class CustomSignalTile extends StatelessWidget {
       isLast: isLast!,
       alignment: TimelineAlign.start,
       indicatorStyle: IndicatorStyle(
-        color: Theme.of(context).iconTheme.color!,
+        color: order! > 2
+            ? Theme.of(context).dividerColor
+            : Theme.of(context).iconTheme.color!,
       ),
       afterLineStyle: LineStyle(
         thickness: 3,
+        color: order! > 2
+            ? Theme.of(context).dividerColor
+            : Theme.of(context).iconTheme.color!,
       ),
       beforeLineStyle: LineStyle(
         thickness: 3,
+        color: order! > 2
+            ? Theme.of(context).dividerColor
+            : Theme.of(context).iconTheme.color!,
       ),
       endChild: Padding(
         padding: const EdgeInsets.all(10),
@@ -134,11 +165,13 @@ class CustomSignalTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('TİTLE'),
+                  Text(
+                    title!,
+                  ),
                   SizedBox(
                     height: 10,
                   ),
-                  Text('Description'),
+                  Text(description!),
                   SizedBox(
                     height: 30,
                   ),
