@@ -96,7 +96,12 @@ class _LandingPageState extends State<RepairPage> {
                       ),
                     ),
                   )),
-              Container(
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context)
+                      .pushNamed(RouteGenerator.onGoingServiceRoute);
+                },
+                child: Container(
                   width: size.width,
                   height: size.height * 0.15,
                   child: Padding(
@@ -115,7 +120,8 @@ class _LandingPageState extends State<RepairPage> {
                               children: [
                                 Expanded(
                                     flex: 2,
-                                    child: Icon(Icons.history, size: 32)),
+                                    child:
+                                        Icon(Icons.nordic_walking, size: 32)),
                                 Expanded(
                                   flex: 8,
                                   child: Column(
@@ -123,7 +129,7 @@ class _LandingPageState extends State<RepairPage> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Check Previous Service',
+                                        'Ongoing Service',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 22,
@@ -133,7 +139,7 @@ class _LandingPageState extends State<RepairPage> {
                                         height: 5,
                                       ),
                                       Text(
-                                        'Look at your history.',
+                                        'Check how you car doing.',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 14,
@@ -152,7 +158,69 @@ class _LandingPageState extends State<RepairPage> {
                         ),
                       ),
                     ),
-                  )),
+                  ),
+                ),
+              ),
+              Container(
+                width: size.width,
+                height: size.height * 0.15,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: SizedBox(),
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                  flex: 2,
+                                  child: Icon(Icons.history, size: 32)),
+                              Expanded(
+                                flex: 8,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Check Previous Service',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 22,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      'Look at your history.',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: SizedBox(),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Center(
+                child: Image.asset('assets/service.png'),
+              )
             ],
           ),
         );

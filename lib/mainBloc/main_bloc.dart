@@ -97,7 +97,6 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     CarEntity? car = await carRepository.getCar();
     print(car.beygir);
     yield state.copywith(currentCar: car);
-    print(state.currentCar.toString());
   }
 
   Stream<MainState> _mapGetServiceState(
@@ -108,6 +107,6 @@ class MainBloc extends Bloc<MainEvent, MainState> {
         teslim_tarihi: "teslim_tarihi",
         ownership: "ownership",
         maintenance: ["maintenance"]);
-    await serviceRepository.setService(service); //Buralar nerede
+    await serviceRepository.setService(service);
   }
 }
