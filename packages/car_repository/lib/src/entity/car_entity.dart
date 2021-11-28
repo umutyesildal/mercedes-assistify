@@ -2,11 +2,11 @@ import 'dart:convert';
 
 class CarEntity {
   final String beygir;
-	final String depo;
-	final String max_hiz;
-	final String motor;
-	final String silindir;
-  final	String yakit;
+  final String depo;
+  final String max_hiz;
+  final String motor;
+  final String silindir;
+  final String yakit;
   final String model;
   CarEntity({
     required this.beygir,
@@ -17,9 +17,6 @@ class CarEntity {
     required this.yakit,
     required this.model,
   });
-
-
-
 
   CarEntity copyWith({
     String? beygir,
@@ -43,13 +40,13 @@ class CarEntity {
 
   CarEntity.empty()
       : this(
-      beygir: "",
-      depo: "",
-      max_hiz: "",
-      motor: "",
-      silindir: "",
-      yakit: "",
-      model: "",
+          beygir: "",
+          depo: "",
+          max_hiz: "",
+          motor: "",
+          silindir: "",
+          yakit: "",
+          model: "",
         );
 
   Map<String, dynamic> toMap() {
@@ -78,7 +75,8 @@ class CarEntity {
 
   String toJson() => json.encode(toMap());
 
-  factory CarEntity.fromJson(String source) => CarEntity.fromMap(json.decode(source));
+  factory CarEntity.fromJson(String source) =>
+      CarEntity.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -88,25 +86,25 @@ class CarEntity {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is CarEntity &&
-      other.beygir == beygir &&
-      other.depo == depo &&
-      other.max_hiz == max_hiz &&
-      other.motor == motor &&
-      other.silindir == silindir &&
-      other.yakit == yakit &&
-      other.model == model;
+        other.beygir == beygir &&
+        other.depo == depo &&
+        other.max_hiz == max_hiz &&
+        other.motor == motor &&
+        other.silindir == silindir &&
+        other.yakit == yakit &&
+        other.model == model;
   }
 
   @override
   int get hashCode {
     return beygir.hashCode ^
-      depo.hashCode ^
-      max_hiz.hashCode ^
-      motor.hashCode ^
-      silindir.hashCode ^
-      yakit.hashCode ^
-      model.hashCode;
+        depo.hashCode ^
+        max_hiz.hashCode ^
+        motor.hashCode ^
+        silindir.hashCode ^
+        yakit.hashCode ^
+        model.hashCode;
   }
 }

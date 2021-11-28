@@ -3,6 +3,9 @@ import 'package:template/loginSignup/view/login.dart';
 import 'package:template/loginSignup/view/signup.dart';
 import 'package:template/loginSignup/view/widgets/widgets.dart';
 import 'package:template/repairPage/repairPage.dart';
+import 'package:template/repairPage/view/widgets/allPreviousServices.dart';
+import 'package:template/repairPage/view/widgets/ongoingService.dart';
+import 'package:template/repairPage/view/widgets/previousService.dart';
 
 import 'mapPage/mapPage.dart';
 import 'navigator/navigator.dart';
@@ -22,6 +25,9 @@ class RouteGenerator {
   static const loginRoute = '/Login';
   static const signUpRoute = '/SignUp';
   static const forgotPasswordRoute = '/ForgotPassword';
+  static const onGoingServiceRoute = '/OngoingService';
+  static const previousService = '/PreviousService';
+  static const allPreviousServices = '/AllPreviousServices';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -30,7 +36,12 @@ class RouteGenerator {
 
       case loginRoute:
         return MaterialPageRoute(builder: (context) => LoginPage());
-
+      case onGoingServiceRoute:
+        return MaterialPageRoute(builder: (context) => OngoingService());
+      case previousService:
+        return MaterialPageRoute(builder: (context) => PreviousServices());
+      case allPreviousServices:
+        return MaterialPageRoute(builder: (context) => AllPreviousServices());
       case repairRoute:
         return MaterialPageRoute(builder: (context) => RepairPage());
 

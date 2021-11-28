@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:template/mainBloc/main_bloc.dart';
 import '../landingPage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -12,7 +13,7 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return BlocBuilder<LandingBloc, LandingState>(
+    return BlocBuilder<MainBloc, MainState>(
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
@@ -25,153 +26,51 @@ class _LandingPageState extends State<LandingPage> {
           ),
           body: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Container(
-                  width: size.width,
-                  height: size.height * 0.12,
+              Container(
+                width: size.width,
+                height: size.height * 0.3,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Card(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          /// TODO: change i18n
-                          Text(
-                            'Greetings',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                            ),
-                          ),
-                          Text(
-                            'Umut Yunus Yeşildal',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
-                          ),
-                          Text(
-                            'your A320',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
+                      child: Image.asset('assets/offroad.png'),
                     ),
                   ),
                 ),
               ),
-              Row(
-                children: [
-                  Container(
-                      width: size.width,
-                      height: size.height * 0.2,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Card(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  flex: 6,
-                                  child: Icon(
-                                    Icons.local_gas_station,
-                                    size: 48,
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 2,
-                                  child: Text(
-                                    'Capacity:    72L',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15,
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 2,
-                                  child: Text(
-                                    'Filled:          36L %50',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15,
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 2,
-                                  child: Text(
-                                    'Remaining: 178 km',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15,
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: SizedBox(),
-                                ),
-                              ],
-                            ),
+              Container(
+                width: size.width,
+                height: size.height * 0.5,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(
+                    child: DefaultTabController(
+                      length: 2,
+                      child: Scaffold(
+                        appBar: AppBar(
+                          elevation: 0,
+                          toolbarHeight: 5,
+                          bottom: TabBar(
+                            onTap: (index) {
+                              // Tab index when user select it, it start from zero
+                            },
+                            tabs: [
+                              Tab(
+                                text: 'Daily',
+                              ),
+                              Tab(
+                                text: 'Technical',
+                              ),
+                            ],
                           ),
                         ),
-                      )),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  width: size.width,
-                  height: size.height * 0.4,
-                  child: Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Beygir: 116 hp',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
-                          ),
-                          Text(
-                            'Depo:  72 lt',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
-                          ),
-                          Text(
-                            'Motor: 1.5',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
-                          ),
-                          Text(
-                            'Silindir: 1461 cc',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
-                          ),
-                          Text(
-                            'Yakıt: Dizel',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ],
+                        body: TabBarView(
+                          children: [
+                            DailyTab(),
+                            TechnicalTab(),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -181,6 +80,136 @@ class _LandingPageState extends State<LandingPage> {
           ),
         );
       },
+    );
+  }
+}
+
+class DailyTab extends StatelessWidget {
+  const DailyTab({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 10,
+          ),
+          CustomRowText(
+            givenKey: 'Kalan Yakıt',
+            givenValue: '116',
+          ),
+          CustomRowText(
+            givenKey: 'Kilometre',
+            givenValue: '116',
+          ),
+          CustomRowText(
+            givenKey: 'Ortalama Tüketim',
+            givenValue: '116',
+          ),
+          CustomRowText(
+            givenKey: 'Haftalık Kilometre',
+            givenValue: '116',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TechnicalTab extends StatelessWidget {
+  const TechnicalTab({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 10,
+          ),
+          CustomRowText(
+            givenKey: 'Beygir',
+            givenValue: '116',
+          ),
+          CustomRowText(
+            givenKey: 'Depo',
+            givenValue: '116',
+          ),
+          CustomRowText(
+            givenKey: 'Max Hız',
+            givenValue: '116',
+          ),
+          CustomRowText(
+            givenKey: 'Motor',
+            givenValue: '116',
+          ),
+          CustomRowText(
+            givenKey: 'Silindir',
+            givenValue: '116',
+          ),
+          CustomRowText(
+            givenKey: 'Yakıt',
+            givenValue: '116',
+          ),
+          CustomRowText(
+            givenKey: 'Model',
+            givenValue: '116',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomRowText extends StatelessWidget {
+  const CustomRowText({
+    required this.givenKey,
+    required this.givenValue,
+    Key? key,
+  }) : super(key: key);
+
+  final String givenKey;
+  final String givenValue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(flex: 1, child: SizedBox()),
+          Expanded(
+            flex: 6,
+            child: Text(
+              givenKey,
+              style: TextStyle(
+                fontSize: 18,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 2,
+            child: Text(
+              givenValue,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+          ),
+          Expanded(flex: 1, child: SizedBox()),
+        ],
+      ),
     );
   }
 }
