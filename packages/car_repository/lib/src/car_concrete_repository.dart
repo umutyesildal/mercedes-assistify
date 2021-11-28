@@ -9,10 +9,8 @@ class CarConcreteRepository extends CarRepository {
   Future<CarEntity> getCar() async {
     CarEntity currentCar;
     try {
-      final Map<String, dynamic> data= await fc.getCar();
-      print(data);
+      final Map<String, dynamic> data = await fc.getCar();
       currentCar = CarEntity.fromMap(data);
-      print(currentCar);
       return currentCar;
     } catch (e) {
       throw e;

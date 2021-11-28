@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:local_storage/local_storage.dart';
+import 'package:template/repairPage/bloc/service_bloc.dart';
 import 'constants.dart';
 import 'landingPage/landingPage.dart';
 import 'loginSignup/bloc/auth_bloc.dart';
@@ -25,14 +26,18 @@ class App extends StatelessWidget {
               create: (context) =>
                   AuthBloc(localStorageRepository: sl.get<LocalStorage>()),
               child: BlocProvider(
-                create: (context) =>
-                    MainBloc(localStorageRepository: sl.get<LocalStorage>(),
+                create: (context) => MainBloc(
+                    localStorageRepository: sl.get<LocalStorage>(),
                     carRepository: sl.get<CarRepository>(),
                     serviceRepository: sl.get<ServiceRepository>()),
                 child: BlocProvider(
-                  create: (context) => LandingBloc(
-                      localStorageRepository: sl.get<LocalStorage>()),
-                  child: MyApp(),
+                  create: (context) => ServiceBloc(
+                      serviceRepository: sl.get<ServiceRepository>()),
+                  child: BlocProvider(
+                    create: (context) => LandingBloc(
+                        localStorageRepository: sl.get<LocalStorage>()),
+                    child: MyApp(),
+                  ),
                 ),
               ),
             );
@@ -60,7 +65,6 @@ class _MyAppState extends State<MyApp> {
     BlocProvider.of<MainBloc>(context).add(GetLocaleEvent());
     BlocProvider.of<MainBloc>(context).add(GetAuthEvent());
     BlocProvider.of<MainBloc>(context).add(GetCarEvent());
-    BlocProvider.of<MainBloc>(context).add(GetServiceEvent());
   }
 
   @override
