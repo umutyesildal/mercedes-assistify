@@ -108,7 +108,7 @@ class DailyTab extends StatelessWidget {
             givenValue: '116',
           ),
           CustomRowText(
-            givenKey: 'Yakıt Tüketimi',
+            givenKey: 'Ortalama Tüketim',
             givenValue: '116',
           ),
           CustomRowText(
