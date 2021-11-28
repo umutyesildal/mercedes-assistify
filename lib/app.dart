@@ -12,7 +12,7 @@ import 'mainBloc/main_bloc.dart';
 import 'router.dart';
 import 'service_locator.dart';
 
-class App extends StatelessWidget {
+class App extends StatelessWidget { 
   const App();
 
   @override
