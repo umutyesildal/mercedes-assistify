@@ -25,12 +25,21 @@ class FirebaseClientConcrete extends FirebaseClient {
         .set({'text': 'afsdfs'});
   }
 
+   Future<Map<String, dynamic>> getService() async {
+    var collection = FirebaseFirestore.instance.collection('Service');
+    var querySnapshot = await collection.get();
+    var queryDocumentSnapshot = querySnapshot.docs.first;
+    Map<String, dynamic> data = queryDocumentSnapshot.data();
+    return data;
+  }
+
   @override
   Future setService(ServiceEntity service) async {
     FirebaseFirestore.instance.collection('Service').add({
       'gelis_tarihi': service.gelis_tarihi,
       "maintenance": service.maintenance,
       "ownership": service.ownership,
+      "bakim_asamasi": service.bakim_asamasi,
       "teslim_tarihi": service.teslim_tarihi
     });
   }

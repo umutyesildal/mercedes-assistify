@@ -17,6 +17,17 @@ class ServiceConcreteRepository extends ServiceRepository {
       throw e;
     }
   }
+  @override
+  Future<ServiceEntity> getService() async {
+    ServiceEntity serviceStatus;
+    try {
+      final Map<String, dynamic> data = await fc.getService();
+      serviceStatus = ServiceEntity.fromMap(data);
+      return serviceStatus;
+    } catch (e) {
+      throw e;
+    }
+  }
 
   @override
   void close() {}

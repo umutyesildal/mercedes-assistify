@@ -40,7 +40,7 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     } else if (event is GetCarEvent) {
       yield* _mapGetCarState(event, state);
     } else if (event is GetServiceEvent) {
-      yield* _mapGetServiceState(event, state);
+      yield* _mapSetServiceState(event, state);
     }
   }
 
@@ -98,14 +98,15 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     print(car.beygir);
     yield state.copywith(currentCar: car);
   }
-
-  Stream<MainState> _mapGetServiceState(
+  
+  Stream<MainState> _mapSetServiceState(
       GetServiceEvent event, MainState state) async* {
     print('Get Service');
     ServiceEntity service = new ServiceEntity(
         gelis_tarihi: "gelis_tarihi",
         teslim_tarihi: "teslim_tarihi",
         ownership: "ownership",
+        bakim_asamasi: "bakim_asamasi",
         maintenance: ["maintenance"]);
     await serviceRepository.setService(service);
   }

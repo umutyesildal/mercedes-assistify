@@ -546,6 +546,7 @@ class _BookServiceState extends State<BookService> {
                         gelis_tarihi: _selectedDate.toString() + '12',
                         teslim_tarihi: '27/11/2021',
                         ownership: 'a3802021',
+                        bakim_asamasi: '1',
                         maintenance: ['brakes', 'oil', 'tires']);
                     //  BlocProvider.of<ServiceBloc>(context)
                     //      .add((AddServicesEvent(givenService: service)));

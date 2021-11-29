@@ -32,6 +32,7 @@ class ServiceBloc extends Bloc<ServiceEvent, ServiceState> {
         gelis_tarihi: event.givenService.gelis_tarihi,
         teslim_tarihi: event.givenService.teslim_tarihi,
         ownership: event.givenService.ownership,
+        bakim_asamasi: event.givenService.bakim_asamasi,
         maintenance: event.givenService.maintenance);
     await serviceRepository.setService(service);
   }
