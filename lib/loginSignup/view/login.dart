@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/loginSignup/bloc/auth_bloc.dart';
-import 'package:template/mainBloc/main_bloc.dart';
+import 'package:template/preferencesBloc/preferences_bloc.dart';
 import 'package:template/router.dart';
 import '../models/models.dart';
 import 'widgets/widgets.dart';
@@ -28,7 +28,7 @@ class LoginPage extends StatelessWidget {
               );
           }
           if (state.authStatus == Status.submissionSuccess) {
-            BlocProvider.of<MainBloc>(context)
+            BlocProvider.of<PreferencesBloc>(context)
                 .add(AuthChangedEvent(auth: true));
             Navigator.of(context).pushNamedAndRemoveUntil(
                 RouteGenerator.landingRoute, (route) => false);

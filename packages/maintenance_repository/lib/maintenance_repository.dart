@@ -1,4 +1,4 @@
-library maintanence_repository;
+library maintenance_repository;
 
 export 'src/maintenance_repository.dart';
 export 'src/maintenance_concrete_repository.dart';

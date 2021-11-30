@@ -1,16 +1,18 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
+import 'package:maintenance_repository/maintenance_repository.dart';
 
 class ServiceEntity {
   final String gelis_tarihi;
   final String teslim_tarihi;
   final String ownership;
-  final List<String> maintenance;
+  final String bakim_asamasi;
+  final MaintenanceEntity maintenance;
   ServiceEntity({
     required this.gelis_tarihi,
     required this.teslim_tarihi,
     required this.ownership,
+    required this.bakim_asamasi,
     required this.maintenance,
   });
 
@@ -18,22 +20,28 @@ class ServiceEntity {
     String? gelis_tarihi,
     String? teslim_tarihi,
     String? ownership,
-    List<String>? maintenance,
+    String? bakim_asamasi,
+    MaintenanceEntity? maintenance,
   }) {
     return ServiceEntity(
       gelis_tarihi: gelis_tarihi ?? this.gelis_tarihi,
       teslim_tarihi: teslim_tarihi ?? this.teslim_tarihi,
       ownership: ownership ?? this.ownership,
+      bakim_asamasi: bakim_asamasi ?? this.bakim_asamasi,
       maintenance: maintenance ?? this.maintenance,
     );
   }
 
   ServiceEntity.empty()
       : this(
-      gelis_tarihi: "",
-      teslim_tarihi: "",
-      ownership: "",
-      maintenance: [],
+          gelis_tarihi: "",
+          teslim_tarihi: "",
+          ownership: "",
+          bakim_asamasi: "",
+          maintenance: MaintenanceEntity(
+            serviceType: '',
+            extraServices: [],
+          ),
         );
 
   Map<String, dynamic> toMap() {
@@ -41,6 +49,7 @@ class ServiceEntity {
       'gelis_tarihi': gelis_tarihi,
       'teslim_tarihi': teslim_tarihi,
       'ownership': ownership,
+      'bakim_asamasi': bakim_asamasi,
       'maintenance': maintenance,
     };
   }
@@ -50,35 +59,18 @@ class ServiceEntity {
       gelis_tarihi: map['gelis_tarihi'],
       teslim_tarihi: map['teslim_tarihi'],
       ownership: map['ownership'],
-      maintenance: List<String>.from(map['maintenance']),
+      bakim_asamasi: map['bakim_asamasi'],
+      maintenance: map['maintenance'],
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory ServiceEntity.fromJson(String source) => ServiceEntity.fromMap(json.decode(source));
+  factory ServiceEntity.fromJson(String source) =>
+      ServiceEntity.fromMap(json.decode(source));
 
   @override
   String toString() {
-    return 'ServiceEntity(gelis_tarihi: $gelis_tarihi, teslim_tarihi: $teslim_tarihi, ownership: $ownership, maintenance: $maintenance)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-  
-    return other is ServiceEntity &&
-      other.gelis_tarihi == gelis_tarihi &&
-      other.teslim_tarihi == teslim_tarihi &&
-      other.ownership == ownership &&
-      listEquals(other.maintenance, maintenance);
-  }
-
-  @override
-  int get hashCode {
-    return gelis_tarihi.hashCode ^
-      teslim_tarihi.hashCode ^
-      ownership.hashCode ^
-      maintenance.hashCode;
+    return 'ServiceEntity(gelis_tarihi: $gelis_tarihi, teslim_tarihi: $teslim_tarihi, ownership: $ownership, bakim_asamasi: $bakim_asamasi, maintenance: $maintenance)';
   }
 }

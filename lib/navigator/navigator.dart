@@ -1,6 +1,6 @@
 import 'package:responsive_navigation_bar/responsive_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:template/landingPage/landingPage.dart';
+import 'package:template/carPage/carPage.dart';
 import 'package:template/mapPage/mapPage.dart';
 import 'package:template/repairPage/repairPage.dart';
 import 'package:template/settingsPage/settingsPage.dart';

@@ -47,6 +47,8 @@ dependencies:
     path: packages/car_repository
   local_storage:
     path: packages/local_storage
+  maintenance_repository:
+    path: packages/maintenance_repository
 
   firebase_client:
     path: packages/firebase_client  

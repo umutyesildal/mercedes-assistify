@@ -9,6 +9,7 @@ abstract class ServiceRepository {
   void init();
   FirebaseClient fc = FirebaseClientConcrete();
   Future setService(ServiceEntity service);
+  Future<ServiceEntity> getService();
   /// if something needs to be closed. ex: storage compaction and closing.
   void close();
 }

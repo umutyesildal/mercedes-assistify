@@ -1,15 +1,16 @@
 import 'package:car_repository/template_repository.dart';
+import 'package:maintenance_repository/maintenance_repository.dart';
 import 'package:service_repository/template_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:local_storage/local_storage.dart';
-import 'package:template/repairPage/bloc/service_bloc.dart';
+import 'package:template/carPage/carPage.dart';
+import 'package:template/preferencesBloc/preferences_bloc.dart';
 import 'constants.dart';
-import 'landingPage/landingPage.dart';
 import 'loginSignup/bloc/auth_bloc.dart';
-import 'mainBloc/main_bloc.dart';
+import 'repairPage/bloc/bloc/service_bloc.dart';
 import 'router.dart';
 import 'service_locator.dart';
 
@@ -26,16 +27,19 @@ class App extends StatelessWidget {
               create: (context) =>
                   AuthBloc(localStorageRepository: sl.get<LocalStorage>()),
               child: BlocProvider(
-                create: (context) => MainBloc(
+                create: (context) => PreferencesBloc(
                     localStorageRepository: sl.get<LocalStorage>(),
                     carRepository: sl.get<CarRepository>(),
                     serviceRepository: sl.get<ServiceRepository>()),
                 child: BlocProvider(
                   create: (context) => ServiceBloc(
-                      serviceRepository: sl.get<ServiceRepository>()),
+                      serviceRepository: sl.get<ServiceRepository>(),
+                      maintenanceRepository: sl.get<MaintenanceRepository>()),
                   child: BlocProvider(
-                    create: (context) => LandingBloc(
-                        localStorageRepository: sl.get<LocalStorage>()),
+                    create: (context) => CarBloc(
+                      localStorageRepository: sl.get<LocalStorage>(),
+                      carRepository: sl.get<CarRepository>(),
+                    ),
                     child: MyApp(),
                   ),
                 ),
@@ -61,15 +65,14 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future? getNecessities() async {
-    BlocProvider.of<MainBloc>(context).add(GetThemeEvent());
-    BlocProvider.of<MainBloc>(context).add(GetLocaleEvent());
-    BlocProvider.of<MainBloc>(context).add(GetAuthEvent());
-    BlocProvider.of<MainBloc>(context).add(GetCarEvent());
+    BlocProvider.of<PreferencesBloc>(context).add(GetThemeEvent());
+    BlocProvider.of<PreferencesBloc>(context).add(GetLocaleEvent());
+    BlocProvider.of<PreferencesBloc>(context).add(GetAuthEvent());
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MainBloc, MainState>(
+    return BlocBuilder<PreferencesBloc, PreferencesState>(
       builder: (context, state) {
         if (state.isTheme == false) {
           return SizedBox();

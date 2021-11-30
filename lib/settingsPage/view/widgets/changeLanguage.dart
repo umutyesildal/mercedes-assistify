@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:template/mainBloc/main_bloc.dart';
+import 'package:template/preferencesBloc/preferences_bloc.dart';
 
 class ChangeLanguage extends StatelessWidget {
   String? getCurrentLocale(String locale) {
@@ -18,7 +18,8 @@ class ChangeLanguage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MainBloc, MainState>(builder: (context, state) {
+    return BlocBuilder<PreferencesBloc, PreferencesState>(
+        builder: (context, state) {
       return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -72,7 +73,7 @@ class ChangeLanguage extends StatelessWidget {
                           } else {
                             givenLocale = 'tr';
                           }
-                          BlocProvider.of<MainBloc>(context)
+                          BlocProvider.of<PreferencesBloc>(context)
                               .add(LocaleChangedEvent(locale: givenLocale));
                         },
                       )
