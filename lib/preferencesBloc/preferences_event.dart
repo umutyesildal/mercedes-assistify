@@ -1,14 +1,14 @@
-part of 'main_bloc.dart';
+part of 'preferences_bloc.dart';
 
 @immutable
-abstract class MainEvent extends Equatable {
-  const MainEvent();
+abstract class PreferencesEvent extends Equatable {
+  const PreferencesEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class ThemeChangedEvent extends MainEvent {
+class ThemeChangedEvent extends PreferencesEvent {
   ThemeChangedEvent({required this.theme});
 
   final bool theme;
@@ -17,21 +17,21 @@ class ThemeChangedEvent extends MainEvent {
   List<Object> get props => [theme];
 }
 
-class GetThemeEvent extends MainEvent {
+class GetThemeEvent extends PreferencesEvent {
   GetThemeEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class GetLocaleEvent extends MainEvent {
+class GetLocaleEvent extends PreferencesEvent {
   GetLocaleEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class LocaleChangedEvent extends MainEvent {
+class LocaleChangedEvent extends PreferencesEvent {
   LocaleChangedEvent({required this.locale});
 
   final String? locale;
@@ -40,14 +40,14 @@ class LocaleChangedEvent extends MainEvent {
   List<Object> get props => [locale!];
 }
 
-class GetAuthEvent extends MainEvent {
+class GetAuthEvent extends PreferencesEvent {
   GetAuthEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class AuthChangedEvent extends MainEvent {
+class AuthChangedEvent extends PreferencesEvent {
   AuthChangedEvent({required this.auth});
 
   final bool? auth;
@@ -56,15 +56,7 @@ class AuthChangedEvent extends MainEvent {
   List<Object> get props => [auth!];
 }
 
-
-class GetCarEvent extends MainEvent {
-  GetCarEvent();
-
-  @override
-  List<Object> get props => [];
-}
-
-class GetServiceEvent extends MainEvent {
+class GetServiceEvent extends PreferencesEvent {
   GetServiceEvent();
 
   @override

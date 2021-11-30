@@ -10,13 +10,11 @@ class ServiceConcreteRepository extends ServiceRepository {
     try {
       await fc.setService(service);
       print("service_concrete_repository");
-      //serviceStatus = ServiceEntity.fromMap(data);
-      //print(serviceStatus);
-      //return serviceStatus;
     } catch (e) {
       throw e;
     }
   }
+
   @override
   Future<ServiceEntity> getService() async {
     ServiceEntity serviceStatus;
@@ -31,5 +29,4 @@ class ServiceConcreteRepository extends ServiceRepository {
 
   @override
   void close() {}
-
 }

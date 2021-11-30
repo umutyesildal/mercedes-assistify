@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:maintenance_repository/maintenance_repository.dart';
 import 'package:service_repository/template_repository.dart';
-import 'package:template/repairPage/bloc/service_bloc.dart';
+
+import 'package:template/repairPage/bloc/bloc/service_bloc.dart';
 import 'package:template/router.dart';
 
 class BookService extends StatefulWidget {
@@ -31,6 +33,55 @@ class _BookServiceState extends State<BookService> {
 
   bool serviceA = false;
   bool serviceB = false;
+
+  String getHour() {
+    if (saat9 == true) {
+      return '09.00';
+    } else if (saat11 == true) {
+      return '11.00';
+    } else if (saat13 == true) {
+      return '13.00';
+    } else if (saat15 == true) {
+      return '15.00';
+    } else if (saat17 == true) {
+      return '17.00';
+    } else if (saat19 == true) {
+      return '19.00';
+    } else {
+      return '';
+    }
+  }
+
+  String getService() {
+    if (serviceA == true) {
+      return 'Service A';
+    } else {
+      return 'Service B';
+    }
+  }
+
+  List<String> getExtraServices() {
+    List<String> extraServicesList = [];
+    if (brakes == true) {
+      extraServicesList.add('Brakes');
+    }
+    if (oil == true) {
+      extraServicesList.add('Oil');
+    }
+    if (tires == true) {
+      extraServicesList.add('Tires');
+    }
+    if (cleaning == true) {
+      extraServicesList.add('Cleaning');
+    }
+    if (battery == true) {
+      extraServicesList.add('Battery');
+    }
+    if (headlights == true) {
+      extraServicesList.add('Headlights');
+    }
+    return extraServicesList;
+  }
 
   //Method for showing the date picker
   void _pickDateDialog() {
@@ -542,14 +593,24 @@ class _BookServiceState extends State<BookService> {
                 ),
                 GestureDetector(
                   onTap: () {
+                    String tarih = (_selectedDate!.day.toString() +
+                        '/' +
+                        _selectedDate!.month.toString() +
+                        '/' +
+                        _selectedDate!.year.toString());
+
+                    String gelis_tarihi = tarih + ' ' + getHour();
                     ServiceEntity service = ServiceEntity(
-                        gelis_tarihi: _selectedDate.toString() + '12',
-                        teslim_tarihi: '27/11/2021',
+                        gelis_tarihi: gelis_tarihi,
+                        teslim_tarihi: '15/12/2021',
                         ownership: 'a3802021',
                         bakim_asamasi: '1',
-                        maintenance: ['brakes', 'oil', 'tires']);
-                    //  BlocProvider.of<ServiceBloc>(context)
-                    //      .add((AddServicesEvent(givenService: service)));
+                        maintenance: MaintenanceEntity(
+                            extraServices: getExtraServices(),
+                            serviceType: getService()));
+
+                    BlocProvider.of<ServiceBloc>(context)
+                        .add((SendService(service: service)));
 
                     showDialog(
                         barrierDismissible: false,

@@ -13,6 +13,8 @@ dependencies:
     sdk: flutter
   firebase_client:
     path: ../firebase_client
+  maintenance_repository:
+    path: ../maintenance_repository
 
 dev_dependencies:
   flutter_test:

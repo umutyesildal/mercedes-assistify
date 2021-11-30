@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:template/constants.dart';
-import 'package:template/loginSignup/bloc/auth_bloc.dart';
-import 'package:template/mainBloc/main_bloc.dart';
+import 'package:template/preferencesBloc/preferences_bloc.dart';
 import 'package:template/router.dart';
 import 'widgets/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -194,14 +193,14 @@ class SettingsMain extends StatelessWidget {
                 ),
               ),
               DividerWithPadding(),
-              BlocBuilder<MainBloc, MainState>(
+              BlocBuilder<PreferencesBloc, PreferencesState>(
                 builder: (context, state) {
                   return Padding(
                     padding: const EdgeInsets.only(right: 40.0, left: 40.0),
                     child: ExpansionTileCard(
                       onExpansionChanged: (bool x) {
                         print(x);
-                        BlocProvider.of<MainBloc>(context)
+                        BlocProvider.of<PreferencesBloc>(context)
                             .add(AuthChangedEvent(auth: false));
 
                         Navigator.of(context).pushNamedAndRemoveUntil(

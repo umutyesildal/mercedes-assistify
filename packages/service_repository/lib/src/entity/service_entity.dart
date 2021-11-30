@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
+import 'package:maintenance_repository/maintenance_repository.dart';
 
 class ServiceEntity {
   final String gelis_tarihi;
   final String teslim_tarihi;
   final String ownership;
   final String bakim_asamasi;
-  final List<String> maintenance;
+  final MaintenanceEntity maintenance;
   ServiceEntity({
     required this.gelis_tarihi,
     required this.teslim_tarihi,
@@ -21,7 +21,7 @@ class ServiceEntity {
     String? teslim_tarihi,
     String? ownership,
     String? bakim_asamasi,
-    List<String>? maintenance,
+    MaintenanceEntity? maintenance,
   }) {
     return ServiceEntity(
       gelis_tarihi: gelis_tarihi ?? this.gelis_tarihi,
@@ -34,11 +34,14 @@ class ServiceEntity {
 
   ServiceEntity.empty()
       : this(
-      gelis_tarihi: "",
-      teslim_tarihi: "",
-      ownership: "",
-      bakim_asamasi:"",
-      maintenance: [],
+          gelis_tarihi: "",
+          teslim_tarihi: "",
+          ownership: "",
+          bakim_asamasi: "",
+          maintenance: MaintenanceEntity(
+            serviceType: '',
+            extraServices: [],
+          ),
         );
 
   Map<String, dynamic> toMap() {
@@ -57,37 +60,17 @@ class ServiceEntity {
       teslim_tarihi: map['teslim_tarihi'],
       ownership: map['ownership'],
       bakim_asamasi: map['bakim_asamasi'],
-      maintenance: List<String>.from(map['maintenance']),
+      maintenance: map['maintenance'],
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory ServiceEntity.fromJson(String source) => ServiceEntity.fromMap(json.decode(source));
+  factory ServiceEntity.fromJson(String source) =>
+      ServiceEntity.fromMap(json.decode(source));
 
   @override
   String toString() {
     return 'ServiceEntity(gelis_tarihi: $gelis_tarihi, teslim_tarihi: $teslim_tarihi, ownership: $ownership, bakim_asamasi: $bakim_asamasi, maintenance: $maintenance)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-  
-    return other is ServiceEntity &&
-      other.gelis_tarihi == gelis_tarihi &&
-      other.teslim_tarihi == teslim_tarihi &&
-      other.ownership == ownership &&
-      other.bakim_asamasi == bakim_asamasi &&
-      listEquals(other.maintenance, maintenance);
-  }
-
-  @override
-  int get hashCode {
-    return gelis_tarihi.hashCode ^
-      teslim_tarihi.hashCode ^
-      ownership.hashCode ^
-      bakim_asamasi.hashCode ^
-      maintenance.hashCode;
   }
 }
