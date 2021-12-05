@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:service_repository/template_repository.dart';
 import 'firebase_client.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:user_repository/template_repository.dart';
 
 class FirebaseClientConcrete extends FirebaseClient {
   Future init() async {
@@ -50,6 +51,17 @@ class FirebaseClientConcrete extends FirebaseClient {
     Map<String, dynamic> data = queryDocumentSnapshot.data();
     print(data);
     return data;
+  }
+
+  Future setUser(UserEntity user) async {
+    FirebaseFirestore.instance.collection('User').add({
+      'mail': user.mail,
+      "name": user.name,
+      "ownership": user.ownership,
+      "password": user.password,
+      "surname": user.surname,
+      "phone": user.phone
+    });
   }
 
   Future<Map<String, dynamic>> getOwnership() async {

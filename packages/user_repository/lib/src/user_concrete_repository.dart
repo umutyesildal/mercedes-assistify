@@ -18,6 +18,15 @@ class UserConcreteRepository extends UserRepository {
       throw e;
     }
   }
+  Future setUser(UserEntity user) async {
+    UserEntity userStatus;
+    try {
+      await fc.setUser(user);
+      print("service_concrete_repository");
+    } catch (e) {
+      throw e;
+    }
+  }
 
   @override
   void close() {}
