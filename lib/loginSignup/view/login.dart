@@ -31,7 +31,7 @@ class LoginPage extends StatelessWidget {
             BlocProvider.of<PreferencesBloc>(context)
                 .add(AuthChangedEvent(auth: true));
             Navigator.of(context).pushNamedAndRemoveUntil(
-                RouteGenerator.landingRoute, (route) => false);
+                RouteGenerator.addCarRoute, (route) => false);
           }
         },
         child: Scaffold(

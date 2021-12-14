@@ -49,6 +49,8 @@ dependencies:
     path: packages/local_storage
   maintenance_repository:
     path: packages/maintenance_repository
+  user_repository:
+    path: packages/user_repository
 
   firebase_client:
     path: packages/firebase_client  

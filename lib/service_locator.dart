@@ -4,6 +4,7 @@ import 'package:firebase_client/firebase_client.dart';
 import 'package:car_repository/template_repository.dart';
 import 'package:service_repository/template_repository.dart';
 import 'package:maintenance_repository/maintenance_repository.dart';
+import 'package:user_repository/user_repository.dart';
 
 final sl = GetIt.instance;
 
@@ -43,5 +44,12 @@ void setup() {
     await maintenanceRepository.init();
     await Future.delayed(Duration(seconds: 2));
     return maintenanceRepository;
+  });
+
+  sl.registerSingletonAsync<UserRepository>(() async {
+    final UserConcreteRepository userRepository = UserConcreteRepository();
+    await userRepository.init();
+    await Future.delayed(Duration(seconds: 2));
+    return userRepository;
   });
 }
