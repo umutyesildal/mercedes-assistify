@@ -5,32 +5,24 @@ class UserEntity {
   final String name;
   final String ownership;
   final String password;
-  final String surname;
-  final String phone;
   UserEntity({
     required this.mail,
     required this.name,
     required this.ownership,
     required this.password,
-    required this.surname,
-    required this.phone,
   });
 
   UserEntity copyWith({
     String? mail,
     String? name,
-    String? owner_code,
+    String? ownership,
     String? password,
-    String? surname,
-    String? phone,
   }) {
     return UserEntity(
       mail: mail ?? this.mail,
       name: name ?? this.name,
-      ownership: owner_code ?? this.ownership,
+      ownership: ownership ?? this.ownership,
       password: password ?? this.password,
-      surname: surname ?? this.surname,
-      phone: phone ?? this.phone,
     );
   }
 
@@ -38,10 +30,8 @@ class UserEntity {
     return {
       'mail': mail,
       'name': name,
-      'owner_code': ownership,
+      'ownership': ownership,
       'password': password,
-      'surname': surname,
-      'phone': phone,
     };
   }
 
@@ -51,18 +41,14 @@ class UserEntity {
           name: "",
           ownership: "",
           password: "",
-          surname: "",
-          phone: "",
         );
 
   factory UserEntity.fromMap(Map<String, dynamic> map) {
     return UserEntity(
-      mail: map['mail'],
-      name: map['name'],
-      ownership: map['owner_code'],
-      password: map['password'],
-      surname: map['surname'],
-      phone: map['phone'],
+      mail: map['mail'] ?? '',
+      name: map['name'] ?? '',
+      ownership: map['ownership'] ?? '',
+      password: map['password'] ?? '',
     );
   }
 
@@ -73,7 +59,7 @@ class UserEntity {
 
   @override
   String toString() {
-    return 'UserEntity(mail: $mail, name: $name, owner_code: $ownership, password: $password, surname: $surname, phone: $phone)';
+    return 'UserEntity(mail: $mail, name: $name, ownership: $ownership, password: $password)';
   }
 
   @override
@@ -84,9 +70,7 @@ class UserEntity {
         other.mail == mail &&
         other.name == name &&
         other.ownership == ownership &&
-        other.password == password &&
-        other.surname == surname &&
-        other.phone == phone;
+        other.password == password;
   }
 
   @override
@@ -94,8 +78,6 @@ class UserEntity {
     return mail.hashCode ^
         name.hashCode ^
         ownership.hashCode ^
-        password.hashCode ^
-        surname.hashCode ^
-        phone.hashCode;
+        password.hashCode;
   }
 }

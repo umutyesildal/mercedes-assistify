@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:maintenance_repository/maintenance_repository.dart';
+import 'package:service_repository/template_repository.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 import 'package:icons_helper/icons_helper.dart';
 
@@ -10,6 +12,14 @@ class OngoingService extends StatefulWidget {
 }
 
 class _OngoingServiceState extends State<OngoingService> {
+  ServiceEntity service = ServiceEntity(
+      service_id: 'ij543kl42',
+      gelis_tarihi: '15/12/2021',
+      teslim_tarihi: '21/12/2021',
+      ownership: 'a3802021',
+      bakim_asamasi: 3,
+      maintenance: MaintenanceEntity(
+          extraServices: ['brakes', 'tires'], serviceType: 'Service A'));
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -49,7 +59,7 @@ class _OngoingServiceState extends State<OngoingService> {
                             height: 10,
                           ),
                           Text(
-                            '5 days',
+                            service.teslim_tarihi,
                             style: TextStyle(fontSize: 14),
                           ),
                         ],
@@ -71,7 +81,7 @@ class _OngoingServiceState extends State<OngoingService> {
                             height: 10,
                           ),
                           Text(
-                            'i732893210',
+                            service.service_id,
                             style: TextStyle(fontSize: 14),
                           ),
                         ],
@@ -90,30 +100,46 @@ class _OngoingServiceState extends State<OngoingService> {
                   CustomSignalTile(
                     isLast: false,
                     isFirst: true,
-                    title: 'Title',
-                    description: 'Description',
+                    title: 'Motor Bakımı',
+                    description:
+                        'Motor yağı değişimi ve filtre değişimi. İlerde oluşabilecek hasar için kontrol.',
                     order: 1,
+                    order_place: service.bakim_asamasi,
                   ),
                   CustomSignalTile(
                     isLast: false,
                     isFirst: false,
-                    title: 'Title',
-                    description: 'Description',
+                    title: 'Yakıt Filtresi',
+                    description:
+                        'Yakıt filtresinin bakımı ve gerekiyorsa yenilenmesi.',
                     order: 2,
+                    order_place: service.bakim_asamasi,
                   ),
                   CustomSignalTile(
                     isLast: false,
                     isFirst: false,
-                    title: 'Title',
-                    description: 'Description',
+                    title: 'Ekstra Servislerin Tamamlanması',
+                    description:
+                        'Ekstra istenen servisler için yapılan bakımların tamamlanıp düzenlenmesi.',
                     order: 3,
+                    order_place: service.bakim_asamasi,
+                  ),
+                  CustomSignalTile(
+                    isLast: false,
+                    isFirst: false,
+                    title: 'Bakımların Testleri',
+                    description:
+                        'Yapılan bakımların testlerinin yapılıp doğrulunun kontrol edilmesi.',
+                    order: 4,
+                    order_place: service.bakim_asamasi,
                   ),
                   CustomSignalTile(
                     isLast: true,
                     isFirst: false,
-                    title: 'Title',
-                    description: 'Description',
-                    order: 4,
+                    title: 'Servis Tamamlanması',
+                    description: 'Servis tamamlandı.',
+                    order: 5,
+                    order_place: service.bakim_asamasi,
                   ),
                 ],
               ),
@@ -127,12 +153,18 @@ class _OngoingServiceState extends State<OngoingService> {
 
 class CustomSignalTile extends StatelessWidget {
   const CustomSignalTile(
-      {this.isFirst, this.isLast, this.description, this.title, this.order});
+      {this.isFirst,
+      this.isLast,
+      this.description,
+      this.title,
+      this.order,
+      this.order_place});
   final bool? isFirst;
   final bool? isLast;
   final String? title;
   final String? description;
   final int? order;
+  final int? order_place;
   @override
   Widget build(BuildContext context) {
     return TimelineTile(
@@ -140,19 +172,19 @@ class CustomSignalTile extends StatelessWidget {
       isLast: isLast!,
       alignment: TimelineAlign.start,
       indicatorStyle: IndicatorStyle(
-        color: order! > 2
+        color: order! > order_place!
             ? Theme.of(context).dividerColor
             : Theme.of(context).iconTheme.color!,
       ),
       afterLineStyle: LineStyle(
         thickness: 3,
-        color: order! > 2
+        color: order! > order_place!
             ? Theme.of(context).dividerColor
             : Theme.of(context).iconTheme.color!,
       ),
       beforeLineStyle: LineStyle(
         thickness: 3,
-        color: order! > 2
+        color: order! > order_place!
             ? Theme.of(context).dividerColor
             : Theme.of(context).iconTheme.color!,
       ),
@@ -167,6 +199,7 @@ class CustomSignalTile extends StatelessWidget {
                 children: [
                   Text(
                     title!,
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
                     height: 10,

@@ -7,6 +7,7 @@ import 'package:template/repairPage/view/widgets/allPreviousServices.dart';
 import 'package:template/repairPage/view/widgets/ongoingService.dart';
 import 'package:template/repairPage/view/widgets/previousService.dart';
 
+import 'carPage/carPage.dart';
 import 'mapPage/mapPage.dart';
 import 'navigator/navigator.dart';
 import 'settingsPage/settingsPage.dart';
@@ -24,6 +25,8 @@ class RouteGenerator {
   static const languageRoute = '/LanguageRoute';
   static const loginRoute = '/Login';
   static const signUpRoute = '/SignUp';
+  static const addCarRoute = '/AddCar';
+
   static const forgotPasswordRoute = '/ForgotPassword';
   static const onGoingServiceRoute = '/OngoingService';
   static const previousService = '/PreviousService';
@@ -64,6 +67,8 @@ class RouteGenerator {
 
       case signUpRoute:
         return MaterialPageRoute(builder: (context) => SignUpPage());
+      case addCarRoute:
+        return MaterialPageRoute(builder: (context) => AddCar());
       default:
         throw FormatException('Route not found');
     }

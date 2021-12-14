@@ -852,6 +852,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.2"
+  user_repository:
+    dependency: "direct main"
+    description:
+      path: "packages/user_repository"
+      relative: true
+    source: path
+    version: "0.0.1"
   uuid:
     dependency: transitive
     description:

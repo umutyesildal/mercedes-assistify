@@ -1,6 +1,8 @@
 import 'package:car_repository/template_repository.dart';
 import 'package:maintenance_repository/maintenance_repository.dart';
 import 'package:service_repository/template_repository.dart';
+import 'package:user_repository/user_repository.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -24,8 +26,9 @@ class App extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return BlocProvider(
-              create: (context) =>
-                  AuthBloc(localStorageRepository: sl.get<LocalStorage>()),
+              create: (context) => AuthBloc(
+                  localStorageRepository: sl.get<LocalStorage>(),
+                  userRepository: sl.get<UserRepository>()),
               child: BlocProvider(
                 create: (context) => PreferencesBloc(
                     localStorageRepository: sl.get<LocalStorage>(),

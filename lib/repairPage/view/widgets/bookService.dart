@@ -601,10 +601,11 @@ class _BookServiceState extends State<BookService> {
 
                     String gelis_tarihi = tarih + ' ' + getHour();
                     ServiceEntity service = ServiceEntity(
+                        service_id: 'fdsafdsfds',
                         gelis_tarihi: gelis_tarihi,
                         teslim_tarihi: '15/12/2021',
                         ownership: 'a3802021',
-                        bakim_asamasi: '1',
+                        bakim_asamasi: 1,
                         maintenance: MaintenanceEntity(
                             extraServices: getExtraServices(),
                             serviceType: getService()));

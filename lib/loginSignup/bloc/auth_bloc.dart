@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:user_repository/user_repository.dart';
 
 import 'package:bloc/bloc.dart';
 import 'package:local_storage/local_storage.dart';
@@ -10,12 +11,11 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc({
-    required this.localStorageRepository,
-  }) : super(AuthState());
+  AuthBloc({required this.localStorageRepository, required this.userRepository})
+      : super(AuthState());
 
   final LocalStorage localStorageRepository;
-
+  final UserRepository userRepository;
   @override
   Stream<AuthState> mapEventToState(
     AuthEvent event,
@@ -154,6 +154,24 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     yield state.copywith(authStatus: Status.submissionProgress);
     print('bloc login');
 
+    /*  try {
+      UserEntity user = UserEntity(
+          name: '',
+          mail: state.emailLogin.value,
+          ownership: '',
+          password: state.passwordLogin.value);
+      bool checkUser = await userRepository.checkUser(user);
+      if (checkUser) {
+        yield state.copywith(authStatus: Status.submissionSuccess);
+      } else {
+        yield state.copywith(
+            authStatus: Status.submissionFailure,
+            errorReason: 'Email or Password wrong.');
+      }
+    } catch (e) {
+      print(e);
+    } */
+
     if (state.passwordLogin.value == 'deneme' &&
         state.emailLogin.value == 'assistify@assistify.com') {
       yield state.copywith(authStatus: Status.submissionSuccess);
@@ -165,25 +183,28 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     yield state.copywith(authStatus: Status.submissionNotStarted);
   }
-}
 
-Stream<AuthState> _mapSignUpSubmittedToState(
-    SignUpSubmitted event, AuthState state) async* {
-  yield state.copywith(authStatus: Status.submissionProgress);
-  print('bloc login');
+  Stream<AuthState> _mapSignUpSubmittedToState(
+      SignUpSubmitted event, AuthState state) async* {
+    yield state.copywith(authStatus: Status.submissionProgress);
+    print('bloc sign up');
 
-  if (state.passwordLogin.value == 'deneme' &&
-      state.emailLogin.value == 'assistify@assistify.com') {
-    print('OKAY BRO');
-    yield state.copywith(authStatus: Status.submissionSuccess);
-  } else {
-    yield state.copywith(
-        authStatus: Status.submissionFailure,
-        errorReason: 'Email or Password wrong.');
+    try {
+      UserEntity newUser = UserEntity(
+          name: state.fullname!,
+          mail: state.emailSignup.value,
+          ownership: '',
+          password: state.passwordSignup.value);
+      await userRepository.setUser(newUser);
+      yield state.copywith(authStatus: Status.submissionSuccess);
+    } catch (e) {
+      print(e);
+    }
+
+    yield state.copywith(authStatus: Status.submissionNotStarted);
   }
-
-  yield state.copywith(authStatus: Status.submissionNotStarted);
 }
+
 
 
 /*
