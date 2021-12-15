@@ -161,6 +161,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           ownership: '',
           password: state.passwordLogin.value);
       bool checkUser = await userRepository.checkUser(user);
+      print(checkUser);
       if (checkUser) {
         yield state.copywith(authStatus: Status.submissionSuccess);
       } else {
@@ -171,7 +172,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     } catch (e) {
       print(e);
     } */
-
     if (state.passwordLogin.value == 'deneme' &&
         state.emailLogin.value == 'assistify@assistify.com') {
       yield state.copywith(authStatus: Status.submissionSuccess);
@@ -188,7 +188,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       SignUpSubmitted event, AuthState state) async* {
     yield state.copywith(authStatus: Status.submissionProgress);
     print('bloc sign up');
-
     try {
       UserEntity newUser = UserEntity(
           name: state.fullname!,

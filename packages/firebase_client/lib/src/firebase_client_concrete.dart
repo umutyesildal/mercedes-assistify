@@ -56,8 +56,12 @@ class FirebaseClientConcrete extends FirebaseClient {
   Future<bool> checkUser(UserEntity user) async {
     var collection = FirebaseFirestore.instance.collection('User');
     var querySnapshot = await collection.get();
-    bool checkUser = querySnapshot.docs.contains(user);
-    return checkUser;
+    var data = querySnapshot.docs.firstWhere(
+      (element) => element.get('mail'),
+    );
+    var x = data.data().entries;
+    print(x);
+    return false;
   }
 
   Future setUser(UserEntity user) async {

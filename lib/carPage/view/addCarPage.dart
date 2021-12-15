@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:template/router.dart';
 
 class AddCar extends StatelessWidget {
   const AddCar({Key? key}) : super(key: key);
@@ -68,7 +69,12 @@ class AddCar extends StatelessWidget {
 class AddOwnershipButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: () {}, child: Text('Login'));
+    return ElevatedButton(
+        onPressed: () {
+          Navigator.of(context).pushNamedAndRemoveUntil(
+              RouteGenerator.landingRoute, (route) => false);
+        },
+        child: Text('Proceed'));
   }
 }
 
