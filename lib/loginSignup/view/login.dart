@@ -30,8 +30,13 @@ class LoginPage extends StatelessWidget {
           if (state.authStatus == Status.submissionSuccess) {
             BlocProvider.of<PreferencesBloc>(context)
                 .add(AuthChangedEvent(auth: true));
-            Navigator.of(context).pushNamedAndRemoveUntil(
-                RouteGenerator.addCarRoute, (route) => false);
+            if (state.isOwnership) {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  RouteGenerator.landingRoute, (route) => false);
+            } else {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  RouteGenerator.addCarRoute, (route) => false);
+            }
           }
         },
         child: Scaffold(

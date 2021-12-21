@@ -28,10 +28,7 @@ class SignUpPage extends StatelessWidget {
               );
           }
           if (state.authStatus == Status.submissionSuccess) {
-            BlocProvider.of<PreferencesBloc>(context)
-                .add(AuthChangedEvent(auth: true));
-            Navigator.of(context).pushNamedAndRemoveUntil(
-                RouteGenerator.landingRoute, (route) => false);
+            print('success');
           }
         },
         child: Scaffold(

@@ -29,15 +29,34 @@ class UserConcreteRepository extends UserRepository {
     }
   }
 
-  Future<bool> checkUser(UserEntity user) async {
+  Future<bool> checkAuth(UserEntity user) async {
     try {
-      bool checkUser = await fc.checkUser(user);
+      bool checkUser = await fc.checkAuth(user);
 
       if (checkUser) {
         return true;
       } else {
         return false;
       }
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Future<bool> checkOwnership(UserEntity user) async {
+    try {
+      bool checkUser = await fc.checkOwnership(user);
+
+      return checkUser;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Future<bool> addOwnership(UserEntity user) async {
+    try {
+      bool checkUser = await fc.addOwnership(user);
+      return checkUser;
     } catch (e) {
       throw e;
     }

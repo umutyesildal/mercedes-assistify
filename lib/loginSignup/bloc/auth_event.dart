@@ -42,6 +42,10 @@ class SignUpSubmitted extends AuthEvent {
   const SignUpSubmitted();
 }
 
+class OwnershipSubmitted extends AuthEvent {
+  const OwnershipSubmitted();
+}
+
 class ForgotPasswordSubmitted extends AuthEvent {
   const ForgotPasswordSubmitted();
 }
@@ -58,6 +62,15 @@ class LoginEmailChanged extends AuthEvent {
   final String input;
 
   LoginEmailChanged({required this.input});
+
+  @override
+  List<Object> get props => [input];
+}
+
+class OwnershipChanged extends AuthEvent {
+  final String input;
+
+  OwnershipChanged({required this.input});
 
   @override
   List<Object> get props => [input];

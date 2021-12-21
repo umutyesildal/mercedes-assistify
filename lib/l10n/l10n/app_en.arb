@@ -62,7 +62,6 @@
       "description": "Legal"
     },
     "logout": "Log Out",
-    "@logout": {
-      "description": "Log Out"
-    }
+    "daily": "Daily",
+    "technical": "Technical"
 }

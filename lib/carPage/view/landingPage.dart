@@ -69,9 +69,11 @@ class _LandingPageState extends State<LandingPage> {
                                   },
                                   tabs: [
                                     Tab(
-                                      text: 'Daily',
+                                      // context çalışmadı.
+                                      text: AppLocalizations.of(context)!.daily,
                                     ),
                                     Tab(
+                                      // dbden mi geliyo
                                       text: 'Technical',
                                     ),
                                   ],
