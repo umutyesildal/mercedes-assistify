@@ -13,7 +13,10 @@ abstract class FirebaseClient {
   Future setService(ServiceEntity service);
   Future setUser(UserEntity user);
   Future<Map<String, dynamic>> getUser();
+  Future<bool> checkAuth(UserEntity user);
   Future<bool> checkUser(UserEntity user);
+  Future<bool> checkOwnership(UserEntity user);
+  Future<bool> addOwnership(UserEntity user);
 
   Future<Map<String, dynamic>> getOwnership();
   Future<Map<String, dynamic>> getMaintenance();

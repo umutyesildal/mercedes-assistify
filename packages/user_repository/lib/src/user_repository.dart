@@ -6,7 +6,9 @@ abstract class UserRepository {
   FirebaseClient fc = FirebaseClientConcrete();
   Future<UserEntity> getUser();
   Future setUser(UserEntity user);
-  Future<bool> checkUser(UserEntity user);
+  Future<bool> checkAuth(UserEntity user);
+  Future<bool> checkOwnership(UserEntity user);
+  Future<bool> addOwnership(UserEntity user);
 
   /// if something needs to be closed. ex: storage compaction and closing.
   void close();

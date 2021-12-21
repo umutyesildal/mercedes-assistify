@@ -49,5 +49,7 @@
     "logout": "Çıkış",
     "@logout": {
       "description": "Çıkış"
-    }
+    },
+    "daily": "Günlük",
+    "technical": "Teknik"
 }

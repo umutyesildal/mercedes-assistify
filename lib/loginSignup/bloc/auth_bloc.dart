@@ -22,6 +22,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async* {
     if (event is LoginEmailChanged) {
       yield _mapLoginEmailChangedToState(event, state);
+    } else if (event is OwnershipChanged) {
+      yield _mapOwnershipChangedToState(event, state);
     } else if (event is LoginPasswordChanged) {
       yield _mapLoginPasswordChangedToState(event, state);
     } else if (event is SignUpNameChanged) {
@@ -38,6 +40,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       yield _mapCheckReadyToLoginToState(event, state);
     } else if (event is LoginSubmitted) {
       yield* _mapLoginSubmittedToState(event, state);
+    } else if (event is OwnershipSubmitted) {
+      yield* _mapOwnershipSubmittedToState(event, state);
     } else if (event is CheckSignUpReady) {
       yield _mapCheckReadyToSignUpToState(event, state);
     } else if (event is SignUpSubmitted) {
@@ -51,6 +55,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     return state.copywith(
       emailLogin: input,
       status: Formz.validate([input, state.passwordLogin]),
+    );
+  }
+
+  AuthState _mapOwnershipChangedToState(
+      OwnershipChanged event, AuthState state) {
+    print(state.ownershipAdd);
+    return state.copywith(
+      ownershipAdd: event.input,
     );
   }
 
@@ -154,16 +166,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     yield state.copywith(authStatus: Status.submissionProgress);
     print('bloc login');
 
-    /*  try {
+    try {
       UserEntity user = UserEntity(
           name: '',
           mail: state.emailLogin.value,
           ownership: '',
           password: state.passwordLogin.value);
-      bool checkUser = await userRepository.checkUser(user);
+      bool checkUser = await userRepository.checkAuth(user);
       print(checkUser);
       if (checkUser) {
-        yield state.copywith(authStatus: Status.submissionSuccess);
+        bool checkOwnership = await userRepository.checkOwnership(user);
+
+        yield state.copywith(
+          authStatus: Status.submissionSuccess,
+          isOwnership: checkOwnership,
+        );
       } else {
         yield state.copywith(
             authStatus: Status.submissionFailure,
@@ -171,14 +188,37 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     } catch (e) {
       print(e);
-    } */
-    if (state.passwordLogin.value == 'deneme' &&
+    }
+    /*   if (state.passwordLogin.value == 'deneme' &&
         state.emailLogin.value == 'assistify@assistify.com') {
       yield state.copywith(authStatus: Status.submissionSuccess);
     } else {
       yield state.copywith(
           authStatus: Status.submissionFailure,
           errorReason: 'Email or Password wrong.');
+    } */
+
+    yield state.copywith(authStatus: Status.submissionNotStarted);
+  }
+
+  Stream<AuthState> _mapOwnershipSubmittedToState(
+      OwnershipSubmitted event, AuthState state) async* {
+    yield state.copywith(authStatus: Status.submissionProgress);
+    print('bloc ownership');
+    try {
+      UserEntity newUser = UserEntity(
+          name: '',
+          mail: state.emailLogin.value,
+          ownership: state.ownershipAdd!,
+          password: state.passwordLogin.value);
+
+      bool addOwnership = await userRepository.addOwnership(newUser);
+      if (!addOwnership) {
+        yield state.copywith(ownershipStatus: OwnershipStatus.success);
+      }
+    } catch (e) {
+      print(e);
+      yield state.copywith(ownershipStatus: OwnershipStatus.fail);
     }
 
     yield state.copywith(authStatus: Status.submissionNotStarted);

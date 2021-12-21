@@ -53,19 +53,71 @@ class FirebaseClientConcrete extends FirebaseClient {
     return data;
   }
 
+  Future<bool> checkAuth(UserEntity user) async {
+    bool exist = await checkUser(user);
+    if (exist) {
+      var doc = await FirebaseFirestore.instance
+          .collection('User')
+          .doc(user.mail)
+          .get();
+      Map<String, dynamic>? data = doc.data();
+      print(data);
+      var mail = data?['mail'];
+      var password = data?['password'];
+      if (mail == user.mail && password == user.password) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> checkOwnership(UserEntity user) async {
+    var doc = await FirebaseFirestore.instance
+        .collection('User')
+        .doc(user.mail)
+        .get();
+    Map<String, dynamic>? data = doc.data();
+    print(data);
+    var ownership = data?['ownership'];
+    if (ownership == '') {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  Future<bool> addOwnership(UserEntity user) async {
+    bool isAdded = false;
+    await FirebaseFirestore.instance
+        .collection('User')
+        .doc(user.mail)
+        .update({'ownership': user.ownership}).onError(
+            (error, stackTrace) => isAdded = true);
+
+    return isAdded;
+  }
+
   Future<bool> checkUser(UserEntity user) async {
-    var collection = FirebaseFirestore.instance.collection('User');
-    var querySnapshot = await collection.get();
-    var data = querySnapshot.docs.firstWhere(
-      (element) => element.get('mail'),
-    );
-    var x = data.data().entries;
-    print(x);
-    return false;
+    bool exist = false;
+    try {
+      await FirebaseFirestore.instance
+          .collection('User')
+          .doc(user.mail)
+          .get()
+          .then((doc) {
+        exist = doc.exists;
+      });
+      return exist;
+    } catch (e) {
+      return false;
+    }
   }
 
   Future setUser(UserEntity user) async {
-    FirebaseFirestore.instance.collection('User').add({
+    FirebaseFirestore.instance.collection('User').doc(user.mail).set({
       'mail': user.mail,
       "name": user.name,
       "ownership": user.ownership,
