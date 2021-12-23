@@ -46,6 +46,10 @@ class OwnershipSubmitted extends AuthEvent {
   const OwnershipSubmitted();
 }
 
+class OwnershipAlreadyExist extends AuthEvent {
+  const OwnershipAlreadyExist();
+}
+
 class ForgotPasswordSubmitted extends AuthEvent {
   const ForgotPasswordSubmitted();
 }

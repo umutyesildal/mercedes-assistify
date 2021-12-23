@@ -1,9 +1,18 @@
 import 'dart:convert';
+import 'package:hive/hive.dart';
+import 'package:flutter/foundation.dart';
 
+part 'user_entity.g.dart';
+
+@HiveType(typeId: 0)
 class UserEntity {
+  @HiveField(0)
   final String mail;
+  @HiveField(1)
   final String name;
-  final String ownership;
+  @HiveField(2)
+  final List<String> ownership;
+  @HiveField(3)
   final String password;
   UserEntity({
     required this.mail,
@@ -15,7 +24,7 @@ class UserEntity {
   UserEntity copyWith({
     String? mail,
     String? name,
-    String? ownership,
+    List<String>? ownership,
     String? password,
   }) {
     return UserEntity(
@@ -39,7 +48,7 @@ class UserEntity {
       : this(
           mail: "",
           name: "",
-          ownership: "",
+          ownership: [''],
           password: "",
         );
 
@@ -47,7 +56,7 @@ class UserEntity {
     return UserEntity(
       mail: map['mail'] ?? '',
       name: map['name'] ?? '',
-      ownership: map['ownership'] ?? '',
+      ownership: List<String>.from(map['ownership']),
       password: map['password'] ?? '',
     );
   }
@@ -69,7 +78,7 @@ class UserEntity {
     return other is UserEntity &&
         other.mail == mail &&
         other.name == name &&
-        other.ownership == ownership &&
+        listEquals(other.ownership, ownership) &&
         other.password == password;
   }
 

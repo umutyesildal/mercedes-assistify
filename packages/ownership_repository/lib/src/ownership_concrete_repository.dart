@@ -1,17 +1,15 @@
 import 'package:ownership_repository/src/ownership_repository.dart';
-import 'package:ownership_repository/template_repository.dart';
+import 'package:ownership_repository/ownership_repository.dart';
 import 'package:firebase_client/firebase_client.dart';
 
 class OwnershipConcreteRepository extends OwnershipRepository {
   Future init() async {}
 
   @override
-  Future<OwnershipEntity> getOwnership() async {
-    OwnershipEntity ownershipInfo;
+  Future<OwnershipEntity> getOwnership(String ownershipId) async {
     try {
-      final Map<String, dynamic> data= await fc.getOwnership();
-      print(data);
-      ownershipInfo = OwnershipEntity.fromMap(data);
+      final Map<String, dynamic> data = await fc.getOwnership(ownershipId);
+      OwnershipEntity ownershipInfo = OwnershipEntity.fromMap(data);
       print(ownershipInfo);
       return ownershipInfo;
     } catch (e) {

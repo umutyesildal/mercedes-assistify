@@ -6,7 +6,9 @@ import 'package:bloc/bloc.dart';
 import 'package:local_storage/local_storage.dart';
 import 'package:maintenance_repository/maintenance_repository.dart';
 import 'package:meta/meta.dart';
+import 'package:ownership_repository/ownership_repository.dart';
 import 'package:service_repository/template_repository.dart';
+import 'package:user_repository/user_repository.dart';
 
 part 'preferences_event.dart';
 part 'preferences_state.dart';
@@ -83,7 +85,14 @@ class PreferencesBloc extends Bloc<PreferencesEvent, PreferencesState> {
   Stream<PreferencesState> _mapAuthChangedState(
       AuthChangedEvent event, PreferencesState state) async* {
     print('Auth Changed');
+    UserEntity currentUser = UserEntity.empty();
+
     await localStorageRepository.changeAuth(auth: event.auth!);
+    if (!event.auth!) {
+      print('x');
+      await localStorageRepository.changeUser(user: currentUser);
+      await localStorageRepository.changeOwnership(givenOwnership: '');
+    }
     yield state.copyWith(auth: event.auth);
   }
 }

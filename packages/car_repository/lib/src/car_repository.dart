@@ -8,7 +8,7 @@ abstract class CarRepository {
 */
   void init();
   FirebaseClient fc = FirebaseClientConcrete();
-  Future<CarEntity> getCar();
+  Future<CarEntity> getCar(String carId);
   /// if something needs to be closed. ex: storage compaction and closing.
   void close();
 }

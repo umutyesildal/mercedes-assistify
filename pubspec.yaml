@@ -51,7 +51,8 @@ dependencies:
     path: packages/maintenance_repository
   user_repository:
     path: packages/user_repository
-
+  ownership_repository:
+    path: packages/ownership_repository
   firebase_client:
     path: packages/firebase_client  
     

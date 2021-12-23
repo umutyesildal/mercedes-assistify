@@ -4,9 +4,37 @@ part of 'service_bloc.dart';
 abstract class ServiceEvent {}
 
 class SendService extends ServiceEvent {
-  SendService({required this.service});
+  SendService(
+      {required this.phase,
+      required this.arriveDate,
+      required this.extraServices});
 
-  final ServiceEntity service;
+  final String arriveDate;
+  final int phase;
+  final List<String> extraServices;
+
   @override
-  List<Object> get props => [service];
+  List<Object> get props => [arriveDate, phase, extraServices];
+}
+
+class GetOngoingService extends ServiceEvent {
+  GetOngoingService();
+
+  @override
+  List<Object> get props => [];
+}
+
+class GetPreviousService extends ServiceEvent {
+  GetPreviousService();
+
+  @override
+  List<Object> get props => [];
+}
+
+class CarBlocUpdated extends ServiceEvent {
+  CarBlocUpdated({required this.ownershipEntity});
+
+  final OwnershipEntity ownershipEntity;
+  @override
+  List<Object> get props => [];
 }

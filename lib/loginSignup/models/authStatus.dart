@@ -1,4 +1,4 @@
-enum Status {
+enum loginStatus {
   submissionProgress,
   submissionFailure,
   submissionSuccess,
@@ -6,4 +6,11 @@ enum Status {
   forgotPasswordSubmissionSuccess
 }
 
+enum signUpStatus {
+  submissionProgress,
+  submissionFailure,
+  submissionSuccess,
+  submissionNotStarted,
+  forgotPasswordSubmissionSuccess
+}
 enum OwnershipStatus { notStarted, onProgress, success, fail }

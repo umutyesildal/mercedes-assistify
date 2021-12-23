@@ -11,8 +11,9 @@ class ForgotPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
-          if ((state.authStatus == Status.submissionFailure) ||
-              (state.authStatus == Status.forgotPasswordSubmissionSuccess)) {
+          if ((state.authLoginStatus == loginStatus.submissionFailure) ||
+              (state.authLoginStatus ==
+                  loginStatus.forgotPasswordSubmissionSuccess)) {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
               ..showSnackBar(
@@ -21,14 +22,16 @@ class ForgotPassword extends StatelessWidget {
                     state.errorReason,
                     style: TextStyle(color: Colors.white),
                   ),
-                  backgroundColor: state.authStatus == Status.submissionFailure
-                      ? Colors.red
-                      : Colors.green,
+                  backgroundColor:
+                      state.authLoginStatus == loginStatus.submissionFailure
+                          ? Colors.red
+                          : Colors.green,
                   behavior: SnackBarBehavior.floating,
                 ),
               );
           }
-          if (state.authStatus == Status.forgotPasswordSubmissionSuccess) {
+          if (state.authLoginStatus ==
+              loginStatus.forgotPasswordSubmissionSuccess) {
             Future.delayed(const Duration(milliseconds: 1000), () {
               Navigator.pop(context);
             });
@@ -109,7 +112,7 @@ class _SendMailButton extends StatelessWidget {
       builder: (context, state) {
         return ElevatedButton(
             onPressed: state.emailForgotPassword.valid &&
-                    state.authStatus == Status.submissionNotStarted
+                    state.authLoginStatus == loginStatus.submissionNotStarted
                 ? () {
                     BlocProvider.of<AuthBloc>(context)
                         .add(ForgotPasswordSubmitted());

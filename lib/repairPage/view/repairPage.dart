@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:service_repository/template_repository.dart';
 import 'package:template/carPage/carPage.dart';
+import 'package:template/repairPage/bloc/bloc/service_bloc.dart';
 import 'package:template/router.dart';
 
 class RepairPage extends StatefulWidget {
@@ -18,7 +20,6 @@ class _LandingPageState extends State<RepairPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
     return BlocBuilder<CarBloc, CarState>(
       builder: (context, state) {
         return Scaffold(
