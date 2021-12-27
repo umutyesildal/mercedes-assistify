@@ -64,5 +64,32 @@
     "logout": "Log Out",
     "@logout": {
       "description": "Log Out"
-    }
+    },
+
+    "addCar": "Add Car" ,
+    "login":"Login",
+    "pleaseEnterOwnership":"Please enter ownership",
+    "daily":"Daily",
+    "technical":"Technical",
+    //Login-Signup
+    "forgotPassword":"Forgot Password",
+    "createAccount":"Create Account",
+    "passwordCanNotBeEmpty":"Password can not be empty",
+    "password":"Password",
+    "pleaseCorrectYourmail":"Please correct your mail",
+    "emailAdress":"E-mail Adress",
+    "signup":"Sign Up",
+    "passwordsDoesNotMatch":"Passwords Does Not Match",
+    "confirmPassword":"Confirm Password",
+    "fullName":"Full Name",
+
+    //repair page
+    "service":"Service",
+    "BookAServiceForYourCar":"Book a service for your car.",
+    "onGoingService":"Ongoing Service",
+    "checkHowYouCarDoing":"Check how you car doing.",
+    "checkPreviousService":"Check Previous Service",
+    "lookAtYourHistory":"Look at your history."
+
+
 }

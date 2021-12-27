@@ -73,7 +73,7 @@ class LoginPage extends StatelessWidget {
                                       RouteGenerator.forgotPasswordRoute);
                                 },
                                 child: Text(
-                                  'Forgot Password',
+                                  AppLocalizations.of(context)!.forgotPassword,
                                   style: TextStyle(
                                       color: Theme.of(context).accentColor),
                                 ))
@@ -98,7 +98,7 @@ class LoginPage extends StatelessWidget {
                             .pushNamed(RouteGenerator.signUpRoute);
                       },
                       child: Text(
-                        'Create Account',
+                        AppLocalizations.of(context)!.createAccount,
                         style: TextStyle(color: Theme.of(context).accentColor),
                       )),
                 ),
@@ -124,7 +124,7 @@ class _LoginButton extends StatelessWidget {
                     BlocProvider.of<AuthBloc>(context).add(LoginSubmitted());
                   }
                 : null,
-            child: Text('Login'));
+            child: Text(AppLocalizations.of(context)!.login));
       },
     );
   }
@@ -140,8 +140,8 @@ class _PasswordInput extends StatelessWidget {
         return AuthField(
           isObsecure: true,
           isError: state.passwordLogin.invalid,
-          errorText: 'Password can not be empty',
-          labelText: 'Password',
+          errorText: AppLocalizations.of(context)!.passwordCanNotBeEmpty,
+          labelText: AppLocalizations.of(context)!.password,
           onChangeCallback: (password) {
             BlocProvider.of<AuthBloc>(context)
                 .add(LoginPasswordChanged(password: password));
@@ -163,8 +163,8 @@ class _EmailInput extends StatelessWidget {
         return AuthField(
           isObsecure: false,
           isError: state.emailLogin.invalid,
-          errorText: 'Please correct your mail',
-          labelText: 'E-mail Adress',
+          errorText: AppLocalizations.of(context)!.pleaseCorrectYourMail,
+          labelText: AppLocalizations.of(context)!.emailAdress,
           onChangeCallback: (email) {
             BlocProvider.of<AuthBloc>(context)
                 .add(LoginEmailChanged(input: email));

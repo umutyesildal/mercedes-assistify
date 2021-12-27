@@ -48,6 +48,20 @@
     },
     "logout": "Çıkış",
     "@logout": {
-      "description": "Çıkış"
+      "description": "Çıkış",
+    //car page
+    "kalanYakıt":"Kalan Yakıt",
+    "kilometre":"Kilometre" ,
+    "ortalamaTüketim":"Ortalama Tüketim",
+    "haftalıkKilometre":"Haftalık Kilometre",
+    "beygir":"Beygir",
+    "depo":"Depo",
+    "maxHız":"Max Hız",
+    "motor":"Motor",
+    "silindir":"Silindir",
+    "yakıt":"Yakıt",
+    "model":"Model"
+   //
+
     }
 }

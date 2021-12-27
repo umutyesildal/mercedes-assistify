@@ -105,7 +105,7 @@ class SignUpPage extends StatelessWidget {
                             .pushNamed(RouteGenerator.loginRoute);
                       },
                       child: Text(
-                        'Log In',
+                        AppLocalizations.of(context)!.login,
                         style: TextStyle(color: Theme.of(context).accentColor),
                       )),
                 ),
@@ -131,7 +131,7 @@ class _SignupButton extends StatelessWidget {
                     BlocProvider.of<AuthBloc>(context).add(SignUpSubmitted());
                   }
                 : null,
-            child: Text('Sign Up'));
+            child: Text(AppLocalizations.of(context)!.signup));
       },
     );
   }
@@ -147,8 +147,8 @@ class _PasswordInput extends StatelessWidget {
         return AuthField(
           isObsecure: true,
           isError: state.passwordSignup.invalid,
-          errorText: 'Password can not be empty',
-          labelText: 'Password',
+          errorText: AppLocalizations.of(context)!.passwordCanNotBeEmpty,
+          labelText: AppLocalizations.of(context)!.password,
           onChangeCallback: (password) {
             BlocProvider.of<AuthBloc>(context)
                 .add(SignUpPasswordChanged(password: password));
@@ -172,8 +172,8 @@ class _ConfirmPasswordInput extends StatelessWidget {
           isObsecure: true,
           isError: state.confirmPassword.invalid ||
               state.confirmPassword.value != state.passwordSignup.value,
-          errorText: 'Passwords does not match',
-          labelText: 'Confirm Password',
+          errorText: AppLocalizations.of(context)!.passwordsDoesNotMatch,
+          labelText: AppLocalizations.of(context)!.confirmPassword,
           onChangeCallback: (password) {
             BlocProvider.of<AuthBloc>(context)
                 .add(SignUpConfirmPasswordChanged(password: password));
@@ -195,8 +195,8 @@ class _EmailInput extends StatelessWidget {
         return AuthField(
           isObsecure: false,
           isError: state.emailSignup.invalid,
-          errorText: 'Please correct your mail',
-          labelText: 'E-mail Adress',
+          errorText: AppLocalizations.of(context)!.pleaseCorrectYourmail,
+          labelText: AppLocalizations.of(context)!.emailAdress,
           onChangeCallback: (email) {
             BlocProvider.of<AuthBloc>(context)
                 .add(SignUpEmailChanged(input: email));
@@ -218,7 +218,7 @@ class _NameInput extends StatelessWidget {
           isObsecure: false,
           isError: false,
           errorText: '',
-          labelText: 'Full Name',
+          labelText: AppLocalizations.of(context)!.fullName,
           onChangeCallback: (name) {
             BlocProvider.of<AuthBloc>(context)
                 .add(SignUpNameChanged(input: name));

@@ -13,7 +13,7 @@ class AddCar extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Add Car',
+          AppLocalizations.of(context)!.addCar,
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
@@ -68,7 +68,8 @@ class AddCar extends StatelessWidget {
 class AddOwnershipButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: () {}, child: Text('Login'));
+    return ElevatedButton(
+        onPressed: () {}, child: Text(AppLocalizations.of(context)!.login));
   }
 }
 
@@ -76,7 +77,8 @@ class AddOwnershipTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      decoration: InputDecoration(hintText: 'Please enter ownership'),
+      decoration: InputDecoration(
+          hintText: AppLocalizations.of(context)!.pleaseEnterOwnership),
     );
   }
 }

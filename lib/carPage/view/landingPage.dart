@@ -69,10 +69,10 @@ class _LandingPageState extends State<LandingPage> {
                                   },
                                   tabs: [
                                     Tab(
-                                      text: 'Daily',
+                                      text: AppLocalizations.of(context)!.daily,
                                     ),
                                     Tab(
-                                      text: 'Technical',
+                                      text: AppLocalizations.of(context)!.technical,
                                     ),
                                   ],
                                 ),
@@ -145,19 +145,19 @@ class DailyTab extends StatelessWidget {
             height: 10,
           ),
           CustomRowText(
-            givenKey: 'Kalan Yakıt',
+            givenKey: AppLocalizations.of(context)!.kalanYakıt,
             givenValue: '116',
           ),
           CustomRowText(
-            givenKey: 'Kilometre',
+            givenKey: AppLocalizations.of(context)!.kilometre,
             givenValue: '116',
           ),
           CustomRowText(
-            givenKey: 'Ortalama Tüketim',
+            givenKey: AppLocalizations.of(context)!.ortalamaTüketim,
             givenValue: '116',
           ),
           CustomRowText(
-            givenKey: 'Haftalık Kilometre',
+            givenKey: AppLocalizations.of(context)!.haftalıkKilometre,
             givenValue: '116',
           ),
         ],
@@ -184,31 +184,31 @@ class TechnicalTab extends StatelessWidget {
                 height: 10,
               ),
               CustomRowText(
-                givenKey: 'Beygir',
+                givenKey: AppLocalizations.of(context)!.beygir,
                 givenValue: state.currentCar!.beygir,
               ),
               CustomRowText(
-                givenKey: 'Depo',
+                givenKey: AppLocalizations.of(context)!.depo,
                 givenValue: state.currentCar!.depo,
               ),
               CustomRowText(
-                givenKey: 'Max Hız',
+                givenKey: AppLocalizations.of(context)!.maxHız,
                 givenValue: state.currentCar!.max_hiz,
               ),
               CustomRowText(
-                givenKey: 'Motor',
+                givenKey: AppLocalizations.of(context)!.motor,
                 givenValue: state.currentCar!.motor,
               ),
               CustomRowText(
-                givenKey: 'Silindir',
+                givenKey: AppLocalizations.of(context)!.silindir,
                 givenValue: state.currentCar!.silindir,
               ),
               CustomRowText(
-                givenKey: 'Yakıt',
+                givenKey: AppLocalizations.of(context)!.yakıt,
                 givenValue: state.currentCar!.yakit,
               ),
               CustomRowText(
-                givenKey: 'Model',
+                givenKey: AppLocalizations.of(context)!.model,
                 givenValue: state.currentCar!.model,
               ),
             ],
