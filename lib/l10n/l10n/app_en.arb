@@ -71,25 +71,50 @@
     "pleaseEnterOwnership":"Please enter ownership",
     "daily":"Daily",
     "technical":"Technical",
-    //Login-Signup
+
+    "@_LOGIN_SIGNUP": {
+      },
     "forgotPassword":"Forgot Password",
     "createAccount":"Create Account",
     "passwordCanNotBeEmpty":"Password can not be empty",
     "password":"Password",
     "pleaseCorrectYourmail":"Please correct your mail",
     "emailAdress":"E-mail Adress",
+    "pleaseEnterYourMail":"Please enter your mail",
+    "sendEmail":"Send Email",
+
     "signup":"Sign Up",
     "passwordsDoesNotMatch":"Passwords Does Not Match",
     "confirmPassword":"Confirm Password",
     "fullName":"Full Name",
 
-    //repair page
+    "@_REPAIR": {
+      },
     "service":"Service",
-    "BookAServiceForYourCar":"Book a service for your car.",
+    "bookAService":"Book a service",
+    "bookAServiceForYourCar":"Book a service for your car.",
     "onGoingService":"Ongoing Service",
     "checkHowYouCarDoing":"Check how you car doing.",
     "checkPreviousService":"Check Previous Service",
-    "lookAtYourHistory":"Look at your history."
+    "lookAtYourHistory":"Look at your history.",
+    "allServices":"All Services",
+    "previousServices":"Previous Services",
+    "estimatedTime":"ESTIMATED TIME",
+    "serviceID":"SERVICE ID",
+
+    "@_CAR_PAGE": {
+    },
+"remainingFuel":"Kalan Yakıt",
+"kilometer":"Kilometre" ,
+"averageConsumption":"Ortalama Tüketim",
+"weeklyKilometer":"Haftalık Kilometre",
+"horsepower":"Beygir",
+"tank":"Depo",
+"maxSpeed":"Max Hız",
+"engine":"Motor",
+"cylinder":"Silindir",
+"fuel":"Yakıt",
+"model":"Model"
 
 
 }

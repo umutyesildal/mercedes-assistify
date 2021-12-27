@@ -3,6 +3,7 @@ import 'package:maintenance_repository/maintenance_repository.dart';
 import 'package:service_repository/template_repository.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 import 'package:icons_helper/icons_helper.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OngoingService extends StatefulWidget {
   const OngoingService({Key? key}) : super(key: key);
@@ -27,7 +28,7 @@ class _OngoingServiceState extends State<OngoingService> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Ongoing Service',
+          AppLocalizations.of(context)!.onGoingService,
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
@@ -51,7 +52,7 @@ class _OngoingServiceState extends State<OngoingService> {
                             height: 10,
                           ),
                           Text(
-                            'ESTIMATED TIME',
+                            AppLocalizations.of(context)!.estimatedTime,
                             style: TextStyle(
                                 fontSize: 17, fontWeight: FontWeight.bold),
                           ),
@@ -73,7 +74,7 @@ class _OngoingServiceState extends State<OngoingService> {
                             height: 10,
                           ),
                           Text(
-                            'SERVICE ID',
+                            AppLocalizations.of(context)!.serviceID,
                             style: TextStyle(
                                 fontSize: 17, fontWeight: FontWeight.bold),
                           ),

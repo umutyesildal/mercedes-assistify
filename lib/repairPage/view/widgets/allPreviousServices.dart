@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:template/router.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AllPreviousServices extends StatelessWidget {
   const AllPreviousServices({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ class AllPreviousServices extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'All Services',
+          AppLocalizations.of(context)!.allServices,
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),

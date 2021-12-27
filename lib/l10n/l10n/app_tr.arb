@@ -49,19 +49,47 @@
     "logout": "Çıkış",
     "@logout": {
       "description": "Çıkış",
-    //car page
-    "kalanYakıt":"Kalan Yakıt",
-    "kilometre":"Kilometre" ,
-    "ortalamaTüketim":"Ortalama Tüketim",
-    "haftalıkKilometre":"Haftalık Kilometre",
-    "beygir":"Beygir",
-    "depo":"Depo",
-    "maxHız":"Max Hız",
-    "motor":"Motor",
-    "silindir":"Silindir",
-    "yakıt":"Yakıt",
-    "model":"Model"
-   //
+
+  
+      "addCar": "Add Car" ,
+      "login":"Login",
+      "pleaseEnterOwnership":"Please enter ownership",
+      "daily":"Daily",
+      "technical":"Technical",
+      "@_LOGIN_SIGNUP": {
+        },
+      "forgotPassword":"Forgot Password",
+      "createAccount":"Create Account",
+      "passwordCanNotBeEmpty":"Password can not be empty",
+      "password":"Password",
+      "pleaseCorrectYourmail":"Please correct your mail",
+      "emailAdress":"E-mail Adress",
+      "signup":"Sign Up",
+      "passwordsDoesNotMatch":"Passwords Does Not Match",
+      "confirmPassword":"Confirm Password",
+      "fullName":"Full Name",
+  
+      "@_REPAIR": {
+        },
+      "service":"Service",
+      "bookAServiceForYourCar":"Book a service for your car.",
+      "onGoingService":"Ongoing Service",
+      "checkHowYouCarDoing":"Check how you car doing.",
+      "checkPreviousService":"Check Previous Service",
+      "lookAtYourHistory":"Look at your history.",  
+      "@_CAR_PAGE": {
+        },
+        "remainingFuel":"Kalan Yakıt",
+        "kilometer":"Kilometre" ,
+        "averageConsumption":"Ortalama Tüketim",
+        "weeklyKilometer":"Haftalık Kilometre",
+        "horsepower":"Beygir",
+        "tank":"Depo",
+        "maxSpeed":"Max Hız",
+        "engine":"Motor",
+        "cylinder":"Silindir",
+        "fuel":"Yakıt",
+        "model":"Model"
 
     }
 }

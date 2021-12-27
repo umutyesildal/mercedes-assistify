@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -71,7 +72,7 @@ class ForgotPassword extends StatelessWidget {
                   flex: 4,
                   child: Center(
                     child: Text(
-                      'Please Enter your Email Adress',
+                      AppLocalizations.of(context)!.pleaseEnterYourMail,
                       style: TextStyle(
                           fontSize: 17, color: Theme.of(context).accentColor),
                     ),
@@ -115,7 +116,7 @@ class _SendMailButton extends StatelessWidget {
                         .add(ForgotPasswordSubmitted());
                   }
                 : null,
-            child: Text('Send Email'));
+            child: Text(AppLocalizations.of(context)!.sendEmail));
       },
     );
   }
@@ -131,8 +132,8 @@ class _EmailInput extends StatelessWidget {
         return AuthField(
           isObsecure: false,
           isError: state.emailForgotPassword.invalid,
-          errorText: 'Please correct your mail',
-          labelText: 'E-mail Adress',
+          errorText: AppLocalizations.of(context)!.pleaseCorrectYourmail,
+          labelText: AppLocalizations.of(context)!.emailAdress,
           onChangeCallback: (email) {
             BlocProvider.of<AuthBloc>(context)
                 .add(ForgotPasswordEmailChanged(input: email));

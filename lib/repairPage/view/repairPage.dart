@@ -132,7 +132,7 @@ class _LandingPageState extends State<RepairPage> {
                                     children: [
                                       Text(
                                         AppLocalizations.of(context)!
-                                            .ongoingService,
+                                            .onGoingService,
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 22,

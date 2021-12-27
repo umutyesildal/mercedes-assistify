@@ -9,7 +9,7 @@ abstract class FirebaseClient {
 */
   void init();
   Future<Map<String, dynamic>> getCar();
-  Future<Map<String, dynamic>> getService();
+  Future<Map<String, dynamic>> getService(String givenId);
   Future setService(ServiceEntity service);
   Future setUser(UserEntity user);
   Future<Map<String, dynamic>> getUser();

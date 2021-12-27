@@ -7,6 +7,7 @@ import 'package:template/preferencesBloc/preferences_bloc.dart';
 import 'package:template/router.dart';
 import '../models/models.dart';
 import 'widgets/widgets.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpPage extends StatelessWidget {
   @override

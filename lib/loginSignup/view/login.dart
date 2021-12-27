@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -163,7 +164,7 @@ class _EmailInput extends StatelessWidget {
         return AuthField(
           isObsecure: false,
           isError: state.emailLogin.invalid,
-          errorText: AppLocalizations.of(context)!.pleaseCorrectYourMail,
+          errorText: AppLocalizations.of(context)!.pleaseCorrectYourmail,
           labelText: AppLocalizations.of(context)!.emailAdress,
           onChangeCallback: (email) {
             BlocProvider.of<AuthBloc>(context)
