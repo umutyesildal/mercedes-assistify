@@ -33,12 +33,10 @@ class ServiceConcreteRepository extends ServiceRepository {
       final List<Map<String, dynamic>> data =
           await fc.getAllPreviousServices(givenIds);
 
-      print(data[0]);
-
       for (int i = 0; i < data.length; i++) {
-        allPreviousServices[i] = ServiceEntity.fromMap(data[i]);
-        print(allPreviousServices[i].phase);
+        allPreviousServices.add(ServiceEntity.fromMap(data[i]));
       }
+
       return allPreviousServices;
     } catch (e) {
       throw e;

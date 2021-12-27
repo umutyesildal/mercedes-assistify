@@ -43,10 +43,10 @@ class ServiceEntity {
 
   factory ServiceEntity.fromMap(Map<String, dynamic> map) {
     return ServiceEntity(
-      arriveDate: '',
-      ownership: '',
-      phase: 0,
-      extraServices: [],
+      arriveDate: map['arriveDate'] ?? '',
+      ownership: map['ownership'] ?? '',
+      phase: map['phase']?.toInt() ?? 0,
+      extraServices: List<String>.from(map['extraServices']),
     );
   }
 

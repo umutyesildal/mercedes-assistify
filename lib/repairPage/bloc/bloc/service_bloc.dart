@@ -69,8 +69,15 @@ class ServiceBloc extends Bloc<ServiceEvent, ServiceState> {
   Future _handleGetAllPreviousServicesState(
       GetAllPreviousServices event, Emitter<ServiceState> emit) async {
     try {
-      await serviceRepository
+      List<ServiceEntity> allPreviousServices = await serviceRepository
           .getAllPreviousServices(state.currentOwnership!.previousServices);
-    } catch (e) {}
+      emit(state.copyWith(
+          allPreviousServices: allPreviousServices,
+          previousServiceFetchedStatus: PreviousServicesFetchedStatus.success));
+    } catch (e) {
+      emit(state.copyWith(
+          allPreviousServices: [],
+          previousServiceFetchedStatus: PreviousServicesFetchedStatus.failed));
+    }
   }
 }

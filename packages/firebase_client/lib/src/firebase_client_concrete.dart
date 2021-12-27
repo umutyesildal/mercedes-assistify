@@ -25,12 +25,7 @@ class FirebaseClientConcrete extends FirebaseClient {
     return data!;
   }
 
-  Future setCar() async {
-    FirebaseFirestore.instance
-        .collection('Car')
-        .doc("deneme")
-        .set({'text': 'afsdfs'});
-  }
+  Future setCar() async {}
 
   Future<Map<String, dynamic>> getService(String givenId) async {
     var doc = await FirebaseFirestore.instance
@@ -65,11 +60,16 @@ class FirebaseClientConcrete extends FirebaseClient {
       List<String> givenIds) async {
     List<Map<String, dynamic>> data = [];
 
-    var docs = await FirebaseFirestore.instance.collection("Service").get();
+    for (int i = 0; i < givenIds.length; i++) {
+      var doc = await FirebaseFirestore.instance
+          .collection("Service")
+          .doc(givenIds[i])
+          .get();
+      Map<String, dynamic>? mapData = doc.data();
 
-    for (int i = 0; i < docs.size; i++) {
-      data.add(docs.docs.elementAt(i).data());
+      data.add(mapData!);
     }
+
     return data;
   }
 

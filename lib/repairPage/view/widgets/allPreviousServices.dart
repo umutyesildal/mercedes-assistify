@@ -27,50 +27,39 @@ class _AllPreviousServicesState extends State<AllPreviousServices> {
     Size size = MediaQuery.of(context).size;
     return BlocBuilder<ServiceBloc, ServiceState>(
       builder: (context, state) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(
-              'All Services',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          body: ListView(
-            children: [
-              ServiceRow(
-                size: size,
-                id: 'ID: i74329942',
-                date: 'Date: 27/11/2021 - 13/12/2021',
-              ),
-              ServiceRow(
-                size: size,
-                id: 'ID: i74329942',
-                date: 'Date: 27/11/2021 - 13/12/2021',
-              ),
-              ServiceRow(
-                size: size,
-                id: 'ID: i74329942',
-                date: 'Date: 27/11/2021 - 13/12/2021',
-              ),
-              ServiceRow(
-                size: size,
-                id: 'ID: i74329942',
-                date: 'Date: 27/11/2021 - 13/12/2021',
-              ),
-              ServiceRow(
-                size: size,
-                id: 'ID: i74329942',
-                date: 'Date: 27/11/2021 - 13/12/2021',
-              ),
-              ServiceRow(
-                size: size,
-                id: 'ID: i74329942',
-                date: 'Date: 27/11/2021 - 13/12/2021',
-              ),
-            ],
-          ),
-        );
+        return state.previousServiceFetchedStatus ==
+                PreviousServicesFetchedStatus.success
+            ? Scaffold(
+                appBar: AppBar(
+                  title: Text(
+                    'All Services',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                body: ListView.builder(
+                  itemCount: state.allPreviousServices!.length,
+                  itemBuilder: (context, index) {
+                    return ServiceRow(
+                      size: size,
+                      id: 'ID: ' +
+                          state.currentOwnership!.previousServices[index],
+                      date: state.allPreviousServices![index].arriveDate,
+                    );
+                  },
+                ))
+            : Scaffold(
+                appBar: AppBar(
+                  title: Text(
+                    'All Services',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                body: CircularProgressIndicator(),
+              );
       },
     );
   }
@@ -87,6 +76,7 @@ class ServiceRow extends StatelessWidget {
   final Size size;
   final String id;
   final String date;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
