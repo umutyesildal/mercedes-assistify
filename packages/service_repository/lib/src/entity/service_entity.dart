@@ -1,73 +1,52 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:maintenance_repository/maintenance_repository.dart';
 
 class ServiceEntity {
-  final String service_id;
-  final String gelis_tarihi;
-  final String teslim_tarihi;
+  final String arriveDate;
   final String ownership;
-  final int bakim_asamasi;
-  final MaintenanceEntity maintenance;
+  final int phase;
+  final List<String> extraServices;
   ServiceEntity({
-    required this.service_id,
-    required this.gelis_tarihi,
-    required this.teslim_tarihi,
+    required this.arriveDate,
     required this.ownership,
-    required this.bakim_asamasi,
-    required this.maintenance,
+    required this.phase,
+    required this.extraServices,
   });
 
   ServiceEntity copyWith({
-    String? service_id,
-    String? gelis_tarihi,
-    String? teslim_tarihi,
+    String? arriveDate,
     String? ownership,
-    int? bakim_asamasi,
-    MaintenanceEntity? maintenance,
+    int? phase,
+    List<String>? extraServices,
   }) {
     return ServiceEntity(
-      service_id: service_id ?? this.service_id,
-      gelis_tarihi: gelis_tarihi ?? this.gelis_tarihi,
-      teslim_tarihi: teslim_tarihi ?? this.teslim_tarihi,
+      arriveDate: arriveDate ?? this.arriveDate,
       ownership: ownership ?? this.ownership,
-      bakim_asamasi: bakim_asamasi ?? this.bakim_asamasi,
-      maintenance: maintenance ?? this.maintenance,
+      phase: phase ?? this.phase,
+      extraServices: extraServices ?? this.extraServices,
     );
   }
 
   ServiceEntity.empty()
-      : this(
-          service_id: "",
-          gelis_tarihi: "",
-          teslim_tarihi: "",
-          ownership: "",
-          bakim_asamasi: 0,
-          maintenance: MaintenanceEntity(
-            serviceType: '',
-            extraServices: [],
-          ),
-        );
+      : this(arriveDate: "", ownership: "", phase: 0, extraServices: []);
 
   Map<String, dynamic> toMap() {
     return {
-      'service_id': service_id,
-      'gelis_tarihi': gelis_tarihi,
-      'teslim_tarihi': teslim_tarihi,
+      'arriveDate': arriveDate,
       'ownership': ownership,
-      'bakim_asamasi': bakim_asamasi,
-      'maintenance': maintenance.toMap(),
+      'phase': phase,
+      'extraServices': extraServices,
     };
   }
 
   factory ServiceEntity.fromMap(Map<String, dynamic> map) {
     return ServiceEntity(
-      service_id: map['service_id'] ?? '',
-      gelis_tarihi: map['gelis_tarihi'] ?? '',
-      teslim_tarihi: map['teslim_tarihi'] ?? '',
+      arriveDate: map['arriveDate'] ?? '',
       ownership: map['ownership'] ?? '',
-      bakim_asamasi: map['bakim_asamasi']?.toInt() ?? 0,
-      maintenance: MaintenanceEntity.fromMap(map['maintenance']),
+      phase: map['phase']?.toInt() ?? 0,
+      extraServices: List<String>.from(map['extraServices']),
     );
   }
 
@@ -78,7 +57,7 @@ class ServiceEntity {
 
   @override
   String toString() {
-    return 'ServiceEntity(service_id: $service_id, gelis_tarihi: $gelis_tarihi, teslim_tarihi: $teslim_tarihi, ownership: $ownership, bakim_asamasi: $bakim_asamasi, maintenance: $maintenance)';
+    return 'ServiceEntity(arriveDate: $arriveDate, ownership: $ownership, phase: $phase, extraServices: $extraServices)';
   }
 
   @override
@@ -86,21 +65,17 @@ class ServiceEntity {
     if (identical(this, other)) return true;
 
     return other is ServiceEntity &&
-        other.service_id == service_id &&
-        other.gelis_tarihi == gelis_tarihi &&
-        other.teslim_tarihi == teslim_tarihi &&
+        other.arriveDate == arriveDate &&
         other.ownership == ownership &&
-        other.bakim_asamasi == bakim_asamasi &&
-        other.maintenance == maintenance;
+        other.phase == phase &&
+        listEquals(other.extraServices, extraServices);
   }
 
   @override
   int get hashCode {
-    return service_id.hashCode ^
-        gelis_tarihi.hashCode ^
-        teslim_tarihi.hashCode ^
+    return arriveDate.hashCode ^
         ownership.hashCode ^
-        bakim_asamasi.hashCode ^
-        maintenance.hashCode;
+        phase.hashCode ^
+        extraServices.hashCode;
   }
 }

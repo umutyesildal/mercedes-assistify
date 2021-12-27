@@ -1,5 +1,6 @@
 import 'package:car_repository/template_repository.dart';
 import 'package:maintenance_repository/maintenance_repository.dart';
+import 'package:ownership_repository/ownership_repository.dart';
 import 'package:service_repository/template_repository.dart';
 import 'package:user_repository/user_repository.dart';
 
@@ -35,13 +36,20 @@ class App extends StatelessWidget {
                     carRepository: sl.get<CarRepository>(),
                     serviceRepository: sl.get<ServiceRepository>()),
                 child: BlocProvider(
-                  create: (context) => ServiceBloc(
-                      serviceRepository: sl.get<ServiceRepository>(),
-                      maintenanceRepository: sl.get<MaintenanceRepository>()),
-                  child: BlocProvider(
-                    create: (context) => CarBloc(
+                  lazy: false,
+                  create: (context) => CarBloc(
                       localStorageRepository: sl.get<LocalStorage>(),
                       carRepository: sl.get<CarRepository>(),
+                      ownershipRepository: sl.get<OwnershipRepository>(),
+                      userRepository: sl.get<UserRepository>()),
+                  child: BlocProvider(
+                    lazy: false,
+                    create: (context) => ServiceBloc(
+                      localStorage: sl.get<LocalStorage>(),
+                      serviceRepository: sl.get<ServiceRepository>(),
+                      maintenanceRepository: sl.get<MaintenanceRepository>(),
+                      carBloc: BlocProvider.of<CarBloc>(context),
+                      ownershipRepository: sl.get<OwnershipRepository>(),
                     ),
                     child: MyApp(),
                   ),

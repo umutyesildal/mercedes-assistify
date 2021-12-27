@@ -8,17 +8,16 @@ abstract class FirebaseClient {
 
 */
   void init();
-  Future<Map<String, dynamic>> getCar();
-  Future<Map<String, dynamic>> getService();
+  Future<Map<String, dynamic>> getCar(String carId);
+  Future<Map<String, dynamic>> getService(String givenId);
   Future setService(ServiceEntity service);
   Future setUser(UserEntity user);
-  Future<Map<String, dynamic>> getUser();
+  Future<Map<String, dynamic>> getUser(String userMail);
   Future<bool> checkAuth(UserEntity user);
   Future<bool> checkUser(UserEntity user);
   Future<bool> checkOwnership(UserEntity user);
   Future<bool> addOwnership(UserEntity user);
-
-  Future<Map<String, dynamic>> getOwnership();
+  Future<Map<String, dynamic>> getOwnership(String ownershipId);
   Future<Map<String, dynamic>> getMaintenance();
 
   /// if something needs to be closed. ex: storage compaction and closing.

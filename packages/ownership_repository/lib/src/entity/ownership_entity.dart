@@ -1,72 +1,85 @@
 import 'dart:convert';
 
-class OwnershipEntity {
+import 'package:flutter/foundation.dart';
 
-  final String benzin;
+class OwnershipEntity {
   final String car;
-  final String km;
+  final bool isOngoingService;
+  final String ongoingService;
+  final List<String> previousServices;
+
   OwnershipEntity({
-    required this.benzin,
     required this.car,
-    required this.km,
+    required this.isOngoingService,
+    required this.ongoingService,
+    required this.previousServices,
   });
 
-
-
-
-
   OwnershipEntity copyWith({
-    String? benzin,
     String? car,
-    String? km,
+    bool? isOngoingService,
+    String? ongoingService,
+    List<String>? previousServices,
   }) {
     return OwnershipEntity(
-      benzin: benzin ?? this.benzin,
       car: car ?? this.car,
-      km: km ?? this.km,
+      isOngoingService: isOngoingService ?? this.isOngoingService,
+      ongoingService: ongoingService ?? this.ongoingService,
+      previousServices: previousServices ?? this.previousServices,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'benzin': benzin,
       'car': car,
-      'km': km,
+      'isOngoingService': isOngoingService,
+      'ongoingService': ongoingService,
+      'previousServices': previousServices,
     };
   }
 
-   OwnershipEntity.empty()
+  OwnershipEntity.empty()
       : this(
-      benzin: "",
-      car: "",
-      km: "",
-        );
+            car: "",
+            isOngoingService: false,
+            ongoingService: "",
+            previousServices: []);
 
   factory OwnershipEntity.fromMap(Map<String, dynamic> map) {
     return OwnershipEntity(
-      benzin: map['benzin'],
-      car: map['car'],
-      km: map['km'],
+      car: map['car'] ?? '',
+      isOngoingService: map['isOngoingService'] ?? false,
+      ongoingService: map['ongoingService'] ?? '',
+      previousServices: List<String>.from(map['previousServices']),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory OwnershipEntity.fromJson(String source) => OwnershipEntity.fromMap(json.decode(source));
+  factory OwnershipEntity.fromJson(String source) =>
+      OwnershipEntity.fromMap(json.decode(source));
 
   @override
-  String toString() => 'OwnershipEntity(benzin: $benzin, car: $car, km: $km)';
+  String toString() {
+    return 'OwnershipEntity(car: $car, isOngoingService: $isOngoingService, ongoingService: $ongoingService, previousServices: $previousServices)';
+  }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is OwnershipEntity &&
-      other.benzin == benzin &&
-      other.car == car &&
-      other.km == km;
+        other.car == car &&
+        other.isOngoingService == isOngoingService &&
+        other.ongoingService == ongoingService &&
+        listEquals(other.previousServices, previousServices);
   }
 
   @override
-  int get hashCode => benzin.hashCode ^ car.hashCode ^ km.hashCode;
+  int get hashCode {
+    return car.hashCode ^
+        isOngoingService.hashCode ^
+        ongoingService.hashCode ^
+        previousServices.hashCode;
+  }
 }

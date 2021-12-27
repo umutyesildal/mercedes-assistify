@@ -13,7 +13,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state.authStatus == Status.submissionFailure) {
+          if (state.authLoginStatus == loginStatus.submissionFailure) {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
               ..showSnackBar(
@@ -27,12 +27,14 @@ class LoginPage extends StatelessWidget {
                 ),
               );
           }
-          if (state.authStatus == Status.submissionSuccess) {
+          if (state.authLoginStatus == loginStatus.submissionSuccess) {
             BlocProvider.of<PreferencesBloc>(context)
                 .add(AuthChangedEvent(auth: true));
             if (state.isOwnership) {
               Navigator.of(context).pushNamedAndRemoveUntil(
                   RouteGenerator.landingRoute, (route) => false);
+
+              BlocProvider.of<AuthBloc>(context).add(OwnershipAlreadyExist());
             } else {
               Navigator.of(context).pushNamedAndRemoveUntil(
                   RouteGenerator.addCarRoute, (route) => false);

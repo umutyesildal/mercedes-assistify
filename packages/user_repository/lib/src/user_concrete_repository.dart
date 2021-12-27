@@ -6,10 +6,10 @@ class UserConcreteRepository extends UserRepository {
   Future init() async {}
 
   @override
-  Future<UserEntity> getUser() async {
+  Future<UserEntity> getUser(String userMail) async {
     UserEntity currentUser;
     try {
-      final Map<String, dynamic> data = await fc.getUser();
+      final Map<String, dynamic> data = await fc.getUser(userMail);
       print(data);
       currentUser = UserEntity.fromMap(data);
       print(currentUser);
@@ -55,7 +55,10 @@ class UserConcreteRepository extends UserRepository {
 
   Future<bool> addOwnership(UserEntity user) async {
     try {
+      print('here2');
       bool checkUser = await fc.addOwnership(user);
+      print('here5');
+
       return checkUser;
     } catch (e) {
       throw e;

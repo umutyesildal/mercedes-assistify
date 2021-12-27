@@ -15,7 +15,8 @@ dependencies:
   hive: ^2.0.4
   hive_flutter: ^1.0.0
   path_provider: ^2.0.1
-
+  user_repository:
+    path: ../user_repository
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -13,7 +13,7 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state.authStatus == Status.submissionFailure) {
+          if (state.authSignupStatus == signUpStatus.submissionFailure) {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
               ..showSnackBar(
@@ -27,7 +27,23 @@ class SignUpPage extends StatelessWidget {
                 ),
               );
           }
-          if (state.authStatus == Status.submissionSuccess) {
+          if (state.authSignupStatus == signUpStatus.submissionSuccess) {
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(
+                SnackBar(
+                  content: Text(
+                    'Successfully signed up, please log in.',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  backgroundColor: Colors.green,
+                  behavior: SnackBarBehavior.floating,
+                ),
+              );
+          }
+          if (state.authSignupStatus == signUpStatus.submissionSuccess) {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                RouteGenerator.loginRoute, (route) => false);
             print('success');
           }
         },

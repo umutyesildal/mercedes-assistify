@@ -4,7 +4,7 @@ import 'package:firebase_client/firebase_client.dart';
 abstract class UserRepository {
   void init();
   FirebaseClient fc = FirebaseClientConcrete();
-  Future<UserEntity> getUser();
+  Future<UserEntity> getUser(String userMail);
   Future setUser(UserEntity user);
   Future<bool> checkAuth(UserEntity user);
   Future<bool> checkOwnership(UserEntity user);
