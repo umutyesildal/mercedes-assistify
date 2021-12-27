@@ -28,8 +28,8 @@ class ServiceBloc extends Bloc<ServiceEvent, ServiceState> {
         await _handleSetServiceState(event, emit);
       } else if (event is GetOngoingService) {
         await _handleGetOngoingServiceState(event, emit);
-      } else if (event is GetPreviousService) {
-        await _handleGetPreviousServiceState(event, emit);
+      } else if (event is GetAllPreviousServices) {
+        await _handleGetAllPreviousServicesState(event, emit);
       } else if (event is CarBlocUpdated) {
         emit(state.copyWith(currentOwnership: event.ownershipEntity));
       }
@@ -66,8 +66,11 @@ class ServiceBloc extends Bloc<ServiceEvent, ServiceState> {
         ongoingServiceFetchedStatus: OngoingServiceFetchedStatus.success));
   }
 
-  Future _handleGetPreviousServiceState(
-      GetPreviousService event, Emitter<ServiceState> emit) async {
-    try {} catch (e) {}
+  Future _handleGetAllPreviousServicesState(
+      GetAllPreviousServices event, Emitter<ServiceState> emit) async {
+    try {
+      await serviceRepository
+          .getAllPreviousServices(state.currentOwnership!.previousServices);
+    } catch (e) {}
   }
 }

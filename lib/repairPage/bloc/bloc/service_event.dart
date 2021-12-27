@@ -24,12 +24,7 @@ class GetOngoingService extends ServiceEvent {
   List<Object> get props => [];
 }
 
-class GetPreviousService extends ServiceEvent {
-  GetPreviousService();
-
-  @override
-  List<Object> get props => [];
-}
+class GetAllPreviousServices extends ServiceEvent {}
 
 class CarBlocUpdated extends ServiceEvent {
   CarBlocUpdated({required this.ownershipEntity});

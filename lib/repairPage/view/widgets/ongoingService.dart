@@ -67,7 +67,7 @@ class _OngoingServiceState extends State<OngoingService> {
                                       height: 10,
                                     ),
                                     Text(
-                                      'DEGISTIR',
+                                      'TBD',
                                       style: TextStyle(fontSize: 14),
                                     ),
                                   ],
@@ -90,7 +90,7 @@ class _OngoingServiceState extends State<OngoingService> {
                                       height: 10,
                                     ),
                                     Text(
-                                      'DEGISTIR',
+                                      state.currentOwnership!.ongoingService,
                                       style: TextStyle(fontSize: 14),
                                     ),
                                   ],

@@ -1,55 +1,77 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:template/repairPage/bloc/bloc/service_bloc.dart';
 import 'package:template/router.dart';
 
-class AllPreviousServices extends StatelessWidget {
+class AllPreviousServices extends StatefulWidget {
   const AllPreviousServices({Key? key}) : super(key: key);
+
+  @override
+  State<AllPreviousServices> createState() => _AllPreviousServicesState();
+}
+
+class _AllPreviousServicesState extends State<AllPreviousServices> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchDetails();
+  }
+
+  Future? fetchDetails() async {
+    BlocProvider.of<ServiceBloc>(context).add(GetAllPreviousServices());
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'All Services',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
+    return BlocBuilder<ServiceBloc, ServiceState>(
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(
+              'All Services',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-        ),
-      ),
-      body: ListView(
-        children: [
-          ServiceRow(
-            size: size,
-            id: 'ID: i74329942',
-            date: 'Date: 27/11/2021 - 13/12/2021',
+          body: ListView(
+            children: [
+              ServiceRow(
+                size: size,
+                id: 'ID: i74329942',
+                date: 'Date: 27/11/2021 - 13/12/2021',
+              ),
+              ServiceRow(
+                size: size,
+                id: 'ID: i74329942',
+                date: 'Date: 27/11/2021 - 13/12/2021',
+              ),
+              ServiceRow(
+                size: size,
+                id: 'ID: i74329942',
+                date: 'Date: 27/11/2021 - 13/12/2021',
+              ),
+              ServiceRow(
+                size: size,
+                id: 'ID: i74329942',
+                date: 'Date: 27/11/2021 - 13/12/2021',
+              ),
+              ServiceRow(
+                size: size,
+                id: 'ID: i74329942',
+                date: 'Date: 27/11/2021 - 13/12/2021',
+              ),
+              ServiceRow(
+                size: size,
+                id: 'ID: i74329942',
+                date: 'Date: 27/11/2021 - 13/12/2021',
+              ),
+            ],
           ),
-          ServiceRow(
-            size: size,
-            id: 'ID: i74329942',
-            date: 'Date: 27/11/2021 - 13/12/2021',
-          ),
-          ServiceRow(
-            size: size,
-            id: 'ID: i74329942',
-            date: 'Date: 27/11/2021 - 13/12/2021',
-          ),
-          ServiceRow(
-            size: size,
-            id: 'ID: i74329942',
-            date: 'Date: 27/11/2021 - 13/12/2021',
-          ),
-          ServiceRow(
-            size: size,
-            id: 'ID: i74329942',
-            date: 'Date: 27/11/2021 - 13/12/2021',
-          ),
-          ServiceRow(
-            size: size,
-            id: 'ID: i74329942',
-            date: 'Date: 27/11/2021 - 13/12/2021',
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

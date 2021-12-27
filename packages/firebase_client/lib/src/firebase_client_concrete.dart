@@ -60,6 +60,19 @@ class FirebaseClientConcrete extends FirebaseClient {
     });
   }
 
+  @override
+  Future<List<Map<String, dynamic>>> getAllPreviousServices(
+      List<String> givenIds) async {
+    List<Map<String, dynamic>> data = [];
+
+    var docs = await FirebaseFirestore.instance.collection("Service").get();
+
+    for (int i = 0; i < docs.size; i++) {
+      data.add(docs.docs.elementAt(i).data());
+    }
+    return data;
+  }
+
   Future<Map<String, dynamic>> getUser(String userMail) async {
     var doc =
         await FirebaseFirestore.instance.collection('User').doc(userMail).get();
