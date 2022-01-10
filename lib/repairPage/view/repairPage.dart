@@ -24,7 +24,7 @@ class _LandingPageState extends State<RepairPage> {
         return Scaffold(
           appBar: AppBar(
             title: Text(
-              'Service',
+              AppLocalizations.of(context)!.service,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),

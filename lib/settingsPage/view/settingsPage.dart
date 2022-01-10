@@ -127,15 +127,15 @@ class SettingsMain extends StatelessWidget {
                   ),
                   children: <Widget>[
                     ExpansionTileItem(
-                      givenText: 'Help & FAQ',
+                      givenText: AppLocalizations.of(context)!.helpFAQ,
                       givenFunction: () {},
                     ),
                     ExpansionTileItem(
-                      givenText: 'Contact Support',
+                      givenText: AppLocalizations.of(context)!.contactSupport,
                       givenFunction: () {},
                     ),
                     ExpansionTileItem(
-                      givenText: 'Feedback',
+                      givenText: AppLocalizations.of(context)!.feedback,
                       givenFunction: () {},
                     ),
                   ],
@@ -168,25 +168,25 @@ class SettingsMain extends StatelessWidget {
                   ),
                   children: <Widget>[
                     ExpansionTileItem(
-                      givenText: 'Privacy Policy',
+                      givenText: AppLocalizations.of(context)!.privacyPolicy,
                       givenFunction: () {},
                     ),
                     ExpansionTileItem(
-                      givenText: 'Terms & Conditions',
+                      givenText: AppLocalizations.of(context)!.termsConditions,
                       givenFunction: () {},
                     ),
                     ExpansionTileItem(
-                      givenText: 'Legal Notice',
+                      givenText: AppLocalizations.of(context)!.legalNotice,
                       givenFunction: () async {
                         if (await canLaunch(kLegalUrl)) await launch(kLegalUrl);
                       },
                     ),
                     ExpansionTileItem(
-                      givenText: 'Guidelines',
+                      givenText: AppLocalizations.of(context)!.guidelines,
                       givenFunction: () {},
                     ),
                     ExpansionTileItem(
-                      givenText: 'Licenses',
+                      givenText: AppLocalizations.of(context)!.licenses,
                       givenFunction: () {},
                     ),
                   ],
@@ -254,7 +254,7 @@ class SettingsTextRow extends StatelessWidget {
           GestureDetector(
             onTap: () {},
             child: Text(
-              'Notifications',
+              AppLocalizations.of(context)!.notifications,
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           )
@@ -289,7 +289,7 @@ class UsernameText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        'Username',
+        AppLocalizations.of(context)!.username,
         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
     );

@@ -114,7 +114,7 @@ class _BookServiceState extends State<BookService> {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Book Service'),
+            title: Text(AppLocalizations.of(context)!.bookService),
           ),
           body: Padding(
             padding: const EdgeInsets.all(12.0),
@@ -134,7 +134,7 @@ class _BookServiceState extends State<BookService> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Service Type',
+                            AppLocalizations.of(context)!.seviceType),
                             style: TextStyle(
                                 fontSize: 17, fontWeight: FontWeight.bold),
                           ),
@@ -159,7 +159,7 @@ class _BookServiceState extends State<BookService> {
                                     serviceB = false;
                                   });
                                 },
-                                child: Text('Service A'),
+                                child: Text(AppLocalizations.of(context)!.serviceA),
                               ),
                               ElevatedButton(
                                 style: ButtonStyle(
@@ -176,7 +176,7 @@ class _BookServiceState extends State<BookService> {
                                     serviceB = true;
                                   });
                                 },
-                                child: Text('Service B'),
+                                child: Text(AppLocalizations.of(context)!.serviceB),
                               ),
                               SizedBox(),
                               SizedBox(),
@@ -197,7 +197,7 @@ class _BookServiceState extends State<BookService> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Extra Services',
+                            AppLocalizations.of(context)!.extraServices,
                             style: TextStyle(
                                 fontSize: 17, fontWeight: FontWeight.bold),
                           ),
@@ -224,7 +224,7 @@ class _BookServiceState extends State<BookService> {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(16.0),
-                                    child: Center(child: Text('Brakes')),
+                                    child: Center(child: Text(AppLocalizations.of(context)!.brakes)),
                                   ),
                                 ),
                               ),
@@ -248,7 +248,7 @@ class _BookServiceState extends State<BookService> {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(16.0),
-                                    child: Center(child: Text('Oil')),
+                                    child: Center(child: Text(AppLocalizations.of(context)!.oil)),
                                   ),
                                 ),
                               ),
@@ -271,7 +271,7 @@ class _BookServiceState extends State<BookService> {
                                       borderRadius: BorderRadius.circular(6)),
                                   child: Padding(
                                     padding: const EdgeInsets.all(16.0),
-                                    child: Center(child: Text('Tires')),
+                                    child: Center(child: Text(AppLocalizations.of(context)!.tires)),
                                   ),
                                 ),
                               ),
@@ -300,7 +300,7 @@ class _BookServiceState extends State<BookService> {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(16.0),
-                                    child: Center(child: Text('Cleaning')),
+                                    child: Center(child: Text(AppLocalizations.of(context)!.cleaning)),
                                   ),
                                 ),
                               ),
@@ -324,7 +324,7 @@ class _BookServiceState extends State<BookService> {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(16.0),
-                                    child: Center(child: Text('Battery')),
+                                    child: Center(child: Text(AppLocalizations.of(context)!.battery)),
                                   ),
                                 ),
                               ),
@@ -347,7 +347,7 @@ class _BookServiceState extends State<BookService> {
                                       borderRadius: BorderRadius.circular(6)),
                                   child: Padding(
                                     padding: const EdgeInsets.all(16.0),
-                                    child: Center(child: Text('Headlights')),
+                                    child: Center(child: Text(AppLocalizations.of(context)!.headlights)),
                                   ),
                                 ),
                               ),
@@ -369,7 +369,7 @@ class _BookServiceState extends State<BookService> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Date & Time',
+                            AppLocalizations.of(context)!.dateTime,
                             style: TextStyle(
                                 fontSize: 17, fontWeight: FontWeight.bold),
                           ),
@@ -378,7 +378,7 @@ class _BookServiceState extends State<BookService> {
                           ),
                           _selectedDate == null
                               ? ElevatedButton(
-                                  child: Text('Press here to select a day'),
+                                  child: Text(AppLocalizations.of(context)!.pressHereToSelectADay),
                                   onPressed: _pickDateDialog)
                               : SizedBox(),
                           _selectedDate !=
@@ -386,7 +386,7 @@ class _BookServiceState extends State<BookService> {
                               ? Text(
                                   _selectedDate ==
                                           null //ternary expression to check if date is null
-                                      ? 'No date was chosen!'
+                                      ? AppLocalizations.of(context)!.noDateWasChosen
                                       : '${DateFormat.yMMMd().format(_selectedDate!)}',
                                   style: TextStyle(
                                       fontSize: 17,
@@ -396,7 +396,7 @@ class _BookServiceState extends State<BookService> {
                           SizedBox(
                             height: 12,
                           ),
-                          Text('Available Times'),
+                          Text(AppLocalizations.of(context)!.availableTimes),
                           SizedBox(
                             height: 12,
                           ),
@@ -630,7 +630,7 @@ class _BookServiceState extends State<BookService> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceEvenly,
                                         children: [
-                                          Text('Service Appointment \n Created',
+                                          Text(AppLocalizations.of(context)!.serviceAppointmentCreated,
                                               style: TextStyle(
                                                   color: Colors.green)),
                                         ],
@@ -649,7 +649,7 @@ class _BookServiceState extends State<BookService> {
                                           context, RouteGenerator.landingRoute);
                                     },
                                     child: Text(
-                                      'Continue',
+                                      AppLocalizations.of(context)!.continue, // HATA OLABİLİR
                                       style: TextStyle(fontSize: 18),
                                     )),
                               ),
@@ -681,7 +681,7 @@ class _BookServiceState extends State<BookService> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Book a Service',
+                                          AppLocalizations.of(context)!.bookAService,
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Theme.of(context)
@@ -694,7 +694,7 @@ class _BookServiceState extends State<BookService> {
                                           height: 5,
                                         ),
                                         Text(
-                                          'Book a service for your car.',
+                                          AppLocalizations.of(context)!.bookAServiceForYourCar,
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Theme.of(context)

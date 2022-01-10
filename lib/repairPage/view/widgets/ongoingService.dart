@@ -101,44 +101,45 @@ class _OngoingServiceState extends State<OngoingService> {
                   CustomSignalTile(
                     isLast: false,
                     isFirst: true,
-                    title: 'Motor Bakımı',
-                    description:
-                        'Motor yağı değişimi ve filtre değişimi. İlerde oluşabilecek hasar için kontrol.',
+                    title: AppLocalizations.of(context)!.engineMaintenance,
+                    description: AppLocalizations.of(context)!
+                        .engineOilChangeFilterChange,
                     order: 1,
                     order_place: service.bakim_asamasi,
                   ),
                   CustomSignalTile(
                     isLast: false,
                     isFirst: false,
-                    title: 'Yakıt Filtresi',
-                    description:
-                        'Yakıt filtresinin bakımı ve gerekiyorsa yenilenmesi.',
+                    title: AppLocalizations.of(context)!.fuelFilter,
+                    description: AppLocalizations.of(context)!
+                        .maintenanceAndIfNecessaryReplacementTheFuelFilter,
                     order: 2,
                     order_place: service.bakim_asamasi,
                   ),
                   CustomSignalTile(
                     isLast: false,
                     isFirst: false,
-                    title: 'Ekstra Servislerin Tamamlanması',
-                    description:
-                        'Ekstra istenen servisler için yapılan bakımların tamamlanıp düzenlenmesi.',
+                    title:
+                        AppLocalizations.of(context)!.completionOfExtraServices,
+                    description: AppLocalizations.of(context)!
+                        .completingAndArrangingMaintenanceForExtraRequestedServices,
                     order: 3,
                     order_place: service.bakim_asamasi,
                   ),
                   CustomSignalTile(
                     isLast: false,
                     isFirst: false,
-                    title: 'Bakımların Testleri',
-                    description:
-                        'Yapılan bakımların testlerinin yapılıp doğrulunun kontrol edilmesi.',
+                    title: AppLocalizations.of(context)!.testsOfCare,
+                    description: AppLocalizations.of(context)!
+                        .makingTheTestsOfTheMaintenanceDoneAndCheckingTheAccuracy,
                     order: 4,
                     order_place: service.bakim_asamasi,
                   ),
                   CustomSignalTile(
                     isLast: true,
                     isFirst: false,
-                    title: 'Servis Tamamlanması',
-                    description: 'Servis tamamlandı.',
+                    title: AppLocalizations.of(context)!.serviceCompletion,
+                    description: AppLocalizations.of(context)!.serviceCompleted,
                     order: 5,
                     order_place: service.bakim_asamasi,
                   ),
