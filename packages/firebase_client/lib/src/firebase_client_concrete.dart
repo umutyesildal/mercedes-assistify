@@ -25,12 +25,7 @@ class FirebaseClientConcrete extends FirebaseClient {
     return data!;
   }
 
-  Future setCar() async {
-    FirebaseFirestore.instance
-        .collection('Car')
-        .doc("deneme")
-        .set({'text': 'afsdfs'});
-  }
+  Future setCar() async {}
 
   Future<Map<String, dynamic>> getService(String givenId) async {
     var doc = await FirebaseFirestore.instance
@@ -58,6 +53,24 @@ class FirebaseClientConcrete extends FirebaseClient {
       "isOngoingService": true,
       "ongoingService": uniqueID,
     });
+  }
+
+  @override
+  Future<List<Map<String, dynamic>>> getAllPreviousServices(
+      List<String> givenIds) async {
+    List<Map<String, dynamic>> data = [];
+
+    for (int i = 0; i < givenIds.length; i++) {
+      var doc = await FirebaseFirestore.instance
+          .collection("Service")
+          .doc(givenIds[i])
+          .get();
+      Map<String, dynamic>? mapData = doc.data();
+
+      data.add(mapData!);
+    }
+
+    return data;
   }
 
   Future<Map<String, dynamic>> getUser(String userMail) async {

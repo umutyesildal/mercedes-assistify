@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:service_repository/template_repository.dart';
 import 'package:template/carPage/carPage.dart';
-import 'package:template/repairPage/bloc/bloc/service_bloc.dart';
 import 'package:template/router.dart';
 
 class RepairPage extends StatefulWidget {
@@ -35,8 +32,19 @@ class _LandingPageState extends State<RepairPage> {
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context)
-                      .pushNamed(RouteGenerator.bookServiceRoute);
+                  state.currentOwnership!.isOngoingService
+                      ? ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'You already have an ongoing booking.',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            backgroundColor: Colors.red,
+                            behavior: SnackBarBehavior.floating,
+                          ),
+                        )
+                      : Navigator.of(context)
+                          .pushNamed(RouteGenerator.bookServiceRoute);
                 },
                 child: Container(
                     width: size.width,

@@ -4,19 +4,22 @@ enum OngoingServiceFetchedStatus { notStarted, success, failed, inProgress }
 enum PreviousServicesFetchedStatus { notStarted, success, failed, inProgress }
 
 class ServiceState extends Equatable {
-  const ServiceState(
-      {this.currentMaintenance,
-      this.currentService,
-      this.currentOwnership,
-      this.ongoingServiceFetchedStatus = OngoingServiceFetchedStatus.notStarted,
-      this.previousServiceFetchedStatus =
-          PreviousServicesFetchedStatus.notStarted});
+  const ServiceState({
+    this.currentMaintenance,
+    this.currentService,
+    this.currentOwnership,
+    this.ongoingServiceFetchedStatus = OngoingServiceFetchedStatus.notStarted,
+    this.previousServiceFetchedStatus =
+        PreviousServicesFetchedStatus.notStarted,
+    this.allPreviousServices,
+  });
 
   final MaintenanceEntity? currentMaintenance;
   final ServiceEntity? currentService;
   final OwnershipEntity? currentOwnership;
   final OngoingServiceFetchedStatus ongoingServiceFetchedStatus;
   final PreviousServicesFetchedStatus previousServiceFetchedStatus;
+  final List<ServiceEntity>? allPreviousServices;
 
   @override
   List<Object?> get props => [
@@ -24,7 +27,8 @@ class ServiceState extends Equatable {
         currentService,
         currentOwnership,
         ongoingServiceFetchedStatus,
-        previousServiceFetchedStatus
+        previousServiceFetchedStatus,
+        allPreviousServices,
       ];
 
   ServiceState copyWith(
@@ -32,7 +36,8 @@ class ServiceState extends Equatable {
       ServiceEntity? currentService,
       OngoingServiceFetchedStatus? ongoingServiceFetchedStatus,
       PreviousServicesFetchedStatus? previousServiceFetchedStatus,
-      OwnershipEntity? currentOwnership}) {
+      OwnershipEntity? currentOwnership,
+      List<ServiceEntity>? allPreviousServices}) {
     return ServiceState(
       currentMaintenance: currentMaintenance ?? this.currentMaintenance,
       currentService: currentService ?? this.currentService,
@@ -41,6 +46,7 @@ class ServiceState extends Equatable {
           ongoingServiceFetchedStatus ?? this.ongoingServiceFetchedStatus,
       previousServiceFetchedStatus:
           previousServiceFetchedStatus ?? this.previousServiceFetchedStatus,
+      allPreviousServices: allPreviousServices ?? this.allPreviousServices,
     );
   }
 }

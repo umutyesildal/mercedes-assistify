@@ -19,6 +19,8 @@ abstract class FirebaseClient {
   Future<bool> addOwnership(UserEntity user);
   Future<Map<String, dynamic>> getOwnership(String ownershipId);
   Future<Map<String, dynamic>> getMaintenance();
+  Future<List<Map<String, dynamic>>> getAllPreviousServices(
+      List<String> givenIds);
 
   /// if something needs to be closed. ex: storage compaction and closing.
   void close();
