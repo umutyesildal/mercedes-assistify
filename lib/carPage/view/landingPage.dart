@@ -18,7 +18,7 @@ class _LandingPageState extends State<LandingPage> {
   }
 
   Future? fetchDetails() async {
-    BlocProvider.of<CarBloc>(context).add(GetCar());
+    BlocProvider.of<CarBloc>(context).add(GetOwnershipAndCar());
   }
 
   @override
@@ -26,7 +26,7 @@ class _LandingPageState extends State<LandingPage> {
     Size size = MediaQuery.of(context).size;
     return BlocBuilder<CarBloc, CarState>(
       builder: (context, state) {
-        return state.carStatus == CarFetchedStatus.success
+        return state.OwnershipStatus == OwnershipFetchedStatus.success
             ? Scaffold(
                 appBar: AppBar(
                   title: Text(
@@ -74,6 +74,8 @@ class _LandingPageState extends State<LandingPage> {
                                     Tab(
                                       text: AppLocalizations.of(context)!
                                           .technical,
+                                      // context çalışmadı.
+                                   
                                     ),
                                   ],
                                 ),
@@ -207,6 +209,7 @@ class TechnicalTab extends StatelessWidget {
               CustomRowText(
                 givenKey: AppLocalizations.of(context)!.fuel,
                 givenValue: state.currentCar!.yakit,
+
               ),
               CustomRowText(
                 givenKey: AppLocalizations.of(context)!.model,

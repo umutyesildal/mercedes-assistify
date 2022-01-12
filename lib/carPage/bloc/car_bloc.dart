@@ -5,35 +5,49 @@ import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 import 'package:local_storage/local_storage.dart';
+import 'package:ownership_repository/ownership_repository.dart';
+import 'package:user_repository/user_repository.dart';
 
 part 'car_event.dart';
 part 'car_state.dart';
 
 class CarBloc extends Bloc<CarEvent, CarState> {
-  CarBloc({required this.localStorageRepository, required this.carRepository})
-      : super(CarState()) {
+  CarBloc({
+    required this.localStorageRepository,
+    required this.carRepository,
+    required this.ownershipRepository,
+    required this.userRepository,
+  }) : super(CarState()) {
     on<CarEvent>((event, emit) async {
-      if (event is GetCar) {
-        await _handleGetCar(event, emit);
+      if (event is GetOwnershipAndCar) {
+        await _handleGetOwnershipAndCar(event, emit);
       }
     });
   }
   final LocalStorage localStorageRepository;
   final CarRepository carRepository;
+  final OwnershipRepository ownershipRepository;
+  final UserRepository userRepository;
 
-  Future _handleGetCar(GetCar event, Emitter<CarState> emit) async {
-    emit(state.copyWith(carStatus: CarFetchedStatus.inProgress));
-
+  Future _handleGetOwnershipAndCar(
+      GetOwnershipAndCar event, Emitter<CarState> emit) async {
+    emit(state.copyWith(OwnershipStatus: OwnershipFetchedStatus.inProgress));
     try {
-      CarEntity? car = await carRepository.getCar();
-      print('Car succesfully fetched.');
-      emit(
-          state.copyWith(currentCar: car, carStatus: CarFetchedStatus.success));
+      UserEntity? currentUser = await localStorageRepository.getUser();
+      OwnershipEntity currentOwnership =
+          await ownershipRepository.getOwnership(currentUser!.ownership[0]);
+      CarEntity? car = await carRepository.getCar(currentOwnership.car);
+      emit(state.copyWith(
+        currentOwnership: currentOwnership,
+        OwnershipStatus: OwnershipFetchedStatus.success,
+        currentCar: car,
+      ));
     } catch (e) {
       emit(state.copyWith(
-          carStatus: CarFetchedStatus.failed, currentCar: CarEntity.empty()));
+          OwnershipStatus: OwnershipFetchedStatus.failed,
+          currentCar: CarEntity.empty()));
     }
 
-    print(state.currentCar!.beygir);
+    print(state.currentCar!.engine);
   }
 }

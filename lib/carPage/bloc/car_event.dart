@@ -8,8 +8,8 @@ abstract class CarEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class GetCar extends CarEvent {
-  GetCar();
+class GetOwnershipAndCar extends CarEvent {
+  GetOwnershipAndCar();
 
   @override
   List<Object> get props => [];

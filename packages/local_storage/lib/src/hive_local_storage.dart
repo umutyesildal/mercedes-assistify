@@ -1,15 +1,17 @@
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:user_repository/user_repository.dart';
 
 import 'local_storage.dart';
 
 class SFLocalStorage extends LocalStorage {
-  static Box? _hiveBoxMain;
+  static Box? _hiveBoxUser;
+  static Box? _hiveBoxOwnership;
   static Box? _hiveBoxTheme;
   static Box? _hiveBoxLocale;
   static Box? _hiveBoxAuth;
-
-  static String _mainBoxName = 'favoriteId';
+  static String _userBoxOwnership = 'ownership';
+  static String _userBoxName = 'user';
   static String _themeBoxName = 'theme';
   static String _localeBoxName = 'locale';
   static String _authBoxName = 'auth';
@@ -18,12 +20,12 @@ class SFLocalStorage extends LocalStorage {
   @override
   Future<SFLocalStorage> init() async {
     await Hive.initFlutter();
-    _hiveBoxMain ??= await Hive.openBox<String>(_mainBoxName);
+    Hive.registerAdapter<UserEntity>(UserEntityAdapter());
+    _hiveBoxOwnership ??= await Hive.openBox<String>(_userBoxOwnership);
+    _hiveBoxUser ??= await Hive.openBox<UserEntity>(_userBoxName);
     _hiveBoxTheme ??= await Hive.openBox<bool>(_themeBoxName);
     _hiveBoxLocale ??= await Hive.openBox<String>(_localeBoxName);
     _hiveBoxAuth ??= await Hive.openBox<bool>(_authBoxName);
-
-    print('İnside');
 
     if (_hiveBoxTheme!.isEmpty) {
       _hiveBoxTheme!.put(0, false);
@@ -72,6 +74,24 @@ class SFLocalStorage extends LocalStorage {
     }
   }
 
+  Future changeOwnership({required String givenOwnership}) async {
+    try {
+      print('Inside Database Change Locale');
+      await _hiveBoxOwnership!.put(0, givenOwnership);
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Future<String?> getOwnership() async {
+    try {
+      String ownership = await _hiveBoxOwnership!.getAt(0);
+      return ownership;
+    } catch (e) {
+      throw e;
+    }
+  }
+
   Future changeAuth({required bool auth}) async {
     try {
       print('Inside Database Change Auth');
@@ -90,9 +110,28 @@ class SFLocalStorage extends LocalStorage {
     }
   }
 
-  @override
-  void close() {
-    _hiveBoxMain!.compact();
-    _hiveBoxMain!.close();
+  Future changeUser({required UserEntity user}) async {
+    try {
+      await _hiveBoxUser!.put(0, user);
+    } catch (e) {
+      throw e;
+    }
   }
+
+  Future<UserEntity?> getUser() async {
+    bool? isUser = await getAuth();
+
+    try {
+      if (isUser!) {
+        return await _hiveBoxUser!.getAt(0);
+      } else {
+        return UserEntity.empty();
+      }
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  @override
+  void close() {}
 }

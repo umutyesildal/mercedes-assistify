@@ -599,19 +599,12 @@ class _BookServiceState extends State<BookService> {
                         '/' +
                         _selectedDate!.year.toString());
 
-                    String gelis_tarihi = tarih + ' ' + getHour();
-                    ServiceEntity service = ServiceEntity(
-                        service_id: 'fdsafdsfds',
-                        gelis_tarihi: gelis_tarihi,
-                        teslim_tarihi: '15/12/2021',
-                        ownership: 'a3802021',
-                        bakim_asamasi: 1,
-                        maintenance: MaintenanceEntity(
-                            extraServices: getExtraServices(),
-                            serviceType: getService()));
+                    String gelisTarihi = tarih + ' ' + getHour();
 
-                    BlocProvider.of<ServiceBloc>(context)
-                        .add((SendService(service: service)));
+                    BlocProvider.of<ServiceBloc>(context).add((SendService(
+                        arriveDate: gelisTarihi,
+                        phase: 1,
+                        extraServices: getExtraServices())));
 
                     showDialog(
                         barrierDismissible: false,

@@ -6,10 +6,10 @@ class CarConcreteRepository extends CarRepository {
   Future init() async {}
 
   @override
-  Future<CarEntity> getCar() async {
+  Future<CarEntity> getCar(String carId) async {
     CarEntity currentCar;
     try {
-      final Map<String, dynamic> data = await fc.getCar();
+      final Map<String, dynamic> data = await fc.getCar(carId);
       currentCar = CarEntity.fromMap(data);
       return currentCar;
     } catch (e) {

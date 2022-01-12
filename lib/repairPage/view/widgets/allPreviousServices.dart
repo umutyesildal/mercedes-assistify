@@ -1,56 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:template/repairPage/bloc/bloc/service_bloc.dart';
 import 'package:template/router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class AllPreviousServices extends StatelessWidget {
+class AllPreviousServices extends StatefulWidget {
   const AllPreviousServices({Key? key}) : super(key: key);
+
+  @override
+  State<AllPreviousServices> createState() => _AllPreviousServicesState();
+}
+
+class _AllPreviousServicesState extends State<AllPreviousServices> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchDetails();
+  }
+
+  Future? fetchDetails() async {
+    BlocProvider.of<ServiceBloc>(context).add(GetAllPreviousServices());
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
+    return BlocBuilder<ServiceBloc, ServiceState>(
+      builder: (context, state) {
+        return state.previousServiceFetchedStatus ==
+                PreviousServicesFetchedStatus.success
+            ? Scaffold(
+                appBar: AppBar(
+                  title: Text(
           AppLocalizations.of(context)!.allServices,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-      body: ListView(
-        children: [
-          ServiceRow(
-            size: size,
-            id: 'ID: i74329942',
-            date: 'Date: 27/11/2021 - 13/12/2021',
-          ),
-          ServiceRow(
-            size: size,
-            id: 'ID: i74329942',
-            date: 'Date: 27/11/2021 - 13/12/2021',
-          ),
-          ServiceRow(
-            size: size,
-            id: 'ID: i74329942',
-            date: 'Date: 27/11/2021 - 13/12/2021',
-          ),
-          ServiceRow(
-            size: size,
-            id: 'ID: i74329942',
-            date: 'Date: 27/11/2021 - 13/12/2021',
-          ),
-          ServiceRow(
-            size: size,
-            id: 'ID: i74329942',
-            date: 'Date: 27/11/2021 - 13/12/2021',
-          ),
-          ServiceRow(
-            size: size,
-            id: 'ID: i74329942',
-            date: 'Date: 27/11/2021 - 13/12/2021',
-          ),
-        ],
-      ),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                body: ListView.builder(
+                  itemCount: state.allPreviousServices!.length,
+                  itemBuilder: (context, index) {
+                    return ServiceRow(
+                      size: size,
+                      id: 'ID: ' +
+                          state.currentOwnership!.previousServices[index],
+                      date: state.allPreviousServices![index].arriveDate,
+                    );
+                  },
+                ))
+            : Scaffold(
+                appBar: AppBar(
+                  title: Text(
+                    'All Services',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                body: CircularProgressIndicator(),
+              );
+      },
     );
   }
 }
@@ -66,6 +77,7 @@ class ServiceRow extends StatelessWidget {
   final Size size;
   final String id;
   final String date;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

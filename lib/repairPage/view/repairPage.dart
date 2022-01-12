@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:template/carPage/carPage.dart';
 import 'package:template/router.dart';
 
@@ -18,7 +17,6 @@ class _LandingPageState extends State<RepairPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
     return BlocBuilder<CarBloc, CarState>(
       builder: (context, state) {
         return Scaffold(
@@ -34,8 +32,19 @@ class _LandingPageState extends State<RepairPage> {
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context)
-                      .pushNamed(RouteGenerator.bookServiceRoute);
+                  state.currentOwnership!.isOngoingService
+                      ? ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'You already have an ongoing booking.',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            backgroundColor: Colors.red,
+                            behavior: SnackBarBehavior.floating,
+                          ),
+                        )
+                      : Navigator.of(context)
+                          .pushNamed(RouteGenerator.bookServiceRoute);
                 },
                 child: Container(
                     width: size.width,

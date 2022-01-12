@@ -22,6 +22,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async* {
     if (event is LoginEmailChanged) {
       yield _mapLoginEmailChangedToState(event, state);
+    } else if (event is OwnershipChanged) {
+      yield _mapOwnershipChangedToState(event, state);
     } else if (event is LoginPasswordChanged) {
       yield _mapLoginPasswordChangedToState(event, state);
     } else if (event is SignUpNameChanged) {
@@ -38,6 +40,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       yield _mapCheckReadyToLoginToState(event, state);
     } else if (event is LoginSubmitted) {
       yield* _mapLoginSubmittedToState(event, state);
+    } else if (event is OwnershipSubmitted) {
+      yield* _mapOwnershipSubmittedToState(event, state);
+    } else if (event is OwnershipAlreadyExist) {
+      yield* _mapOwnershipAlreadyExistToState(event, state);
     } else if (event is CheckSignUpReady) {
       yield _mapCheckReadyToSignUpToState(event, state);
     } else if (event is SignUpSubmitted) {
@@ -51,6 +57,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     return state.copywith(
       emailLogin: input,
       status: Formz.validate([input, state.passwordLogin]),
+    );
+  }
+
+  AuthState _mapOwnershipChangedToState(
+      OwnershipChanged event, AuthState state) {
+    print(state.ownershipAdd);
+    return state.copywith(
+      ownershipAdd: event.input,
     );
   }
 
@@ -151,114 +165,91 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Stream<AuthState> _mapLoginSubmittedToState(
       LoginSubmitted event, AuthState state) async* {
-    yield state.copywith(authStatus: Status.submissionProgress);
+    yield state.copywith(authLoginStatus: loginStatus.submissionProgress);
     print('bloc login');
-
-    /*  try {
+    try {
       UserEntity user = UserEntity(
           name: '',
           mail: state.emailLogin.value,
-          ownership: '',
+          ownership: [''],
           password: state.passwordLogin.value);
-      bool checkUser = await userRepository.checkUser(user);
+      bool checkUser = await userRepository.checkAuth(user);
       if (checkUser) {
-        yield state.copywith(authStatus: Status.submissionSuccess);
+        bool checkOwnership = await userRepository.checkOwnership(user);
+        UserEntity currentUser =
+            await userRepository.getUser(state.emailLogin.value);
+        await localStorageRepository.changeUser(user: currentUser);
+
+        yield state.copywith(
+          currentUser: currentUser,
+          authLoginStatus: loginStatus.submissionSuccess,
+          isOwnership: checkOwnership,
+        );
       } else {
         yield state.copywith(
-            authStatus: Status.submissionFailure,
+            authLoginStatus: loginStatus.submissionFailure,
             errorReason: 'Email or Password wrong.');
       }
     } catch (e) {
       print(e);
-    } */
-
-    if (state.passwordLogin.value == 'deneme' &&
-        state.emailLogin.value == 'assistify@assistify.com') {
-      yield state.copywith(authStatus: Status.submissionSuccess);
-    } else {
-      yield state.copywith(
-          authStatus: Status.submissionFailure,
-          errorReason: 'Email or Password wrong.');
     }
 
-    yield state.copywith(authStatus: Status.submissionNotStarted);
+    yield state.copywith(authLoginStatus: loginStatus.submissionNotStarted);
+  }
+
+  Stream<AuthState> _mapOwnershipSubmittedToState(
+      OwnershipSubmitted event, AuthState state) async* {
+    yield state.copywith(authLoginStatus: loginStatus.submissionProgress);
+    print('bloc ownership');
+    try {
+      UserEntity newUser = UserEntity(
+          name: '',
+          mail: state.emailLogin.value,
+          ownership: [state.ownershipAdd!],
+          password: state.passwordLogin.value);
+      print('here1');
+      bool addOwnership = await userRepository.addOwnership(newUser);
+      print('here6');
+      if (!addOwnership) {
+        UserEntity currentUser =
+            await userRepository.getUser(state.emailLogin.value);
+        await localStorageRepository.changeUser(user: currentUser);
+        await localStorageRepository.changeOwnership(
+            givenOwnership: currentUser.ownership[0]);
+        yield state.copywith(ownershipStatus: OwnershipStatus.success);
+      }
+    } catch (e) {
+      print(e);
+      yield state.copywith(ownershipStatus: OwnershipStatus.fail);
+    }
+
+    yield state.copywith(authLoginStatus: loginStatus.submissionNotStarted);
+  }
+
+  Stream<AuthState> _mapOwnershipAlreadyExistToState(
+      OwnershipAlreadyExist event, AuthState state) async* {
+    print('bloc ownership already exists');
+    UserEntity? currentUser = await localStorageRepository.getUser();
+    await localStorageRepository.changeOwnership(
+        givenOwnership: currentUser!.ownership[0]);
   }
 
   Stream<AuthState> _mapSignUpSubmittedToState(
       SignUpSubmitted event, AuthState state) async* {
-    yield state.copywith(authStatus: Status.submissionProgress);
+    yield state.copywith(authSignupStatus: signUpStatus.submissionProgress);
     print('bloc sign up');
-
     try {
       UserEntity newUser = UserEntity(
           name: state.fullname!,
           mail: state.emailSignup.value,
-          ownership: '',
+          ownership: [''],
           password: state.passwordSignup.value);
       await userRepository.setUser(newUser);
-      yield state.copywith(authStatus: Status.submissionSuccess);
+      yield state.copywith(authSignupStatus: signUpStatus.submissionSuccess);
     } catch (e) {
       print(e);
     }
 
-    yield state.copywith(authStatus: Status.submissionNotStarted);
+    yield state.copywith(authSignupStatus: signUpStatus.submissionNotStarted);
   }
 }
-
-
-
-/*
-
-  Stream<AuthState> _mapLoginSubmittedToState(
-      LoginSubmitted event, AuthState state) async* {
-    yield state.copywith(authStatus: Status.submissionProgress);
-    try {
-      print('bloc sign in');
-      await authRepository.signInWithCredentials(
-        email: state.emailLogin.value,
-        password: state.password.value,
-      );
-      localStorageRepository.changeAuth(auth: true);
-
-      yield state.copywith(authStatus: Status.submissionSuccess);
-    } on EmailUsernameNotExist {
-      yield state.copywith(
-          authStatus: Status.submissionFailure,
-          errorReason: 'Email does not exist.');
-    } on WrongPassword {
-      yield state.copywith(
-          authStatus: Status.submissionFailure, errorReason: 'Wrong password');
-    } on Exception {
-      yield state.copywith(
-          authStatus: Status.submissionFailure,
-          errorReason: 'Something bad happened');
-    }
-    yield state.copywith(authStatus: Status.submissionNotStarted);
-  }
-
-  Stream<AuthState> _mapForgotPasswordSubmittedToState(
-      ForgotPasswordSubmitted event, AuthState state) async* {
-    yield state.copywith(authStatus: Status.submissionProgress);
-    try {
-      await authRepository.forgotPasswordMail(
-        email: state.emailForgotPassword.value,
-      );
-      yield state.copywith(
-          authStatus: Status.forgotPasswordSubmissionSuccess,
-          errorReason: 'Please check your mail.');
-    } on EmailUsernameNotExist {
-      yield state.copywith(
-          authStatus: Status.submissionFailure,
-          errorReason: 'Email does not exist.');
-    } on EmailAlreadySent {
-      yield state.copywith(
-          authStatus: Status.submissionFailure,
-          errorReason: 'Email already sent.');
-    } on Exception {
-      yield state.copywith(
-          authStatus: Status.submissionFailure,
-          errorReason: 'Something bad happened');
-    }
-    yield state.copywith(authStatus: Status.submissionNotStarted);
-  }
-*/

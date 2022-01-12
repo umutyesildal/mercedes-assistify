@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:local_storage/local_storage.dart';
 import 'package:firebase_client/firebase_client.dart';
 import 'package:car_repository/template_repository.dart';
+import 'package:ownership_repository/ownership_repository.dart';
 import 'package:service_repository/template_repository.dart';
 import 'package:maintenance_repository/maintenance_repository.dart';
 import 'package:user_repository/user_repository.dart';
@@ -51,5 +52,13 @@ void setup() {
     await userRepository.init();
     await Future.delayed(Duration(seconds: 2));
     return userRepository;
+  });
+
+  sl.registerSingletonAsync<OwnershipRepository>(() async {
+    final OwnershipConcreteRepository ownershipRepository =
+        OwnershipConcreteRepository();
+    await ownershipRepository.init();
+    await Future.delayed(Duration(seconds: 2));
+    return ownershipRepository;
   });
 }

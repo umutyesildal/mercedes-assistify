@@ -1,75 +1,75 @@
 import 'dart:convert';
 
 class CarEntity {
-  final String beygir;
-  final String depo;
-  final String max_hiz;
-  final String motor;
-  final String silindir;
-  final String yakit;
+  final String horsepower;
+  final String tank;
+  final String maxSpeed;
+  final String engine;
+  final String cylinder;
+  final String fuel;
   final String model;
   CarEntity({
-    required this.beygir,
-    required this.depo,
-    required this.max_hiz,
-    required this.motor,
-    required this.silindir,
-    required this.yakit,
+    required this.horsepower,
+    required this.tank,
+    required this.maxSpeed,
+    required this.engine,
+    required this.cylinder,
+    required this.fuel,
     required this.model,
   });
 
   CarEntity copyWith({
-    String? beygir,
-    String? depo,
-    String? max_hiz,
-    String? motor,
-    String? silindir,
-    String? yakit,
+    String? horsepower,
+    String? tank,
+    String? maxSpeed,
+    String? engine,
+    String? cylinder,
+    String? fuel,
     String? model,
   }) {
     return CarEntity(
-      beygir: beygir ?? this.beygir,
-      depo: depo ?? this.depo,
-      max_hiz: max_hiz ?? this.max_hiz,
-      motor: motor ?? this.motor,
-      silindir: silindir ?? this.silindir,
-      yakit: yakit ?? this.yakit,
+      horsepower: horsepower ?? this.horsepower,
+      tank: tank ?? this.tank,
+      maxSpeed: maxSpeed ?? this.maxSpeed,
+      engine: engine ?? this.engine,
+      cylinder: cylinder ?? this.cylinder,
+      fuel: fuel ?? this.fuel,
       model: model ?? this.model,
     );
   }
 
   CarEntity.empty()
       : this(
-          beygir: "",
-          depo: "",
-          max_hiz: "",
-          motor: "",
-          silindir: "",
-          yakit: "",
+          horsepower: "",
+          tank: "",
+          maxSpeed: "",
+          engine: "",
+          cylinder: "",
+          fuel: "",
           model: "",
         );
 
   Map<String, dynamic> toMap() {
     return {
-      'beygir': beygir,
-      'depo': depo,
-      'max_hiz': max_hiz,
-      'motor': motor,
-      'silindir': silindir,
-      'yakit': yakit,
+      'horsepower': horsepower,
+      'tank': tank,
+      'maxSpeed': maxSpeed,
+      'engine': engine,
+      'cylinder': cylinder,
+      'fuel': fuel,
       'model': model,
     };
   }
 
   factory CarEntity.fromMap(Map<String, dynamic> map) {
     return CarEntity(
-      beygir: map['beygir'],
-      depo: map['depo'],
-      max_hiz: map['max_hiz'],
-      motor: map['motor'],
-      silindir: map['silindir'],
-      yakit: map['yakit'],
-      model: map['model'],
+      horsepower: map['horsepower'] ?? '',
+      tank: map['tank'] ?? '',
+      maxSpeed: map['maxSpeed'] ?? '',
+      engine: map['engine'] ?? '',
+      cylinder: map['cylinder'] ?? '',
+      fuel: map['fuel'] ?? '',
+      model: map['model'] ?? '',
     );
   }
 
@@ -80,7 +80,7 @@ class CarEntity {
 
   @override
   String toString() {
-    return 'CarEntity(beygir: $beygir, depo: $depo, max_hiz: $max_hiz, motor: $motor, silindir: $silindir, yakit: $yakit, model: $model)';
+    return 'CarEntity(horsepower: $horsepower, tank: $tank, maxSpeed: $maxSpeed, engine: $engine, cylinder: $cylinder, fuel: $fuel, model: $model)';
   }
 
   @override
@@ -88,23 +88,23 @@ class CarEntity {
     if (identical(this, other)) return true;
 
     return other is CarEntity &&
-        other.beygir == beygir &&
-        other.depo == depo &&
-        other.max_hiz == max_hiz &&
-        other.motor == motor &&
-        other.silindir == silindir &&
-        other.yakit == yakit &&
+        other.horsepower == horsepower &&
+        other.tank == tank &&
+        other.maxSpeed == maxSpeed &&
+        other.engine == engine &&
+        other.cylinder == cylinder &&
+        other.fuel == fuel &&
         other.model == model;
   }
 
   @override
   int get hashCode {
-    return beygir.hashCode ^
-        depo.hashCode ^
-        max_hiz.hashCode ^
-        motor.hashCode ^
-        silindir.hashCode ^
-        yakit.hashCode ^
+    return horsepower.hashCode ^
+        tank.hashCode ^
+        maxSpeed.hashCode ^
+        engine.hashCode ^
+        cylinder.hashCode ^
+        fuel.hashCode ^
         model.hashCode;
   }
 }

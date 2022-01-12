@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:maintenance_repository/maintenance_repository.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:service_repository/template_repository.dart';
+import 'package:template/repairPage/bloc/bloc/service_bloc.dart';
 import 'package:timeline_tile/timeline_tile.dart';
-import 'package:icons_helper/icons_helper.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OngoingService extends StatefulWidget {
   const OngoingService({Key? key}) : super(key: key);
@@ -13,142 +12,162 @@ class OngoingService extends StatefulWidget {
 }
 
 class _OngoingServiceState extends State<OngoingService> {
-  ServiceEntity service = ServiceEntity(
-      service_id: 'ij543kl42',
-      gelis_tarihi: '15/12/2021',
-      teslim_tarihi: '21/12/2021',
-      ownership: 'a3802021',
-      bakim_asamasi: 3,
-      maintenance: MaintenanceEntity(
-          extraServices: ['brakes', 'tires'], serviceType: 'Service A'));
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchDetails();
+  }
+
+  Future? fetchDetails() async {
+    BlocProvider.of<ServiceBloc>(context).add(GetOngoingService());
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          AppLocalizations.of(context)!.onGoingService,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              width: size.width,
-              height: size.height * 0.14,
-              child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    return BlocBuilder<ServiceBloc, ServiceState>(
+      builder: (context, state) {
+        return state.ongoingServiceFetchedStatus ==
+                OngoingServiceFetchedStatus.success
+            ? Scaffold(
+                appBar: AppBar(
+                  title: Text(
+                    'Ongoing Service',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                body: SingleChildScrollView(
+                  child: Column(
                     children: [
-                      Column(
-                        children: [
-                          SizedBox(
-                            height: 10,
+                      Container(
+                        width: size.width,
+                        height: size.height * 0.14,
+                        child: Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      'ESTIMATED TIME',
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      'TBD',
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 12,
+                                ),
+                                Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      'SERVICE ID',
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      state.currentOwnership!.ongoingService,
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                          Text(
-                            AppLocalizations.of(context)!.estimatedTime,
-                            style: TextStyle(
-                                fontSize: 17, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            service.teslim_tarihi,
-                            style: TextStyle(fontSize: 14),
-                          ),
-                        ],
+                        ),
                       ),
-                      SizedBox(
-                        height: 12,
-                      ),
-                      Column(
-                        children: [
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            AppLocalizations.of(context)!.serviceID,
-                            style: TextStyle(
-                                fontSize: 17, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            service.service_id,
-                            style: TextStyle(fontSize: 14),
-                          ),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: ListView(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          children: [
+                            CustomSignalTile(
+                              isLast: false,
+                              isFirst: true,
+                              title: 'Motor Bakımı',
+                              description:
+                                  'Motor yağı değişimi ve filtre değişimi. İlerde oluşabilecek hasar için kontrol.',
+                              order: 1,
+                              order_place: state.currentService!.phase,
+                            ),
+                            CustomSignalTile(
+                              isLast: false,
+                              isFirst: false,
+                              title: 'Yakıt Filtresi',
+                              description:
+                                  'Yakıt filtresinin bakımı ve gerekiyorsa yenilenmesi.',
+                              order: 2,
+                              order_place: state.currentService!.phase,
+                            ),
+                            CustomSignalTile(
+                              isLast: false,
+                              isFirst: false,
+                              title: 'Ekstra Servislerin Tamamlanması',
+                              description:
+                                  'Ekstra istenen servisler için yapılan bakımların tamamlanıp düzenlenmesi.',
+                              order: 3,
+                              order_place: state.currentService!.phase,
+                            ),
+                            CustomSignalTile(
+                              isLast: false,
+                              isFirst: false,
+                              title: 'Bakımların Testleri',
+                              description:
+                                  'Yapılan bakımların testlerinin yapılıp doğrulunun kontrol edilmesi.',
+                              order: 4,
+                              order_place: state.currentService!.phase,
+                            ),
+                            CustomSignalTile(
+                              isLast: true,
+                              isFirst: false,
+                              title: 'Servis Tamamlanması',
+                              description: 'Servis tamamlandı.',
+                              order: 5,
+                              order_place: state.currentService!.phase,
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: ListView(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                children: [
-                  CustomSignalTile(
-                    isLast: false,
-                    isFirst: true,
-                    title: AppLocalizations.of(context)!.engineMaintenance,
-                    description: AppLocalizations.of(context)!
-                        .engineOilChangeFilterChange,
-                    order: 1,
-                    order_place: service.bakim_asamasi,
+              )
+            : Scaffold(
+                appBar: AppBar(
+                  title: Text(
+                    'Ongoing Service',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                  CustomSignalTile(
-                    isLast: false,
-                    isFirst: false,
-                    title: AppLocalizations.of(context)!.fuelFilter,
-                    description: AppLocalizations.of(context)!
-                        .maintenanceAndIfNecessaryReplacementTheFuelFilter,
-                    order: 2,
-                    order_place: service.bakim_asamasi,
-                  ),
-                  CustomSignalTile(
-                    isLast: false,
-                    isFirst: false,
-                    title:
-                        AppLocalizations.of(context)!.completionOfExtraServices,
-                    description: AppLocalizations.of(context)!
-                        .completingAndArrangingMaintenanceForExtraRequestedServices,
-                    order: 3,
-                    order_place: service.bakim_asamasi,
-                  ),
-                  CustomSignalTile(
-                    isLast: false,
-                    isFirst: false,
-                    title: AppLocalizations.of(context)!.testsOfCare,
-                    description: AppLocalizations.of(context)!
-                        .makingTheTestsOfTheMaintenanceDoneAndCheckingTheAccuracy,
-                    order: 4,
-                    order_place: service.bakim_asamasi,
-                  ),
-                  CustomSignalTile(
-                    isLast: true,
-                    isFirst: false,
-                    title: AppLocalizations.of(context)!.serviceCompletion,
-                    description: AppLocalizations.of(context)!.serviceCompleted,
-                    order: 5,
-                    order_place: service.bakim_asamasi,
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+                ),
+              );
+      },
     );
   }
 }
