@@ -40,6 +40,7 @@ dependencies:
   icons_helper: ^1.0.4
   url_launcher: ^6.0.9
   change_app_package_name: ^1.0.0
+  syncfusion_flutter_charts: ^19.4.41
 
   service_repository:
     path: packages/service_repository

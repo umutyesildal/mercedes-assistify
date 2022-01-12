@@ -4,6 +4,7 @@ import 'package:template/carPage/carPage.dart';
 import 'package:template/mapPage/mapPage.dart';
 import 'package:template/repairPage/repairPage.dart';
 import 'package:template/settingsPage/settingsPage.dart';
+import 'package:template/statisticsPage/view/view.dart';
 
 class MainNavigator extends StatefulWidget {
   @override
@@ -16,6 +17,7 @@ class _MainNavigatorState extends State<MainNavigator> {
   static List<Widget> _widgetOptions = <Widget>[
     LandingPage(),
     RepairPage(),
+    StatisticsPage(),
     MapPage(),
     SettingsMain(),
   ];
@@ -50,6 +52,10 @@ class _MainNavigatorState extends State<MainNavigator> {
           ),
           NavigationBarButton(
             icon: Icons.car_repair,
+            backgroundColor: Colors.transparent,
+          ),
+          NavigationBarButton(
+            icon: Icons.analytics,
             backgroundColor: Colors.transparent,
           ),
           NavigationBarButton(
