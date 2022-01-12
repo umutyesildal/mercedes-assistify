@@ -128,13 +128,13 @@
 "tires":"Tires",
 "cleaning":"Cleaning",
 "battery":"Battery",
-"headlights'":"Headlights",
+"headlights":"Headlights",
 "dateTime":"Date & Time",
 "pressHereToSelectADay":"Press here to select a day",
 "noDateWasChosen":"No date was chosen!",
 "availableTimes":"Available Times",
 "serviceAppointmentCreated":"Service Appointment \n Created",
-"continue":"Continue",
+"continueText":"Continue",
 
 "@_ONGOING_SERVICE_PAGE": {
 },

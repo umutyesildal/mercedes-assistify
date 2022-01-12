@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:maintenance_repository/maintenance_repository.dart';
 import 'package:service_repository/template_repository.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:template/repairPage/bloc/bloc/service_bloc.dart';
 import 'package:template/router.dart';
@@ -134,7 +135,7 @@ class _BookServiceState extends State<BookService> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            AppLocalizations.of(context)!.seviceType),
+                            AppLocalizations.of(context)!.serviceType,
                             style: TextStyle(
                                 fontSize: 17, fontWeight: FontWeight.bold),
                           ),
@@ -159,7 +160,8 @@ class _BookServiceState extends State<BookService> {
                                     serviceB = false;
                                   });
                                 },
-                                child: Text(AppLocalizations.of(context)!.serviceA),
+                                child: Text(
+                                    AppLocalizations.of(context)!.serviceA),
                               ),
                               ElevatedButton(
                                 style: ButtonStyle(
@@ -176,7 +178,8 @@ class _BookServiceState extends State<BookService> {
                                     serviceB = true;
                                   });
                                 },
-                                child: Text(AppLocalizations.of(context)!.serviceB),
+                                child: Text(
+                                    AppLocalizations.of(context)!.serviceB),
                               ),
                               SizedBox(),
                               SizedBox(),
@@ -224,7 +227,10 @@ class _BookServiceState extends State<BookService> {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(16.0),
-                                    child: Center(child: Text(AppLocalizations.of(context)!.brakes)),
+                                    child: Center(
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .brakes)),
                                   ),
                                 ),
                               ),
@@ -248,7 +254,9 @@ class _BookServiceState extends State<BookService> {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(16.0),
-                                    child: Center(child: Text(AppLocalizations.of(context)!.oil)),
+                                    child: Center(
+                                        child: Text(
+                                            AppLocalizations.of(context)!.oil)),
                                   ),
                                 ),
                               ),
@@ -271,7 +279,10 @@ class _BookServiceState extends State<BookService> {
                                       borderRadius: BorderRadius.circular(6)),
                                   child: Padding(
                                     padding: const EdgeInsets.all(16.0),
-                                    child: Center(child: Text(AppLocalizations.of(context)!.tires)),
+                                    child: Center(
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .tires)),
                                   ),
                                 ),
                               ),
@@ -300,7 +311,10 @@ class _BookServiceState extends State<BookService> {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(16.0),
-                                    child: Center(child: Text(AppLocalizations.of(context)!.cleaning)),
+                                    child: Center(
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .cleaning)),
                                   ),
                                 ),
                               ),
@@ -324,7 +338,10 @@ class _BookServiceState extends State<BookService> {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(16.0),
-                                    child: Center(child: Text(AppLocalizations.of(context)!.battery)),
+                                    child: Center(
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .battery)),
                                   ),
                                 ),
                               ),
@@ -347,7 +364,10 @@ class _BookServiceState extends State<BookService> {
                                       borderRadius: BorderRadius.circular(6)),
                                   child: Padding(
                                     padding: const EdgeInsets.all(16.0),
-                                    child: Center(child: Text(AppLocalizations.of(context)!.headlights)),
+                                    child: Center(
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .headlights)),
                                   ),
                                 ),
                               ),
@@ -378,7 +398,8 @@ class _BookServiceState extends State<BookService> {
                           ),
                           _selectedDate == null
                               ? ElevatedButton(
-                                  child: Text(AppLocalizations.of(context)!.pressHereToSelectADay),
+                                  child: Text(AppLocalizations.of(context)!
+                                      .pressHereToSelectADay),
                                   onPressed: _pickDateDialog)
                               : SizedBox(),
                           _selectedDate !=
@@ -386,7 +407,8 @@ class _BookServiceState extends State<BookService> {
                               ? Text(
                                   _selectedDate ==
                                           null //ternary expression to check if date is null
-                                      ? AppLocalizations.of(context)!.noDateWasChosen
+                                      ? AppLocalizations.of(context)!
+                                          .noDateWasChosen
                                       : '${DateFormat.yMMMd().format(_selectedDate!)}',
                                   style: TextStyle(
                                       fontSize: 17,
@@ -623,7 +645,9 @@ class _BookServiceState extends State<BookService> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceEvenly,
                                         children: [
-                                          Text(AppLocalizations.of(context)!.serviceAppointmentCreated,
+                                          Text(
+                                              AppLocalizations.of(context)!
+                                                  .serviceAppointmentCreated,
                                               style: TextStyle(
                                                   color: Colors.green)),
                                         ],
@@ -642,7 +666,8 @@ class _BookServiceState extends State<BookService> {
                                           context, RouteGenerator.landingRoute);
                                     },
                                     child: Text(
-                                      AppLocalizations.of(context)!.continue, // HATA OLABİLİR
+                                      AppLocalizations.of(context)!
+                                          .continueText, // HATA OLABİLİR
                                       style: TextStyle(fontSize: 18),
                                     )),
                               ),
@@ -674,7 +699,8 @@ class _BookServiceState extends State<BookService> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          AppLocalizations.of(context)!.bookAService,
+                                          AppLocalizations.of(context)!
+                                              .bookAService,
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Theme.of(context)
@@ -687,7 +713,8 @@ class _BookServiceState extends State<BookService> {
                                           height: 5,
                                         ),
                                         Text(
-                                          AppLocalizations.of(context)!.bookAServiceForYourCar,
+                                          AppLocalizations.of(context)!
+                                              .bookAServiceForYourCar,
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Theme.of(context)

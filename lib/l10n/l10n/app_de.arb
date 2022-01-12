@@ -119,7 +119,7 @@
     "noDateWasChosen":"Es wurde kein Datum gewählt!",
     "availableTimes":"Verfügbare Zeiten",
     "serviceAppointmentCreated":"Servicetermin \n Erstellt",
-    "continue":"Weiter",
+    "continueText":"Weiter",
     
     "@_ONGOING_SERVICE_PAGE": {
     },

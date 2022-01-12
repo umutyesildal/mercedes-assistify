@@ -75,7 +75,6 @@ class _LandingPageState extends State<LandingPage> {
                                       text: AppLocalizations.of(context)!
                                           .technical,
                                       // context çalışmadı.
-                                   
                                     ),
                                   ],
                                 ),
@@ -188,29 +187,27 @@ class TechnicalTab extends StatelessWidget {
               ),
               CustomRowText(
                 givenKey: AppLocalizations.of(context)!.horsepower,
-                givenValue: state.currentCar!.beygir,
+                givenValue: state.currentCar!.horsepower,
               ),
               CustomRowText(
                 givenKey: AppLocalizations.of(context)!.tank,
-                givenValue: state.currentCar!.depo,
+                givenValue: state.currentCar!.tank,
               ),
               CustomRowText(
                 givenKey: AppLocalizations.of(context)!.maxSpeed,
-                givenValue: state.currentCar!.max_hiz,
+                givenValue: state.currentCar!.maxSpeed,
               ),
               CustomRowText(
                 givenKey: AppLocalizations.of(context)!.engine,
-                givenValue: state.currentCar!.motor,
+                givenValue: state.currentCar!.engine,
               ),
               CustomRowText(
                 givenKey: AppLocalizations.of(context)!.cylinder,
-                givenValue: state.currentCar!.silindir,
+                givenValue: state.currentCar!.cylinder,
               ),
               CustomRowText(
-                givenKey: AppLocalizations.of(context)!.fuel,
-                givenValue: state.currentCar!.yakit,
-
-              ),
+                  givenKey: AppLocalizations.of(context)!.fuel,
+                  givenValue: state.currentCar!.fuel),
               CustomRowText(
                 givenKey: AppLocalizations.of(context)!.model,
                 givenValue: state.currentCar!.model,
