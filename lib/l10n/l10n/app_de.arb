@@ -49,5 +49,101 @@
     "logout": "Ausloggen",
     "@logout": {
       "description": "Ausloggen"
-    }
+    },
+
+    "addCar": "Auto hinzufügen" ,
+    "login":"Einloggen",
+     "pleaseEnterOwnership":"Bitte geben Sie die Eigentumsrechte ein",
+     "daily":"Täglich",
+     "technical":"Technisch",
+
+    "@_LOGIN_SIGNUP": {
+      },
+      "forgotPassword":"Passwort vergessen",
+      "createAccount":"Konto erstellen",
+      "passwordCanNotBeEmpty":"Passwort darf nicht leer sein",
+      "password":"Passwort",
+      "pleaseCorrectYourmail":"Bitte korrigieren Sie Ihre E-Mail",
+      "emailAdress":"E-Mail-Adresse",
+      "pleaseEnterYourMail":"Bitte geben Sie Ihre E-Mail ein",
+      "sendEmail":"E-Mail senden",
+      "signup":"Anmelden",
+      "passwordsDoesNotMatch":"Passwörter stimmen nicht überein",
+      "confirmPassword":"Passwort bestätigen",
+      "fullName":"Vollständiger Name",
+    
+      "@_REPAIR": {
+      },
+
+    "service":"Service",
+     "bookAService":"Buchen Sie einen Service",
+     "bookAServiceForYourCar":"Buchen Sie einen Service für Ihr Auto.",
+     "onGoingService":"Laufender Dienst",
+     "checkHowYouCarDoing":"Überprüfen Sie, wie sich Ihr Auto verhält.",
+     "checkPreviousService":"Vorherigen Service prüfen",
+     "lookAtYourHistory":"Schauen Sie sich Ihren Verlauf an.",
+     "allServices":"Alle Dienste",
+     "previousServices":"Vorherige Dienste",
+     "estimatedTime":"GESCHÄTZTE ZEIT",
+     "serviceID":"SERVICE-ID",
+
+    "@_CAR_PAGE": {
+    },
+    "remainingFuel":"Verbleibender Kraftstoff",
+    "kilometer":"Kilometer",
+    "averageConsumption":"Durchschnittlicher Verbrauch",
+    "weeklyKilometer":"Wöchentlicher Kilometer",
+    "horsepower":"Pferdestärke",
+    "tank":"Speicher",
+    "maxSpeed":"Maximale Geschwindigkeit",
+    "engine":"Motor",
+    "cylinder":"Zylinder",
+    "fuel":"Kraftstoff",
+    "model":"Modell",
+
+    "@_BOOK_A_SERVICE_PAGE": {
+    },
+    "bookService":"Buchservice",
+    "serviceType":"Diensttyp",
+    "serviceA":"Dienst A",
+    "serviceB":"Dienst B",
+    "extraServices":"Zusätzliche Dienste",
+    "brakes":"Bremsen",
+    "oil":"Öl",
+    "tires":"Reifen",
+    "cleaning":"Reinigung",
+    "battery":"Batterie",
+    "headlights'":"Scheinwerfer",
+    "dateTime":"Datum & Uhrzeit",
+    "pressHereToSelectADay":"Drücken Sie hier, um einen Tag auszuwählen",
+    "noDateWasChosen":"Es wurde kein Datum gewählt!",
+    "availableTimes":"Verfügbare Zeiten",
+    "serviceAppointmentCreated":"Servicetermin \n Erstellt",
+    "continue":"Weiter",
+    
+    "@_ONGOING_SERVICE_PAGE": {
+    },
+    "engineMaintenance":"Motorwartung",
+    "engineOilChangeFilterChange":"Motorölwechsel und Filterwechsel. Auf zukünftige Schäden prüfen.",
+    "fuelFilter":"Kraftstofffilter",
+    "maintenanceAndIfNecessaryReplacementTheFuelFilter":"Wartung und ggf. Austausch des Kraftstofffilters.",
+    "completionOfExtraServices":"Erledigung zusätzlicher Dienste",
+    "completingAndArrangingMaintenanceForExtraRequestedServices":"Abschließen und Anordnen von Wartungsarbeiten für zusätzlich angeforderte Dienste.",
+    "testsOfCare":"Pflegetests",
+    "makingTheTestsOfTheMaintenanceDoneAndCheckingTheAccuracy":"Durchführung der Tests der durchgeführten Wartung und Überprüfung der Genauigkeit.",
+    "serviceCompletion":"Dienstabschluss",
+    "serviceCompleted":"Dienst abgeschlossen.",
+        
+    "@SERVICE_PAGE": {
+    },
+    "helpFAQ":"Hilfe & FAQ",
+    "contactSupport":"Support kontaktieren",
+    "feedback":"Feedback",
+    "privacyPolicy":"Datenschutzerklärung",
+    "termsConditions":"Allgemeine Geschäftsbedingungen",
+    "legalNotice":"Rechtliche Hinweise",
+    "guidelines":"Richtlinien",
+    "licenses":"Lizenzen",
+    "username":"Benutzername"
+
 }

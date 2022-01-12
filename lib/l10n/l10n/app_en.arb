@@ -62,6 +62,103 @@
       "description": "Legal"
     },
     "logout": "Log Out",
-    "daily": "Daily",
-    "technical": "Technical"
+    "@logout": {
+      "description": "Log Out"
+    },
+
+    "addCar": "Add Car" ,
+    "login":"Login",
+    "pleaseEnterOwnership":"Please enter ownership",
+    "daily":"Daily",
+    "technical":"Technical",
+
+    "@_LOGIN_SIGNUP": {
+      },
+    "forgotPassword":"Forgot Password",
+    "createAccount":"Create Account",
+    "passwordCanNotBeEmpty":"Password can not be empty",
+    "password":"Password",
+    "pleaseCorrectYourmail":"Please correct your mail",
+    "emailAdress":"E-mail Adress",
+    "pleaseEnterYourMail":"Please enter your mail",
+    "sendEmail":"Send Email",
+
+    "signup":"Sign Up",
+    "passwordsDoesNotMatch":"Passwords Does Not Match",
+    "confirmPassword":"Confirm Password",
+    "fullName":"Full Name",
+
+    "@_REPAIR": {
+      },
+    "service":"Service",
+    "bookAService":"Book a service",
+    "bookAServiceForYourCar":"Book a service for your car.",
+    "onGoingService":"Ongoing Service",
+    "checkHowYouCarDoing":"Check how you car doing.",
+    "checkPreviousService":"Check Previous Service",
+    "lookAtYourHistory":"Look at your history.",
+    "allServices":"All Services",
+    "previousServices":"Previous Services",
+    "estimatedTime":"ESTIMATED TIME",
+    "serviceID":"SERVICE ID",
+
+    "@_CAR_PAGE": {
+    },
+"remainingFuel":"Remaining Fuel",
+"kilometer":"Kilometer" ,
+"averageConsumption":"Average Consumption",
+"weeklyKilometer":"Weekly Kilometer",
+"horsepower":"Horse Power",
+"tank":"Tank",
+"maxSpeed":"Max Speed",
+"engine":"Engine",
+"cylinder":"Cylinder",
+"fuel":"Fuel",
+"model":"Model",
+
+"@_BOOK_A_SERVICE_PAGE": {
+},
+"bookService":"Book Service",
+"serviceType":"Service Type",
+"serviceA":"Service A",
+"serviceB":"Service B",
+"extraServices":"Extra Services",
+"brakes":"Brakes",
+"oil":"Oil",
+"tires":"Tires",
+"cleaning":"Cleaning",
+"battery":"Battery",
+"headlights'":"Headlights",
+"dateTime":"Date & Time",
+"pressHereToSelectADay":"Press here to select a day",
+"noDateWasChosen":"No date was chosen!",
+"availableTimes":"Available Times",
+"serviceAppointmentCreated":"Service Appointment \n Created",
+"continue":"Continue",
+
+"@_ONGOING_SERVICE_PAGE": {
+},
+"engineMaintenance":"Engine Maintenance",
+"engineOilChangeFilterChange":"Engine oil change and filter change. Check for future damage.",
+"fuelFilter":"Fuel Filter",
+"maintenanceAndIfNecessaryReplacementTheFuelFilter":"Maintenance and, if necessary, replacement of the fuel filter.",
+"completionOfExtraServices":"Completion of Extra Services",
+"completingAndArrangingMaintenanceForExtraRequestedServices":"Completing and arranging maintenance for extra requested services.",
+"testsOfCare":"Tests of Care",
+"makingTheTestsOfTheMaintenanceDoneAndCheckingTheAccuracy":"Making the tests of the maintenance done and checking the accuracy.",
+"serviceCompletion":"Service Completion",
+"serviceCompleted":"Service completed.",
+
+"@SERVICE_PAGE": {
+},
+"helpFAQ":"Help & FAQ",
+"contactSupport":"Contact Support",
+"feedback":"Feedback",
+"privacyPolicy":"Privacy Policy",
+"termsConditions":"Terms & Conditions",
+"legalNotice":"Legal Notice",
+"guidelines":"Guidelines",
+"licenses":"Licenses",
+"username":"Username"
 }
+

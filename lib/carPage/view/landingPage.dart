@@ -69,12 +69,13 @@ class _LandingPageState extends State<LandingPage> {
                                   },
                                   tabs: [
                                     Tab(
-                                      // context çalışmadı.
                                       text: AppLocalizations.of(context)!.daily,
                                     ),
                                     Tab(
-                                      // dbden mi geliyo
-                                      text: 'Technical',
+                                      text: AppLocalizations.of(context)!
+                                          .technical,
+                                      // context çalışmadı.
+                                   
                                     ),
                                   ],
                                 ),
@@ -147,19 +148,19 @@ class DailyTab extends StatelessWidget {
             height: 10,
           ),
           CustomRowText(
-            givenKey: 'Kalan Yakıt',
+            givenKey: AppLocalizations.of(context)!.remainingFuel,
             givenValue: '116',
           ),
           CustomRowText(
-            givenKey: 'Kilometre',
+            givenKey: AppLocalizations.of(context)!.kilometer,
             givenValue: '116',
           ),
           CustomRowText(
-            givenKey: 'Ortalama Tüketim',
+            givenKey: AppLocalizations.of(context)!.averageConsumption,
             givenValue: '116',
           ),
           CustomRowText(
-            givenKey: 'Haftalık Kilometre',
+            givenKey: AppLocalizations.of(context)!.weeklyKilometer,
             givenValue: '116',
           ),
         ],
@@ -186,31 +187,32 @@ class TechnicalTab extends StatelessWidget {
                 height: 10,
               ),
               CustomRowText(
-                givenKey: 'Beygir',
-                givenValue: state.currentCar!.horsepower,
+                givenKey: AppLocalizations.of(context)!.horsepower,
+                givenValue: state.currentCar!.beygir,
               ),
               CustomRowText(
-                givenKey: 'Depo',
-                givenValue: state.currentCar!.tank,
+                givenKey: AppLocalizations.of(context)!.tank,
+                givenValue: state.currentCar!.depo,
               ),
               CustomRowText(
-                givenKey: 'Max Hız',
-                givenValue: state.currentCar!.maxSpeed,
+                givenKey: AppLocalizations.of(context)!.maxSpeed,
+                givenValue: state.currentCar!.max_hiz,
               ),
               CustomRowText(
-                givenKey: 'Motor',
-                givenValue: state.currentCar!.engine,
+                givenKey: AppLocalizations.of(context)!.engine,
+                givenValue: state.currentCar!.motor,
               ),
               CustomRowText(
-                givenKey: 'Silindir',
-                givenValue: state.currentCar!.cylinder,
+                givenKey: AppLocalizations.of(context)!.cylinder,
+                givenValue: state.currentCar!.silindir,
               ),
               CustomRowText(
-                givenKey: 'Yakıt',
-                givenValue: state.currentCar!.fuel,
+                givenKey: AppLocalizations.of(context)!.fuel,
+                givenValue: state.currentCar!.yakit,
+
               ),
               CustomRowText(
-                givenKey: 'Model',
+                givenKey: AppLocalizations.of(context)!.model,
                 givenValue: state.currentCar!.model,
               ),
             ],

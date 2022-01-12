@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -14,6 +13,7 @@ class AddCar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
 
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
@@ -39,7 +39,7 @@ class AddCar extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            'Add Car',
+          AppLocalizations.of(context)!.addCar,
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
@@ -95,13 +95,14 @@ class AddCar extends StatelessWidget {
 class AddOwnershipButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
         return ElevatedButton(
             onPressed: () {
               BlocProvider.of<AuthBloc>(context).add(OwnershipSubmitted());
             },
-            child: Text('Proceed'));
+            child: Text(AppLocalizations.of(context)!.login));
       },
     );
   }
@@ -110,6 +111,7 @@ class AddOwnershipButton extends StatelessWidget {
 class AddOwnershipTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return BlocBuilder<AuthBloc, AuthState>(
       buildWhen: (previous, current) =>
           previous.ownershipAdd != current.ownershipAdd,
@@ -117,8 +119,8 @@ class AddOwnershipTextField extends StatelessWidget {
         return AuthField(
           isObsecure: false,
           isError: false,
-          errorText: 'Please give ownership',
-          labelText: 'Please enter ownership',
+          errorText: AppLocalizations.of(context)!.pleaseEnterOwnership,
+          labelText: AppLocalizations.of(context)!.pleaseEnterOwnership,
           onChangeCallback: (ownership) {
             BlocProvider.of<AuthBloc>(context)
                 .add(OwnershipChanged(input: ownership));
@@ -128,11 +130,3 @@ class AddOwnershipTextField extends StatelessWidget {
     );
   }
 }
- /*
- ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).pushNamedAndRemoveUntil(
-              RouteGenerator.landingRoute, (route) => false);
-        },
-        child: Text('Proceed')); 
- */

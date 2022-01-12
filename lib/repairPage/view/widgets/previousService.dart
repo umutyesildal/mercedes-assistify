@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PreviousServices extends StatelessWidget {
   const PreviousServices({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class PreviousServices extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Previous Service',
+          AppLocalizations.of(context)!.previousServices,
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),

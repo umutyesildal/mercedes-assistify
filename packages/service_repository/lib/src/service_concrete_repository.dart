@@ -4,7 +4,7 @@ import 'package:firebase_client/firebase_client.dart';
 
 class ServiceConcreteRepository extends ServiceRepository {
   Future init() async {}
-
+  @override
   Future setService(ServiceEntity service) async {
     ServiceEntity serviceStatus;
     try {
@@ -37,6 +37,25 @@ class ServiceConcreteRepository extends ServiceRepository {
         allPreviousServices.add(ServiceEntity.fromMap(data[i]));
       }
 
+      return allPreviousServices;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  @override
+  Future<List<ServiceEntity>> getAllPreviousServices(
+      List<String> givenIds) async {
+    List<ServiceEntity> allPreviousServices = [];
+    try {
+      /* final List<Map<String, dynamic>> data =
+          await fc.getAllPreviousServices(givenIds);
+
+      print(data[0]);
+
+      for (int i = 0; i < data.length; i++) {
+        allPreviousServices[i] = ServiceEntity.fromMap(data[i]);
+      } */
       return allPreviousServices;
     } catch (e) {
       throw e;

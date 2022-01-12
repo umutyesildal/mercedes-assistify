@@ -50,6 +50,93 @@
     "@logout": {
       "description": "Çıkış"
     },
-    "daily": "Günlük",
-    "technical": "Teknik"
+  
+      "addCar": "Araba Ekle" ,
+      "login":"Giriş yap",
+      "pleaseEnterOwnership":"Lütfen sahipliği girin",
+      "daily":"Günlük",
+      "technical":"Teknik",
+      "@_LOGIN_SIGNUP": {
+        },
+
+       "forgotPassword":"Şifremi Unuttum",
+       "createAccount":"Hesap Oluştur",
+       "passwordCanNotBeEmpty":"Parola boş olamaz",
+       "password":"Şifre",
+       "PleaseCorrectYourmail":"Lütfen mailinizi düzeltin",
+       "emailAdress":"E-posta Adresi",
+       "signup":"Kaydol",
+       "passwordsDoesNotMatch":"Parolalar Eşleşmiyor",
+       "confirmPassword":"Şifreyi Onayla",
+       "fullName":"Tam Ad",
+  
+      "@_REPAIR": {
+        },
+      "service":"Servis",
+      "bookAService":"Bir sevis rezervasyonu yapın",
+      "bookAServiceForYourCar":"Arabanız için bir servis rezervasyonu yapın.",
+      "onGoingService":"Devam eden Hizmet",
+      "checkHowYouCarDoing":"Aracınızın nasıl çalıştığını kontrol edin.",
+      "checkPreviousService":"Önceki Hizmeti Kontrol Et",
+      "lookAtYourHistory":"Geçmişinize bakın.",
+      "@_CAR_PAGE": {
+        },
+        "remainingFuel":"Kalan Yakıt",
+        "kilometer":"Kilometre" ,
+        "averageConsumption":"Ortalama Tüketim",
+        "weeklyKilometer":"Haftalık Kilometre",
+        "horsepower":"Beygir",
+        "tank":"Depo",
+        "maxSpeed":"Max Hız",
+        "engine":"Motor",
+        "cylinder":"Silindir",
+        "fuel":"Yakıt",
+        "model":"Model",
+
+
+    "@_BOOK_A_SERVICE_PAGE": {
+    },
+     "bookService":"Servis Randevusu",
+     "serviceType":"Servis Türü",
+     "serviceA":"Servis A",
+     "serviceB":"Servis B",
+     "extraServices":"Ekstra Servis",
+     "brakes":"Frenler",
+     "oil":"Yağ",
+     "tires":"Lastikler",
+     "cleaning":"Temizleme",
+     "battery":"Pil",
+     "headlights":"Farlar",
+     "dateTime":"Tarih ve Saat",
+     "pressHereToSelectADay":"Bir gün seçmek için buraya basın",
+     "noDateWasChosen":"Hiçbir tarih seçilmedi!",
+     "availableTimes":"Müsait Zamanlar",
+     "serviceAppointmentCreated":"Hizmet Randevusu \n Oluşturuldu",
+     "continue":"Devam",
+    
+    "@_ONGOING_SERVICE_PAGE": {
+    },
+    "engineMaintenance":"Motor Bakımı",
+    "engineOilChangeFilterChange":"Motor yağı değişimi ve filtre değişimi. İlerde oluşabilecek hasar için kontrol.",
+    "fuelFilter":"Yakıt Filtresi",
+    "maintenanceAndIfNecessaryReplacementTheFuelFilter":"Yakıt filtresinin bakımı ve gerekiyorsa yenilenmesi.",
+    "completionOfExtraServices":"Ekstra Servislerin Tamamlanması",
+    "completingAndArrangingMaintenanceForExtraRequestedServices":"Ekstra istenen servisler için yapılan bakımların tamamlanıp düzenlenmesi.",
+    "testsOfCare":"Bakımların Testleri",
+    "makingTheTestsOfTheMaintenanceDoneAndCheckingTheAccuracy":"Yapılan bakımların testlerinin yapılıp doğrulunun kontrol edilmesi.",
+    "serviceCompletion":"Servis Tamamlanması",
+    "serviceCompleted":"Servis tamamlandı.",
+    
+    "@SERVICE_PAGE": {
+    },
+     "helpFAQ":"Yardım ve SSS",
+     "contactSupport":"Desteğe Başvur",
+     "feedback":"Geribildirim",
+     "privacyPolicy":"Gizlilik Politikası",
+     "termsConditions":"Şartlar ve Koşullar",
+     "legalNotice":"Yasal Uyarı",
+     "guidelines":"Yönergeler",
+     "licenses":"Lisanslar",
+     "username":"Kullanıcı adı" 
+
 }

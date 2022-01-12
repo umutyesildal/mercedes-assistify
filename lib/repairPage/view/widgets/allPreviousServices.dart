@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/repairPage/bloc/bloc/service_bloc.dart';
 import 'package:template/router.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AllPreviousServices extends StatefulWidget {
   const AllPreviousServices({Key? key}) : super(key: key);
@@ -32,7 +33,7 @@ class _AllPreviousServicesState extends State<AllPreviousServices> {
             ? Scaffold(
                 appBar: AppBar(
                   title: Text(
-                    'All Services',
+          AppLocalizations.of(context)!.allServices,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),

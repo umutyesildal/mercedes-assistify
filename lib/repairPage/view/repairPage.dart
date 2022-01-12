@@ -22,7 +22,7 @@ class _LandingPageState extends State<RepairPage> {
         return Scaffold(
           appBar: AppBar(
             title: Text(
-              'Service',
+              AppLocalizations.of(context)!.service,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),
@@ -74,7 +74,8 @@ class _LandingPageState extends State<RepairPage> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Book a Service',
+                                          AppLocalizations.of(context)!
+                                              .bookAService,
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 22,
@@ -84,7 +85,8 @@ class _LandingPageState extends State<RepairPage> {
                                           height: 5,
                                         ),
                                         Text(
-                                          'Book a service for your car.',
+                                          AppLocalizations.of(context)!
+                                              .bookAServiceForYourCar,
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 14,
@@ -138,7 +140,8 @@ class _LandingPageState extends State<RepairPage> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Ongoing Service',
+                                        AppLocalizations.of(context)!
+                                            .onGoingService,
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 22,
@@ -148,7 +151,8 @@ class _LandingPageState extends State<RepairPage> {
                                         height: 5,
                                       ),
                                       Text(
-                                        'Check how you car doing.',
+                                        AppLocalizations.of(context)!
+                                            .checkHowYouCarDoing,
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 14,
@@ -202,7 +206,8 @@ class _LandingPageState extends State<RepairPage> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Check Previous Service',
+                                        AppLocalizations.of(context)!
+                                            .checkPreviousService,
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 22,
@@ -212,7 +217,8 @@ class _LandingPageState extends State<RepairPage> {
                                         height: 5,
                                       ),
                                       Text(
-                                        'Look at your history.',
+                                        AppLocalizations.of(context)!
+                                            .lookAtYourHistory,
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 14,
