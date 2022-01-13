@@ -112,7 +112,7 @@
      "noDateWasChosen":"Hiçbir tarih seçilmedi!",
      "availableTimes":"Müsait Zamanlar",
      "serviceAppointmentCreated":"Hizmet Randevusu \n Oluşturuldu",
-     "continue":"Devam",
+     "continueText":"Devam",
     
     "@_ONGOING_SERVICE_PAGE": {
     },
