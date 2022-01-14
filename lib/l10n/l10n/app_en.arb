@@ -151,6 +151,7 @@
 
 "@SERVICE_PAGE": {
 },
+
 "helpFAQ":"Help & FAQ",
 "contactSupport":"Contact Support",
 "feedback":"Feedback",
@@ -159,6 +160,15 @@
 "legalNotice":"Legal Notice",
 "guidelines":"Guidelines",
 "licenses":"Licenses",
-"username":"Username"
-}
+"username":"Username",
+"youAlreadyHaveBooking":"You already have an ongoing booking.",
 
+"@_STATISTICS_PAGE": {
+},
+"statistics":"Statistics",
+"monthlyKilometerUsage":"Monthly kilometer usage.",
+"yourMonthlyAverage":"Your monthly average"
+
+
+
+}

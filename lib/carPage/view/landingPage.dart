@@ -138,32 +138,36 @@ class DailyTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 10,
+    return BlocBuilder<CarBloc, CarState>(
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 10,
+              ),
+              CustomRowText(
+                givenKey: AppLocalizations.of(context)!.remainingFuel,
+                givenValue: state.currentCar!.remainingFuel,
+              ),
+              CustomRowText(
+                givenKey: AppLocalizations.of(context)!.kilometer,
+                givenValue: state.currentCar!.kilometer,
+              ),
+              CustomRowText(
+                givenKey: AppLocalizations.of(context)!.averageConsumption,
+                givenValue: state.currentCar!.averageConsumption,
+              ),
+              CustomRowText(
+                givenKey: AppLocalizations.of(context)!.weeklyKilometer,
+                givenValue: state.currentCar!.weeklyKilometer,
+              ),
+            ],
           ),
-          CustomRowText(
-            givenKey: AppLocalizations.of(context)!.remainingFuel,
-            givenValue: '116',
-          ),
-          CustomRowText(
-            givenKey: AppLocalizations.of(context)!.kilometer,
-            givenValue: '116',
-          ),
-          CustomRowText(
-            givenKey: AppLocalizations.of(context)!.averageConsumption,
-            givenValue: '116',
-          ),
-          CustomRowText(
-            givenKey: AppLocalizations.of(context)!.weeklyKilometer,
-            givenValue: '116',
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
@@ -237,9 +241,9 @@ class CustomRowText extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(flex: 1, child: SizedBox()),
+          Expanded(flex: 2, child: SizedBox()),
           Expanded(
-            flex: 6,
+            flex: 8,
             child: Text(
               givenKey,
               style: TextStyle(
@@ -247,8 +251,9 @@ class CustomRowText extends StatelessWidget {
               ),
             ),
           ),
+          Expanded(flex: 2, child: SizedBox()),
           Expanded(
-            flex: 2,
+            flex: 8,
             child: Text(
               givenValue,
               style: TextStyle(
@@ -257,7 +262,7 @@ class CustomRowText extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(flex: 1, child: SizedBox()),
+          Expanded(flex: 2, child: SizedBox()),
         ],
       ),
     );

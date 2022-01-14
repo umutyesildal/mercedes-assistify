@@ -14,7 +14,6 @@ class AddCar extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state.ownershipStatus == OwnershipStatus.fail) {
@@ -39,7 +38,7 @@ class AddCar extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-          AppLocalizations.of(context)!.addCar,
+            AppLocalizations.of(context)!.addCar,
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
@@ -95,7 +94,6 @@ class AddCar extends StatelessWidget {
 class AddOwnershipButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
         return ElevatedButton(
@@ -111,7 +109,6 @@ class AddOwnershipButton extends StatelessWidget {
 class AddOwnershipTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return BlocBuilder<AuthBloc, AuthState>(
       buildWhen: (previous, current) =>
           previous.ownershipAdd != current.ownershipAdd,

@@ -143,8 +143,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthState _mapCheckReadyToSignUpToState(
       CheckSignUpReady event, AuthState state) {
     if (state.emailSignup.valid &&
-        state.passwordSignup.valid &&
-        state.confirmPassword.valid) {
+        (state.passwordSignup.valid && state.confirmPassword.valid) &&
+        (state.passwordSignup.value == state.confirmPassword.value)) {
       print('email: ' +
           state.emailSignup.valid.toString() +
           ' password: ' +

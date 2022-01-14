@@ -144,6 +144,13 @@
     "legalNotice":"Rechtliche Hinweise",
     "guidelines":"Richtlinien",
     "licenses":"Lizenzen",
-    "username":"Benutzername"
+    "username":"Benutzername",
+    "youAlreadyHaveBooking":"Sie haben bereits eine laufende Buchung.",
+    
+    "@_STATISTICS_PAGE": {
+    },
+    "statistics":"Statistiken",
+    "monthlyKilometerUsage":"monatlicher Kilometerverbrauch",
+    "yourMonthlyAverage":"Ihr monatlicher Durchschnitt"
 
 }

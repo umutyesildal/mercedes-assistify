@@ -5,14 +5,34 @@ import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:template/constants.dart';
 import 'package:template/preferencesBloc/preferences_bloc.dart';
 import 'package:template/router.dart';
+import 'package:template/settingsPage/bloc/settings_bloc.dart';
 import 'widgets/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class SettingsMain extends StatelessWidget {
+class SettingsMain extends StatefulWidget {
   static String routeName = 'Settings Page';
+
+  @override
+  State<SettingsMain> createState() => _SettingsMainState();
+}
+
+class _SettingsMainState extends State<SettingsMain> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchDetails();
+  }
+
+  Future? fetchDetails() async {
+    BlocProvider.of<SettingsBloc>(context).add(GetUserName());
+  }
+
   final GlobalKey<ExpansionTileCardState> card0 = GlobalKey();
+
   final GlobalKey<ExpansionTileCardState> card1 = GlobalKey();
+
   final GlobalKey<ExpansionTileCardState> card2 = GlobalKey();
 
   @override
@@ -36,23 +56,7 @@ class SettingsMain extends StatelessWidget {
               SpaceBetweenWidgets(),
               Padding(
                   padding: const EdgeInsets.only(right: 40.0, left: 40.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      CircleAvatar(
-                          radius: 70,
-                          backgroundColor: Theme.of(context).accentColor),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Merso Benzo',
-                        style: TextStyle(
-                            fontSize: 18.0, fontWeight: FontWeight.bold),
-                      ),
-                      Text('mersobenzo@gmail.com')
-                    ],
-                  )),
+                  child: NameAndPhoto()),
               SpaceBetweenWidgets(),
               DividerWithPadding(),
               Padding(
@@ -199,6 +203,35 @@ class SettingsMain extends StatelessWidget {
                     padding: const EdgeInsets.only(right: 40.0, left: 40.0),
                     child: ExpansionTileCard(
                       onExpansionChanged: (bool x) {
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            RouteGenerator.changeOwnership, (route) => false);
+                      },
+                      elevation: 0,
+                      initiallyExpanded: false,
+                      trailing: Icon(
+                        Icons.keyboard_arrow_down,
+                        color: Colors.transparent,
+                      ),
+                      leading: Icon(
+                        Icons.keyboard_arrow_down,
+                        color: Colors.transparent,
+                      ),
+                      title: Text(
+                        'Change ownership',
+                        style: TextStyle(
+                            fontSize: 18.0, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  );
+                },
+              ),
+              DividerWithPadding(),
+              BlocBuilder<PreferencesBloc, PreferencesState>(
+                builder: (context, state) {
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 40.0, left: 40.0),
+                    child: ExpansionTileCard(
+                      onExpansionChanged: (bool x) {
                         print(x);
                         BlocProvider.of<PreferencesBloc>(context)
                             .add(AuthChangedEvent(auth: false));
@@ -229,6 +262,36 @@ class SettingsMain extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class NameAndPhoto extends StatelessWidget {
+  const NameAndPhoto({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SettingsBloc, SettingsState>(
+      builder: (context, state) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CircleAvatar(
+                radius: 70, backgroundColor: Theme.of(context).accentColor),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              state.nameStatus == NameFetchedStatus.success
+                  ? state.user!.name
+                  : '',
+              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+            ),
+          ],
+        );
+      },
     );
   }
 }
