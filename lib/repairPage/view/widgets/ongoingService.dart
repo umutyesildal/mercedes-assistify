@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:service_repository/template_repository.dart';
 import 'package:template/repairPage/bloc/bloc/service_bloc.dart';
 import 'package:timeline_tile/timeline_tile.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OngoingService extends StatefulWidget {
   const OngoingService({Key? key}) : super(key: key);
@@ -34,7 +35,7 @@ class _OngoingServiceState extends State<OngoingService> {
             ? Scaffold(
                 appBar: AppBar(
                   title: Text(
-                    'Ongoing Service',
+                    AppLocalizations.of(context)!.onGoingService,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
@@ -58,7 +59,8 @@ class _OngoingServiceState extends State<OngoingService> {
                                       height: 10,
                                     ),
                                     Text(
-                                      'ESTIMATED TIME',
+                                      AppLocalizations.of(context)!
+                                          .estimatedTime,
                                       style: TextStyle(
                                           fontSize: 17,
                                           fontWeight: FontWeight.bold),
@@ -81,7 +83,7 @@ class _OngoingServiceState extends State<OngoingService> {
                                       height: 10,
                                     ),
                                     Text(
-                                      'SERVICE ID',
+                                      AppLocalizations.of(context)!.serviceID,
                                       style: TextStyle(
                                           fontSize: 17,
                                           fontWeight: FontWeight.bold),
@@ -109,44 +111,48 @@ class _OngoingServiceState extends State<OngoingService> {
                             CustomSignalTile(
                               isLast: false,
                               isFirst: true,
-                              title: 'Motor Bakımı',
-                              description:
-                                  'Motor yağı değişimi ve filtre değişimi. İlerde oluşabilecek hasar için kontrol.',
+                              title: AppLocalizations.of(context)!
+                                  .engineMaintenance,
+                              description: AppLocalizations.of(context)!
+                                  .engineOilChangeFilterChange,
                               order: 1,
                               order_place: state.currentService!.phase,
                             ),
                             CustomSignalTile(
                               isLast: false,
                               isFirst: false,
-                              title: 'Yakıt Filtresi',
-                              description:
-                                  'Yakıt filtresinin bakımı ve gerekiyorsa yenilenmesi.',
+                              title: AppLocalizations.of(context)!.fuelFilter,
+                              description: AppLocalizations.of(context)!
+                                  .maintenanceAndIfNecessaryReplacementTheFuelFilter,
                               order: 2,
                               order_place: state.currentService!.phase,
                             ),
                             CustomSignalTile(
                               isLast: false,
                               isFirst: false,
-                              title: 'Ekstra Servislerin Tamamlanması',
-                              description:
-                                  'Ekstra istenen servisler için yapılan bakımların tamamlanıp düzenlenmesi.',
+                              title: AppLocalizations.of(context)!
+                                  .completionOfExtraServices,
+                              description: AppLocalizations.of(context)!
+                                  .completingAndArrangingMaintenanceForExtraRequestedServices,
                               order: 3,
                               order_place: state.currentService!.phase,
                             ),
                             CustomSignalTile(
                               isLast: false,
                               isFirst: false,
-                              title: 'Bakımların Testleri',
-                              description:
-                                  'Yapılan bakımların testlerinin yapılıp doğrulunun kontrol edilmesi.',
+                              title: AppLocalizations.of(context)!.testsOfCare,
+                              description: AppLocalizations.of(context)!
+                                  .makingTheTestsOfTheMaintenanceDoneAndCheckingTheAccuracy,
                               order: 4,
                               order_place: state.currentService!.phase,
                             ),
                             CustomSignalTile(
                               isLast: true,
                               isFirst: false,
-                              title: 'Servis Tamamlanması',
-                              description: 'Servis tamamlandı.',
+                              title: AppLocalizations.of(context)!
+                                  .serviceCompletion,
+                              description: AppLocalizations.of(context)!
+                                  .serviceCompleted,
                               order: 5,
                               order_place: state.currentService!.phase,
                             ),

@@ -73,12 +73,15 @@
       "@_REPAIR": {
         },
       "service":"Servis",
-      "bookAService":"Bir sevis rezervasyonu yapın",
+      "bookAService":"Rezervasyon yapın",
       "bookAServiceForYourCar":"Arabanız için bir servis rezervasyonu yapın.",
       "onGoingService":"Devam eden Hizmet",
       "checkHowYouCarDoing":"Aracınızın nasıl çalıştığını kontrol edin.",
-      "checkPreviousService":"Önceki Hizmeti Kontrol Et",
+      "checkPreviousService":"Önceki Hizmetlere Bak",
       "lookAtYourHistory":"Geçmişinize bakın.",
+      "estimatedTime":"YAKLAŞIK ZAMAN",
+      "serviceID":"SERVIS NO",
+      
       "@_CAR_PAGE": {
         },
         "remainingFuel":"Kalan Yakıt",
@@ -137,6 +140,12 @@
      "legalNotice":"Yasal Uyarı",
      "guidelines":"Yönergeler",
      "licenses":"Lisanslar",
-     "username":"Kullanıcı adı" 
+     "username":"Kullanıcı adı" ,
+     "youAlreadyHaveBooking":"Halihazırda bir servisiniz var.",
+     "@_STATISTICS_PAGE": {
+    },
+    "statistics":"Istatistikler",
+    "monthlyKilometerUsage":"Aylık kilometre",
+    "yourMonthlyAverage":"Aylık ortalama kilometre"
 
 }

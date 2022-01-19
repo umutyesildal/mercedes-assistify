@@ -158,7 +158,9 @@ class DailyTab extends StatelessWidget {
               ),
               CustomRowText(
                 givenKey: AppLocalizations.of(context)!.averageConsumption,
+
                 givenValue: state.currentCar!.averageConsumption + "L/ 100 KM",
+
               ),
               CustomRowText(
                 givenKey: AppLocalizations.of(context)!.weeklyKilometer,
@@ -241,9 +243,9 @@ class CustomRowText extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(flex: 1, child: SizedBox()),
+          Expanded(flex: 2, child: SizedBox()),
           Expanded(
-            flex: 6,
+            flex: 8,
             child: Text(
               givenKey,
               style: TextStyle(
@@ -251,8 +253,9 @@ class CustomRowText extends StatelessWidget {
               ),
             ),
           ),
+          Expanded(flex: 2, child: SizedBox()),
           Expanded(
-            flex: 2,
+            flex: 8,
             child: Text(
               givenValue,
               style: TextStyle(
@@ -261,7 +264,7 @@ class CustomRowText extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(flex: 1, child: SizedBox()),
+          Expanded(flex: 2, child: SizedBox()),
         ],
       ),
     );

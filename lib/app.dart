@@ -16,6 +16,7 @@ import 'loginSignup/bloc/auth_bloc.dart';
 import 'repairPage/bloc/bloc/service_bloc.dart';
 import 'router.dart';
 import 'service_locator.dart';
+import 'settingsPage/bloc/settings_bloc.dart';
 
 class App extends StatelessWidget {
   const App();
@@ -44,14 +45,20 @@ class App extends StatelessWidget {
                       userRepository: sl.get<UserRepository>()),
                   child: BlocProvider(
                     lazy: false,
-                    create: (context) => ServiceBloc(
-                      localStorage: sl.get<LocalStorage>(),
-                      serviceRepository: sl.get<ServiceRepository>(),
-                      maintenanceRepository: sl.get<MaintenanceRepository>(),
-                      carBloc: BlocProvider.of<CarBloc>(context),
-                      ownershipRepository: sl.get<OwnershipRepository>(),
+                    create: (context) => SettingsBloc(
+                      localStorageRepository: sl.get<LocalStorage>(),
                     ),
-                    child: MyApp(),
+                    child: BlocProvider(
+                      lazy: false,
+                      create: (context) => ServiceBloc(
+                        localStorage: sl.get<LocalStorage>(),
+                        serviceRepository: sl.get<ServiceRepository>(),
+                        maintenanceRepository: sl.get<MaintenanceRepository>(),
+                        carBloc: BlocProvider.of<CarBloc>(context),
+                        ownershipRepository: sl.get<OwnershipRepository>(),
+                      ),
+                      child: MyApp(),
+                    ),
                   ),
                 ),
               ),

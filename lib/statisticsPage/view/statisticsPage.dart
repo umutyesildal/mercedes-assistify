@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class StatisticsPage extends StatefulWidget {
   const StatisticsPage({Key? key}) : super(key: key);
@@ -33,7 +34,12 @@ class _StatisticsPageState extends State<StatisticsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Statistics'),
+        title: Text(
+          AppLocalizations.of(context)!.statistics,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: ListView(
         children: [
@@ -41,7 +47,8 @@ class _StatisticsPageState extends State<StatisticsPage> {
           SfCartesianChart(
             primaryXAxis: CategoryAxis(),
             // Chart title
-            title: ChartTitle(text: 'Monthly kilometer usage'),
+            title: ChartTitle(
+                text: AppLocalizations.of(context)!.monthlyKilometerUsage),
             // Enable legend
             legend: Legend(isVisible: true),
             // Enable tooltip
@@ -53,7 +60,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                       monthlyKilometer.month,
                   yValueMapper: (KilometerMonth monthlyKilometer, _) =>
                       monthlyKilometer.monthlyKilometer,
-                  name: 'Kilometer',
+                  name: AppLocalizations.of(context)!.kilometer,
                   // Enable data label
                   dataLabelSettings: DataLabelSettings(isVisible: true))
             ],
@@ -65,7 +72,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
             child: Column(
               children: [
                 Text(
-                  'Your monthly average is',
+                  AppLocalizations.of(context)!.monthlyKilometerUsage,
                   style: TextStyle(fontSize: 24),
                 ),
                 SizedBox(

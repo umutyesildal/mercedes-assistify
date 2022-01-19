@@ -6,6 +6,7 @@ import 'package:template/repairPage/repairPage.dart';
 import 'package:template/repairPage/view/widgets/allPreviousServices.dart';
 import 'package:template/repairPage/view/widgets/ongoingService.dart';
 import 'package:template/repairPage/view/widgets/previousService.dart';
+import 'package:template/settingsPage/view/widgets/changeOwnership.dart';
 
 import 'carPage/carPage.dart';
 import 'mapPage/mapPage.dart';
@@ -31,6 +32,7 @@ class RouteGenerator {
   static const onGoingServiceRoute = '/OngoingService';
   static const previousService = '/PreviousService';
   static const allPreviousServices = '/AllPreviousServices';
+  static const changeOwnership = '/changeOwnership';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -43,6 +45,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => OngoingService());
       case previousService:
         return MaterialPageRoute(builder: (context) => PreviousServices());
+      case changeOwnership:
+        return MaterialPageRoute(builder: (context) => ChangeOwnership());
       case allPreviousServices:
         return MaterialPageRoute(builder: (context) => AllPreviousServices());
       case repairRoute:

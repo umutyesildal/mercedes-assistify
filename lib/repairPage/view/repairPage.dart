@@ -37,7 +37,8 @@ class _LandingPageState extends State<RepairPage> {
                       ? ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
-                              'You already have an ongoing booking.',
+                              AppLocalizations.of(context)!
+                                  .youAlreadyHaveBooking,
                               style: TextStyle(color: Colors.white),
                             ),
                             backgroundColor: Colors.red,

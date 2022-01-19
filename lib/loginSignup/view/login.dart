@@ -12,6 +12,7 @@ import 'widgets/widgets.dart';
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state.authLoginStatus == loginStatus.submissionFailure) {
@@ -43,78 +44,86 @@ class LoginPage extends StatelessWidget {
           }
         },
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           body: SafeArea(
-            child: Column(
-              children: [
-                Expanded(
-                  flex: 9,
-                  child: Center(
-                    child: Text(
-                      'Assistify',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
-                          color: Theme.of(context).accentColor),
+            child: SingleChildScrollView(
+              child: Container(
+                height: size.height * 0.9,
+                width: size.width,
+                child: Column(
+                  children: [
+                    Expanded(
+                      flex: 9,
+                      child: Center(
+                        child: Text(
+                          'Assistify',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24,
+                              color: Theme.of(context).accentColor),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                Expanded(
-                  flex: 3,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 12.0, right: 12.0),
-                    child: _EmailInput(),
-                  ),
-                ),
-                Expanded(
-                  flex: 4,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 12.0, right: 12.0),
-                    child: Column(
-                      children: [
-                        _PasswordInput(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                    Expanded(
+                      flex: 3,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+                        child: _EmailInput(),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 4,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+                        child: Column(
                           children: [
-                            TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).pushNamed(
-                                      RouteGenerator.forgotPasswordRoute);
-                                },
-                                child: Text(
-                                  AppLocalizations.of(context)!.forgotPassword,
-                                  style: TextStyle(
-                                      color: Theme.of(context).accentColor),
-                                ))
+                            _PasswordInput(),
+                            /*  Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pushNamed(
+                                          RouteGenerator.forgotPasswordRoute);
+                                    },
+                                    child: Text(
+                                      AppLocalizations.of(context)!.forgotPassword,
+                                      style: TextStyle(
+                                          color: Theme.of(context).accentColor),
+                                    ))
+                              ],
+                            ), */
                           ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
+                    Expanded(
+                      flex: 2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: _LoginButton(),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: TextButton(
+                          onPressed: () {
+                            Navigator.of(context)
+                                .pushNamed(RouteGenerator.signUpRoute);
+                          },
+                          child: Text(
+                            AppLocalizations.of(context)!.createAccount,
+                            style:
+                                TextStyle(color: Theme.of(context).accentColor),
+                          )),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: SizedBox(),
+                    ),
+                  ],
                 ),
-                Expanded(
-                  flex: 2,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: _LoginButton(),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: TextButton(
-                      onPressed: () {
-                        Navigator.of(context)
-                            .pushNamed(RouteGenerator.signUpRoute);
-                      },
-                      child: Text(
-                        AppLocalizations.of(context)!.createAccount,
-                        style: TextStyle(color: Theme.of(context).accentColor),
-                      )),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(),
-                ),
-              ],
+              ),
             ),
           ),
         ));
