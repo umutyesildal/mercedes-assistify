@@ -85,7 +85,7 @@
       "@_CAR_PAGE": {
         },
         "remainingFuel":"Kalan Yakıt",
-        "kilometer":"Kilometre" ,
+        "kilometer":"Günlük Kilometre" ,
         "averageConsumption":"Ortalama Tüketim",
         "weeklyKilometer":"Haftalık Kilometre",
         "horsepower":"Beygir",

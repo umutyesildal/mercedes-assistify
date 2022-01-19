@@ -5,6 +5,7 @@ import 'firebase_client.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:user_repository/user_repository.dart';
 
+
 class FirebaseClientConcrete extends FirebaseClient {
   @override
   Future init() async {
@@ -15,6 +16,17 @@ class FirebaseClientConcrete extends FirebaseClient {
     String x = DateTime.now().millisecondsSinceEpoch.toString();
 
     return x;
+  }
+
+  
+  Future<void> updateCarCollection(String docID, String weeklyKilometer, String remainingFuel) async {
+    print("ege");
+    await FirebaseFirestore.instance
+        .collection('Car')
+        .doc(docID)
+        .update({'weeklyKilometer': weeklyKilometer,
+                  'remainingFuel': remainingFuel});
+    print("bitti");
   }
 
   Future<Map<String, dynamic>> getCar(String carId) async {

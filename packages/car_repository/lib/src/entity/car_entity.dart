@@ -8,10 +8,11 @@ class CarEntity {
   final String cylinder;
   final String fuel;
   final String model;
-  final String remainingFuel;
-  final String kilometer;
+  String kilometer;
+  String weeklyKilometer;
   final String averageConsumption;
-  final String weeklyKilometer;
+  String remainingFuel;
+  final String docID;
 
   CarEntity({
     required this.horsepower,
@@ -21,10 +22,11 @@ class CarEntity {
     required this.cylinder,
     required this.fuel,
     required this.model,
-    required this.remainingFuel,
     required this.kilometer,
-    required this.averageConsumption,
     required this.weeklyKilometer,
+    required this.averageConsumption,
+    required this.remainingFuel,
+    required this.docID,
   });
 
   CarEntity copyWith({
@@ -35,10 +37,11 @@ class CarEntity {
     String? cylinder,
     String? fuel,
     String? model,
-    String? remainingFuel,
     String? kilometer,
-    String? averageConsumption,
     String? weeklyKilometer,
+    String? averageConsumption,
+    String? remainingFuel,
+    String? docID,
   }) {
     return CarEntity(
       horsepower: horsepower ?? this.horsepower,
@@ -48,10 +51,11 @@ class CarEntity {
       cylinder: cylinder ?? this.cylinder,
       fuel: fuel ?? this.fuel,
       model: model ?? this.model,
-      remainingFuel: remainingFuel ?? this.remainingFuel,
       kilometer: kilometer ?? this.kilometer,
-      averageConsumption: averageConsumption ?? this.averageConsumption,
       weeklyKilometer: weeklyKilometer ?? this.weeklyKilometer,
+      averageConsumption: averageConsumption ?? this.averageConsumption,
+      remainingFuel: remainingFuel ?? this.remainingFuel,
+      docID: docID ?? this.docID,
     );
   }
 
@@ -64,10 +68,11 @@ class CarEntity {
           cylinder: "",
           fuel: "",
           model: "",
-          remainingFuel: "",
           kilometer: "",
-          averageConsumption: "",
           weeklyKilometer: "",
+          averageConsumption: "",
+          remainingFuel: "",
+          docID: "",
         );
 
   Map<String, dynamic> toMap() {
@@ -79,10 +84,11 @@ class CarEntity {
       'cylinder': cylinder,
       'fuel': fuel,
       'model': model,
-      'remainingFuel': remainingFuel,
       'kilometer': kilometer,
-      'averageConsumption': averageConsumption,
       'weeklyKilometer': weeklyKilometer,
+      'averageConsumption': averageConsumption,
+      'remainingFuel': remainingFuel,
+      'docID': docID,
     };
   }
 
@@ -95,10 +101,11 @@ class CarEntity {
       cylinder: map['cylinder'] ?? '',
       fuel: map['fuel'] ?? '',
       model: map['model'] ?? '',
-      remainingFuel: map['remainingFuel'] ?? '',
       kilometer: map['kilometer'] ?? '',
-      averageConsumption: map['averageConsumption'] ?? '',
       weeklyKilometer: map['weeklyKilometer'] ?? '',
+      averageConsumption: map['averageConsumption'] ?? '',
+      remainingFuel: map['remainingFuel'] ?? '',
+      docID: map['docID'] ?? '',
     );
   }
 
@@ -109,7 +116,7 @@ class CarEntity {
 
   @override
   String toString() {
-    return 'CarEntity(horsepower: $horsepower, tank: $tank, maxSpeed: $maxSpeed, engine: $engine, cylinder: $cylinder, fuel: $fuel, model: $model, remainingFuel: $remainingFuel, kilometer: $kilometer, averageConsumption: $averageConsumption, weeklyKilometer: $weeklyKilometer)';
+    return 'CarEntity(horsepower: $horsepower, tank: $tank, maxSpeed: $maxSpeed, engine: $engine, cylinder: $cylinder, fuel: $fuel, model: $model, kilometer: $kilometer, weeklyKilometer: $weeklyKilometer, averageConsumption: $averageConsumption, remainingFuel: $remainingFuel, docID: $docID)';
   }
 
   @override
@@ -124,10 +131,11 @@ class CarEntity {
         other.cylinder == cylinder &&
         other.fuel == fuel &&
         other.model == model &&
-        other.remainingFuel == remainingFuel &&
         other.kilometer == kilometer &&
+        other.weeklyKilometer == weeklyKilometer &&
         other.averageConsumption == averageConsumption &&
-        other.weeklyKilometer == weeklyKilometer;
+        other.remainingFuel == remainingFuel  &&
+        other.docID == docID;
   }
 
   @override
@@ -139,9 +147,10 @@ class CarEntity {
         cylinder.hashCode ^
         fuel.hashCode ^
         model.hashCode ^
-        remainingFuel.hashCode ^
         kilometer.hashCode ^
+        weeklyKilometer.hashCode ^
         averageConsumption.hashCode ^
-        weeklyKilometer.hashCode;
+        remainingFuel.hashCode ^
+        docID.hashCode;
   }
 }

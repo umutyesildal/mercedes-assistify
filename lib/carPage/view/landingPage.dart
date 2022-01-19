@@ -158,7 +158,9 @@ class DailyTab extends StatelessWidget {
               ),
               CustomRowText(
                 givenKey: AppLocalizations.of(context)!.averageConsumption,
-                givenValue: state.currentCar!.averageConsumption,
+
+                givenValue: state.currentCar!.averageConsumption + "L/ 100 KM",
+
               ),
               CustomRowText(
                 givenKey: AppLocalizations.of(context)!.weeklyKilometer,
@@ -168,7 +170,7 @@ class DailyTab extends StatelessWidget {
           ),
         );
       },
-    );
+    ); //BlockBuilder 
   }
 }
 
