@@ -90,7 +90,7 @@
     "@_CAR_PAGE": {
     },
     "remainingFuel":"Verbleibender Kraftstoff",
-    "kilometer":"Kilometer",
+    "kilometer":"Taglich Kilometer",
     "averageConsumption":"Durchschnittlicher Verbrauch",
     "weeklyKilometer":"Wöchentlicher Kilometer",
     "horsepower":"Pferdestärke",

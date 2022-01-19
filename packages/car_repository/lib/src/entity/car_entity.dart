@@ -8,6 +8,12 @@ class CarEntity {
   final String cylinder;
   final String fuel;
   final String model;
+  String kilometer;
+  String weeklyKilometer;
+  final String averageConsumption;
+  String remainingFuel;
+  final String docID;
+
   CarEntity({
     required this.horsepower,
     required this.tank,
@@ -16,6 +22,11 @@ class CarEntity {
     required this.cylinder,
     required this.fuel,
     required this.model,
+    required this.kilometer,
+    required this.weeklyKilometer,
+    required this.averageConsumption,
+    required this.remainingFuel,
+    required this.docID,
   });
 
   CarEntity copyWith({
@@ -26,6 +37,11 @@ class CarEntity {
     String? cylinder,
     String? fuel,
     String? model,
+    String? kilometer,
+    String? weeklyKilometer,
+    String? averageConsumption,
+    String? remainingFuel,
+    String? docID,
   }) {
     return CarEntity(
       horsepower: horsepower ?? this.horsepower,
@@ -35,6 +51,11 @@ class CarEntity {
       cylinder: cylinder ?? this.cylinder,
       fuel: fuel ?? this.fuel,
       model: model ?? this.model,
+      kilometer: kilometer ?? this.kilometer,
+      weeklyKilometer: weeklyKilometer ?? this.weeklyKilometer,
+      averageConsumption: averageConsumption ?? this.averageConsumption,
+      remainingFuel: remainingFuel ?? this.remainingFuel,
+      docID: docID ?? this.docID,
     );
   }
 
@@ -47,6 +68,11 @@ class CarEntity {
           cylinder: "",
           fuel: "",
           model: "",
+          kilometer: "",
+          weeklyKilometer: "",
+          averageConsumption: "",
+          remainingFuel: "",
+          docID: "",
         );
 
   Map<String, dynamic> toMap() {
@@ -58,6 +84,11 @@ class CarEntity {
       'cylinder': cylinder,
       'fuel': fuel,
       'model': model,
+      'kilometer': kilometer,
+      'weeklyKilometer': weeklyKilometer,
+      'averageConsumption': averageConsumption,
+      'remainingFuel': remainingFuel,
+      'docID': docID,
     };
   }
 
@@ -70,6 +101,11 @@ class CarEntity {
       cylinder: map['cylinder'] ?? '',
       fuel: map['fuel'] ?? '',
       model: map['model'] ?? '',
+      kilometer: map['kilometer'] ?? '',
+      weeklyKilometer: map['weeklyKilometer'] ?? '',
+      averageConsumption: map['averageConsumption'] ?? '',
+      remainingFuel: map['remainingFuel'] ?? '',
+      docID: map['docID'] ?? '',
     );
   }
 
@@ -80,7 +116,7 @@ class CarEntity {
 
   @override
   String toString() {
-    return 'CarEntity(horsepower: $horsepower, tank: $tank, maxSpeed: $maxSpeed, engine: $engine, cylinder: $cylinder, fuel: $fuel, model: $model)';
+    return 'CarEntity(horsepower: $horsepower, tank: $tank, maxSpeed: $maxSpeed, engine: $engine, cylinder: $cylinder, fuel: $fuel, model: $model, kilometer: $kilometer, weeklyKilometer: $weeklyKilometer, averageConsumption: $averageConsumption, remainingFuel: $remainingFuel, docID: $docID)';
   }
 
   @override
@@ -94,7 +130,12 @@ class CarEntity {
         other.engine == engine &&
         other.cylinder == cylinder &&
         other.fuel == fuel &&
-        other.model == model;
+        other.model == model &&
+        other.kilometer == kilometer &&
+        other.weeklyKilometer == weeklyKilometer &&
+        other.averageConsumption == averageConsumption &&
+        other.remainingFuel == remainingFuel  &&
+        other.docID == docID;
   }
 
   @override
@@ -105,6 +146,11 @@ class CarEntity {
         engine.hashCode ^
         cylinder.hashCode ^
         fuel.hashCode ^
-        model.hashCode;
+        model.hashCode ^
+        kilometer.hashCode ^
+        weeklyKilometer.hashCode ^
+        averageConsumption.hashCode ^
+        remainingFuel.hashCode ^
+        docID.hashCode;
   }
 }

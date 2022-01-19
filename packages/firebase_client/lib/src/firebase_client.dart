@@ -21,7 +21,7 @@ abstract class FirebaseClient {
   Future<Map<String, dynamic>> getMaintenance();
   Future<List<Map<String, dynamic>>> getAllPreviousServices(
       List<String> givenIds);
-
+  Future<void> updateCarCollection(String docID, String weeklyKilometer, String remainingFuel);
   /// if something needs to be closed. ex: storage compaction and closing.
   void close();
 }
